@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/tableHTML.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2005/02/17 18:30:28 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2005/03/28 18:52:53 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -144,9 +144,9 @@ int TableHTML::outHtml()
 		dbTableDoc << "<tr><td colspan=3><font class=\"PrimaryKey\">PRIMARY KEY</font></td></tr>\n";
 
 		for (it = attributes.begin(); it != attributes.end(); it++) {
-			AttributeHTML* att = (AttributeHTML*)it;
-			if (isKey(*att, ePrimaryKey)) {
-				att->outHtml(&dbTableDoc, *this);
+			AttributeHTML& att = (AttributeHTML&)*it;
+			if (isKey(att, ePrimaryKey)) {
+				att.outHtml(&dbTableDoc, *this);
 			}
 		}
 
@@ -157,9 +157,9 @@ int TableHTML::outHtml()
 		dbTableDoc << "<tr><td colspan=3><font class=\"Unique\">UNIQUE KEY</font></td></tr>\n";
 
 		for (it = attributes.begin(); it != attributes.end(); it++) {
-			AttributeHTML* att = (AttributeHTML*)it;
-			if (isKey(*att, eUnique)) {
-				att->outHtml(&dbTableDoc, *this);
+			AttributeHTML& att = (AttributeHTML&)*it;
+			if (isKey(att, eUnique)) {
+				att.outHtml(&dbTableDoc, *this);
 			}
 		}
 
@@ -167,9 +167,9 @@ int TableHTML::outHtml()
 	}
 
 	for (it = attributes.begin(); it != attributes.end(); it++) {
-		AttributeHTML* att = (AttributeHTML*)it;
-		if (!isKey(*att, ePrimaryKey) && !isKey(*att, eUnique))
-			att->outHtml(&dbTableDoc, *this);
+		AttributeHTML& att = (AttributeHTML&)*it;
+		if (!isKey(att, ePrimaryKey) && !isKey(att, eUnique))
+			att.outHtml(&dbTableDoc, *this);
 	}
 
 	if ( foreign > 0) {

@@ -1,13 +1,12 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/mixed.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2005/02/17 18:30:28 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2005/03/28 18:52:53 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
-#include "stringutils.h"
 #include "mixed.h"
 #include <stdlib.h>
 #include <sys/types.h>
@@ -89,12 +88,14 @@ void backup(const char* filename)
 	int count = 0;
 	string name;
 	FILE* rfile, *hfile;
-	name += "bak/" + string( filename) + inttostr( count) + ".dia";
+    char s[20];
+	name += "bak/" + string( filename) + "0.dia";
 	// See if we can find a file that is not already there.
 	while ( ( hfile = fopen( name.c_str(), "rb") ) != NULL) {
 		fclose( hfile);
 		name = "";
-		name += "bak/" + string( filename) + inttostr( count) + ".bak";
+        sprintf(s, "%d", count);
+		name += "bak/" + string( filename) + s + ".bak";
 		count++;
 	}
 	// Copy the given file

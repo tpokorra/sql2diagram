@@ -1,14 +1,13 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/databaseDIA.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2005/02/17 18:30:28 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2005/03/28 18:52:53 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
 #include "dia.h"
-#include "stringutils.h"
 
 void DataBaseDIA::prepareDisplay(string module, string tableList, bool repeatedRun)
 {
@@ -79,12 +78,13 @@ void DataBaseDIA::outDiaPngCrop(FILE* file, string diagramname)
 		int tilewidth = 1024;
 		int tileheight = 768;
 		int x, y;
-
+        char s[20];
 		for ( y = 0; y < height; y += tileheight) {
 			for (x = 0; x < width; x += tilewidth, count++) {
+                sprintf(s, "%d", count);
 				fprintf( file, "%%1/convert -crop %dx%d+%d+%d %s.png %s.png\n",
 							tilewidth, tileheight, x, y,
-							diagramname.c_str(), (diagramname+inttostr(count)).c_str());
+							diagramname.c_str(), (diagramname+s).c_str());
 			}
 		}
 	}

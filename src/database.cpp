@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/database.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2005/02/17 18:30:27 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2005/03/28 18:52:52 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -11,7 +11,6 @@
 
 #include "table.h"
 #include "database.h"
-#include "stringutils.h"
 
 void DataBase::addLink(Constraint& foreignkey)
 {
@@ -198,10 +197,32 @@ void DataBase::getCornersOfDiagram(float& left, float& top, float& right, float&
 	for (at = posAssociations.begin(); at != posAssociations.end(); at++) {
 		vector<string> vpoints;
 		vector<string>::iterator pointsit;
-		StringToVector(at->orth_points, vpoints, ";");
+        string s = at->orth_points;
+        while (s.length()>0) {
+              unsigned int posSemicolon = s.find(";");
+              if (posSemicolon != string::npos) {
+                   vpoints.push_back(s.substr(0, posSemicolon));
+                   s = s.substr(posSemicolon+1);
+              }
+              else {
+                   vpoints.push_back(s);
+                   s = "";
+              }
+        }
 		for (pointsit = vpoints.begin(); pointsit != vpoints.end(); pointsit++) {
 			vector<string> vcoord;
-			StringToVector(*pointsit, vcoord, ",");
+            string s = *pointsit;
+            while (s.length()>0) {
+                  unsigned int posSemicolon = s.find(";");
+                  if (posSemicolon != string::npos) {
+                       vcoord.push_back(s.substr(0, posSemicolon));
+                       s = s.substr(posSemicolon+1);
+                  }
+                  else {
+                       vcoord.push_back(s);
+                       s = "";
+                  }
+            }
 			if (vcoord.size() == 2) { // x and y
 				float x = atof(vcoord.begin()->c_str());
 				float y = atof((vcoord.begin()+1)->c_str());

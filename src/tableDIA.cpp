@@ -2,14 +2,22 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/tableDIA.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2005/02/17 18:30:28 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2005/03/28 18:52:53 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
 #include "dia.h"
-#include "stringutils.h"
+
+#include <sstream>
+string floattostr(float f)
+{
+	static std::stringstream streamOut;
+	streamOut << f;
+	return streamOut.str();
+}
+
 
 TableDIA::TableDIA(char* pName)
 :Table(pName)

@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/table.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2005/02/17 18:30:28 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2005/03/28 18:52:53 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -173,7 +173,10 @@ bool Table::getConstraints(vector<Constraint*>& pconstraints)
 	vector<Constraint>::iterator it;
 	pconstraints.clear();
 	for (it = constraints.begin(); it != constraints.end(); it++)
-		pconstraints.push_back(it);
+    {
+        Constraint& constr = *it;
+		pconstraints.push_back(&constr);
+    }
 	return true;
 }
 
