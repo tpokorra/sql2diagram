@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/mixed.cpp,v $
- * revision:            $Revision: 1.4 $
- * last changes:        $Date: 2004/01/06 14:57:29 $
+ * revision:            $Revision: 1.5 $
+ * last changes:        $Date: 2004/01/15 20:22:32 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <dirent.h>
+#include <errno.h>
 
 string trim(const string& s)
 {
