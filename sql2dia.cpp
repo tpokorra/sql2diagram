@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/sql2dia.cpp,v $
- * revision:            $Revision: 1.8 $
- * last changes:        $Date: 2004/01/06 14:57:29 $
+ * revision:            $Revision: 1.9 $
+ * last changes:        $Date: 2004/01/06 15:37:13 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -170,24 +170,32 @@ void RunProject( char* szProject, int argc, char* argv[]) {
 	CheckProjectFile( szProject, &doc);
 
 	// Read all the source-files
+	cout << "Reading source-files..." << endl;
 	ParserSQL sql( db);
 	xmlNodePtr cur = xmlDocGetRootElement(doc);
 	cur = cur->xmlChildrenNode;
 	while ( cur != NULL) {
 		if ( 0 == xmlStrcmp(cur->name, (const xmlChar *)"source")) {
-			xmlChar* szName = xmlGetProp( cur, (xmlChar*)"filename");
-			cout
-				<< "Source: " << (char*)szName << endl;
-			if ( !sql.readSQL( (char*)szName)) {
-				cout << "\tProblem reading sql file: " << (char*)szName << endl;
-				exit( -3);
+			xmlChar* szType = xmlGetProp( cur, (xmlChar*)"type");
+			if ( 0 == xmlStrcmp( szType, (const xmlChar *)"sql")) {
+   			xmlChar* szName = xmlGetProp( cur, (xmlChar*)"filename");
+   			cout
+   				<< "Source: " << (char*)szName << endl;
+   			if ( !sql.readSQL( (char*)szName)) {
+   				cout << "\tProblem reading sql file: " << (char*)szName << endl;
+   				exit( -3);
+   			}
+   			free( szName);
+			} else {
+			   cout << "Don't know how to read files of type: " << (char*)szType << endl;
 			}
-			free( szName);
+			free( szType);
 		}
 		cur = cur->next;
 	}
 
 	// Group the tables.
+	cout << "Grouping tables..." << endl;
 	db.prepareLinks();
 	((DataBaseHTML*)&db)->prepareDisplay( "", false);
 	cur = xmlDocGetRootElement(doc);
