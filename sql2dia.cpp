@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/sql2dia.cpp,v $
- * revision:            $Revision: 1.5 $
- * last changes:        $Date: 2004/01/04 20:47:00 $
+ * revision:            $Revision: 1.6 $
+ * last changes:        $Date: 2004/01/04 22:36:39 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -64,7 +64,7 @@ void Usage( char *argv0, int exit_val) {
 		<< "  " << argv0 << " sql2dia -p project-file | --dump source-file(s)" << endl
 		<< endl
 		<< "Output format:" << endl
-		<< "\t[-d|--dump]    Generate a sample project file with given source file" << endl
+		<< "\t[-d|--dump]    Generate a sample project file with given source file(s)" << endl
 		<< "\t[-p|--project] Create/update diagrams according to given project file" << endl
 		<< endl
 		<< "Options:" << endl
@@ -74,29 +74,141 @@ void Usage( char *argv0, int exit_val) {
 	exit( exit_val);
 }
 
-string strProjectFile = "";
+void BackwardCompat( int argc, char* argv[]) {
+	ParserSQL sql( db);
+	string path, prefix;
 
-void setProjectFile( char* szProjectFile)
-{
-	strProjectFile = szProjectFile;
+	path = argv[1];
+	prefix = argv[2];
+
+	printf( "Reading sql files...\n");
+	if ( !sql.readSQL(path)) {
+		printf( "Problem reading sql create script file: %s\n", path.c_str());
+		exit( -1);
+	} else {
+		printf( "\tread sql file %s ... done\n", path.c_str());
+	}
+
+	printf( "Reading sql files done\n");
+
+	db.prepareLinks();
+	((DataBaseHTML*)&db)->prepareDisplay( "", false);
+	outHtml( prefix, prefix + ".html");
+
+	FILE* Convertfile;
+	Convertfile = fopen((prefix+"_tile.bat").c_str(), "wt");
+
+	process( prefix, prefix, Convertfile);
+
+	fclose( Convertfile);
+
+	db.displayNonDisplayedTables();
 }
 
+void DumpExampleProject( int argc, char* argv[]) {
+	// Create a sample project file for the given source file(s)
+	ParserSQL sql( db);
+	cout
+		<< "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>" << endl
+		<< "<!DOCTYPE database SYSTEM \"datastructure.dtd\">" << endl
+		<< endl
+		<< "<database name=\"xxxx\">" << endl;
+	for ( int i = optind; i < argc; i++) {
+		cout
+			<< "\t<source filename=\"" << argv[ i] << "\" type=\"sql\"/>" << endl
+			<< "\t<group name=\"" << argv[ i] << "\">" << endl;
+		if ( !sql.readSQL( argv[ i])) {
+			cout << "Problem reading sql create script file: " << argv[ i] << endl;
+			exit( -1);
+		}
+		// For all tables read, dump their names in this group
+		cout
+			<< db;
+		// End of this group
+		cout
+			<< "\t</group>" << endl;
+	}
+	cout
+		<< "</database>" << endl;
+}
+
+void RunProject( char* szProject, int argc, char* argv[]) {
+	// Now what should we do with the project file???
+	// Open it and read the source files.
+	xmlDocPtr doc = xmlParseFile( szProject);
+
+	if (doc == NULL ) {
+		cerr << "Document not parsed successfully." << endl;
+		exit( -1);
+	}
+	xmlNodePtr cur;
+	cur = xmlDocGetRootElement( doc);
+
+	if ( cur == NULL) {
+		cerr << "empty document" << endl;
+		xmlFreeDoc( doc);
+		exit( -2);
+	}
+
+	if ( 0 != xmlStrcmp( cur->name, (const xmlChar *) "database")) {
+		cerr << "document of the wrong type, root node != database" << endl;
+		xmlFreeDoc( doc);
+		exit( -3);
+	}
+
+	// Read all the source-files
+	ParserSQL sql( db);
+
+	cur = xmlDocGetRootElement(doc);
+	cur = cur->xmlChildrenNode;
+	while ( cur != NULL) {
+		if ( 0 == xmlStrcmp(cur->name, (const xmlChar *)"source")) {
+			xmlChar* szName = xmlGetProp( cur, (xmlChar*)"filename");
+			cout
+				<< "Source: " << (char*)szName << endl;
+			if ( !sql.readSQL( (char*)szName)) {
+				cout << "\tProblem reading sql file: " << (char*)szName << endl;
+				exit( -3);
+			}
+			free( szName);
+		}
+		cur = cur->next;
+	}
+
+	// Group the tables.
+	cur = xmlDocGetRootElement(doc);
+	cur = cur->xmlChildrenNode;
+	while ( cur != NULL) {
+		if ( 0 == xmlStrcmp(cur->name, (const xmlChar *)"group")) {
+			xmlChar* szName = xmlGetProp( cur, (xmlChar*)"name");
+			cout
+				<< "Group: " << (char*)szName << endl;
+			//xmlFree( szName);
+		}
+		cur = cur->next;
+	}
+
+	// Free the lot
+	xmlFreeDoc( doc);
+}
 
 int main(int argc, char* argv[])
 {
 	bool bDoProject = false;
 	bool bDoDump = false;
+	char* szProjectFile = NULL;
 
 	/* The options that can be given */
 	static struct option long_options[] = {
 		/* What to produce */
-		{"dump",     no_argument,       0, 'd'},
-		{"project",  no_argument,       0, 'p'},
+		{"dump",     		no_argument,       0, 'd'},
+		{"project",  		required_argument, 0, 'p'},
 		/* Options */
-//		{"diagram-file",             required_argument, 0, 'F'},
-//		{"group",                    required_argument, 0, 'g'},
-		{"verbose",                  no_argument,       0, 'v'},
-		{"help",                     no_argument,       0, 'h'},
+// Left here as an example of how we could pass parameters
+//		{"diagram-file",	required_argument, 0, 'F'},
+//		{"group",         required_argument, 0, 'g'},
+		{"verbose",       no_argument,       0, 'v'},
+		{"help",          no_argument,       0, 'h'},
 		{0, 0, 0, 0}
 	};
 	/* getopt_long stores the option index here. */
@@ -116,7 +228,7 @@ int main(int argc, char* argv[])
    			if ( NULL == optarg) {
    				Usage( argv[ 0], 1);
    			}
-				setProjectFile( optarg);
+				szProjectFile = optarg;
 				bDoProject = true;
 				break;
 			case 'd':
@@ -128,103 +240,16 @@ int main(int argc, char* argv[])
 	// For backward compat. take arguments as they come...
 	if ( ( ! bDoDump)
 	&&   ( ! bDoProject) ) {
-		ParserSQL sql( db);
-		string path, prefix;
-
-		path = argv[1];
-		prefix = argv[2];
-
-		printf( "Reading sql files...\n");
-		if ( !sql.readSQL(path)) {
-			printf( "Problem reading sql create script file: %s\n", path.c_str());
-			return -1;
-		} else {
-			printf( "\tread sql file %s ... done\n", path.c_str());
-		}
-
-		printf( "Reading sql files done\n");
-
-		db.prepareLinks();
-		((DataBaseHTML*)&db)->prepareDisplay( "", false);
-		outHtml( prefix, prefix + ".html");
-
-		FILE* Convertfile;
-		Convertfile = fopen((prefix+"_tile.bat").c_str(), "wt");
-
-		process( prefix, prefix, Convertfile);
-
-		fclose( Convertfile);
-
-		db.displayNonDisplayedTables();
+		BackwardCompat( argc, argv);
 	} else {
 		// The normal new processing
 		if ( bDoDump) {
-			// Create a sample project file for the given source file(s)
 			if ( NULL == argv[ optind]) {
 				Usage( argv[ 0], 1);
 			}
-			ParserSQL sql( db);
-			cout
-				<< "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>" << endl
-				<< "<!DOCTYPE database SYSTEM \"datastructure.dtd\">" << endl
-				<< endl
-				<< "<database name=\"xxxx\">" << endl;
-			for ( int i = optind; i < argc; i++) {
-				cout
-            	<< "\t<source filename=\"" << argv[ i] << "\" type=\"sql\"/>" << endl
-					<< "\t<group name=\"" << argv[ i] << "\">" << endl;
-				if ( !sql.readSQL( argv[ i])) {
-					cout << "Problem reading sql create script file: " << argv[ i] << endl;
-					return -1;
-				}
-				// For all tables read: dump their names in this group
-				cout
-					<< db;
-				// End of this group
-				cout
-					<< "\t</group>" << endl;
-			}
-			cout
-				<< "</database>" << endl;
+			DumpExampleProject( argc, argv);
 		} else if ( bDoProject) {
-			// Now what should we do with the project file???
-			// Open it and read the source files.
-      	xmlDocPtr doc = xmlParseFile( strProjectFile.c_str());
-
-      	if (doc == NULL ) {
-      		cerr << "Document not parsed successfully." << endl;
-      		return -1;
-      	}
-      	xmlNodePtr cur;
-      	cur = xmlDocGetRootElement( doc);
-
-      	if ( cur == NULL) {
-      		cerr << "empty document" << endl;
-      		xmlFreeDoc( doc);
-      		return -1;
-      	}
-
-      	if ( 0 != xmlStrcmp( cur->name, (const xmlChar *) "database")) {
-      		cerr << "document of the wrong type, root node != database" << endl;
-      		xmlFreeDoc( doc);
-      		return -1;
-      	}
-
-			// Do what ever...
-      	cur = xmlDocGetRootElement(doc);
-      	cur = cur->xmlChildrenNode;
-      	while ( cur != NULL) {
-      		if ( 0 == xmlStrcmp(cur->name, (const xmlChar *)"group")) {
-            	xmlChar* szName = xmlGetProp( cur, (xmlChar*)"name");
-            	cout
-        				<< "Group: " << (char*)szName << endl;
-    				xmlFree( szName);
-      		}
-      		cur = cur->next;
-      	}
-
-      	// Free the lot
-			xmlFreeDoc( doc);
+			RunProject( szProjectFile, argc, argv);
 		}
 	}
 

@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/mixed.h,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2004/01/04 16:19:36 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2004/01/04 22:36:39 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -12,7 +12,9 @@
 
 #include "linux_hacks.h"
 
-#pragma warning( disable: 4786)
+#ifndef __GNUC__
+   #pragma warning( disable: 4786)
+#endif
 #include <vector>
 #include <string>
 #include <algorithm>

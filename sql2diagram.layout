@@ -7,20 +7,24 @@ Open=0
 Top=0
 
 [Editors]
-Focused=0
-Order=0
+Focused=5
+Order=0,20,5
 
 [Editor_0]
 Open=1
-Top=1
-CursorCol=14
-CursorRow=50
-TopLine=43
+Top=0
+CursorCol=1
+CursorRow=35
+TopLine=25
 LeftChar=1
 
 [Editor_1]
 Open=0
 Top=0
+CursorCol=31
+CursorRow=18
+TopLine=18
+LeftChar=1
 
 [Editor_2]
 Open=0
@@ -43,8 +47,12 @@ TopLine=123
 LeftChar=1
 
 [Editor_5]
-Open=0
-Top=0
+Open=1
+Top=1
+CursorCol=1
+CursorRow=1
+TopLine=1
+LeftChar=1
 
 [Editor_6]
 Open=0
@@ -99,8 +107,12 @@ Open=0
 Top=0
 
 [Editor_20]
-Open=0
+Open=1
 Top=0
+CursorCol=7
+CursorRow=17
+TopLine=1
+LeftChar=1
 
 [Editor_21]
 Open=0
