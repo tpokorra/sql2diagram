@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/sql2dia.cpp,v $
- * revision:            $Revision: 1.9 $
- * last changes:        $Date: 2004/01/06 15:37:13 $
+ * revision:            $Revision: 1.10 $
+ * last changes:        $Date: 2004/01/07 21:54:05 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -47,7 +47,7 @@ void process(string name, string prefix, FILE* Convertfile, string listTables=""
 	printf("\tbackup done: %s\n", (name+".dia").c_str());
 	db.resetSizePosition();
 	ParserDIA dia(db);
-	if ( dia.readSizePosition(name+".dia")) {
+	if ( dia.parse(name+".dia")) {
 		printf( "\tread existing positions: OK\n");
 		positionsRead = true;
 	}
