@@ -6,7 +6,7 @@ sqlfile=scheme.ddl
 CC=gcc
 CPP=g++
 CFLAGS=-I/usr/include/libxml2 -Wall
-CCOPT=
+CCOPT=-g -O0
 LIBS=-lstdc++ -lxml2
 
 SRC=attribute.cpp attributeDIA.cpp attributeHTML.cpp database.cpp databaseDIA.cpp databaseHTML.cpp mixed.cpp parsedia.cpp parser_cmn.cpp parsesql.cpp sql2dia.cpp table.cpp tableDIA.cpp tableHTML.cpp
@@ -20,7 +20,7 @@ sql2dia: $(OBJS) parser_cmn.h table.h dia.h html.h mixed.h parsedia.h parsesql.h
 	$(CC) -o sql2dia $(OBJS) $(LIBS)
 
 depend:
-	gccmakedep -- $(CCOPT) -- $(SRC)
+	gccmakedep -- $(CCOPT) $(CFLAGS) -- $(SRC)
 
 au: sql2dia
 	./sql2dia $(sqlfile) au
