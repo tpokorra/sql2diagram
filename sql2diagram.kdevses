@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE KDevPrjSession>
+<KDevPrjSession>
+ <DocsAndViews NumberOfDocuments="5" >
+  <Doc0 NumberOfViews="1" URL="file:/home/gerkek/c/sql2diagram/src/sql2dia.cpp" >
+   <View0 line="223" Type="???" >
+    <AdditionalSettings Top="1" Width="619" Attach="1" Height="504" Left="1" MinMaxMode="0" />
+   </View0>
+  </Doc0>
+  <Doc1 NumberOfViews="1" URL="file:/home/gerkek/c/sql2diagram/example/example.xml" >
+   <View0 line="16" Type="???" >
+    <AdditionalSettings Top="1" Width="1200" Attach="1" Height="779" Left="1" MinMaxMode="0" />
+   </View0>
+  </Doc1>
+  <Doc2 NumberOfViews="1" URL="file:/home/gerkek/c/sql2diagram/example/customer.sql" >
+   <View0 line="0" Type="???" >
+    <AdditionalSettings Top="1" Width="767" Attach="1" Height="504" Left="1" MinMaxMode="0" />
+   </View0>
+  </Doc2>
+  <Doc3 NumberOfViews="1" URL="file:/home/gerkek/c/sql2diagram/example/order_system.sql" >
+   <View0 line="11" Type="???" >
+    <AdditionalSettings Top="1" Width="954" Attach="1" Height="505" Left="1" MinMaxMode="0" />
+   </View0>
+  </Doc3>
+  <Doc4 NumberOfViews="1" URL="file:/home/gerkek/c/sql2diagram/configure.in" >
+   <View0 line="19" Type="???" >
+    <AdditionalSettings Top="1" Width="990" Attach="1" Height="669" Left="1" MinMaxMode="0" />
+   </View0>
+  </Doc4>
+ </DocsAndViews>
+ <pluginList>
+  <kdevbookmarks>
+   <bookmarks/>
+  </kdevbookmarks>
+  <kdevvalgrind>
+   <executable path="" params="" />
+   <valgrind path="" params="" />
+  </kdevvalgrind>
+  <kdevdebugger>
+   <breakpointList>
+    <breakpoint0 location="/home/gerkek/c/sql2diagram/src/sql2dia.cpp:261" type="1" condition="" enabled="1" />
+    <breakpoint1 location="/home/gerkek/c/sql2diagram/src/sql2dia.cpp:298" type="1" condition="" enabled="1" />
+    <breakpoint2 location="/home/gerkek/c/sql2diagram/src/sql2dia.cpp:287" type="1" condition="" enabled="1" />
+   </breakpointList>
+  </kdevdebugger>
+ </pluginList>
+</KDevPrjSession>

@@ -1,0 +1,110 @@
+AC_INIT(configure.in)
+
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(sql2diagram, 0.1)
+
+AC_LANG_CPLUSPLUS
+AC_PROG_CXX
+AM_PROG_LIBTOOL
+
+dnl AC_CHECK_LIB( xml2, _init, , [AC_MSG_ERROR( [XML2 libraries not found])])
+
+
+dnl KDE_FIND_PATH(programm-name, variable-name, list of directories,
+dnl	if-not-found, test-parameter)
+AC_DEFUN(KDE_FIND_PATH,
+[
+   AC_MSG_CHECKING([for $1])
+   if test -n "$$2"; then
+        kde_cv_path="$$2";
+   else
+        kde_cache=`echo $1 | sed 'y%./+-%__p_%'`
+
+        AC_CACHE_VAL(kde_cv_path_$kde_cache,
+        [
+        kde_cv_path="NONE"
+	dirs="$3"
+	kde_save_IFS=$IFS
+	IFS=':'
+	for dir in $PATH; do
+	  dirs="$dirs $dir"
+        done
+	IFS=$kde_save_IFS
+
+        for dir in $dirs; do
+	  if test -x "$dir/$1"; then
+	    if test -n "$5"
+	    then
+              evalstr="$dir/$1 $5 2>&1 "
+	      if eval $evalstr; then
+                kde_cv_path="$dir/$1"
+                break
+	      fi
+            else
+		kde_cv_path="$dir/$1"
+                break
+	    fi
+          fi
+        done
+
+        eval "kde_cv_path_$kde_cache=$kde_cv_path"
+
+        ])
+
+      eval "kde_cv_path=\"`echo '$kde_cv_path_'$kde_cache`\""
+
+   fi
+
+   if test -z "$kde_cv_path" || test "$kde_cv_path" = NONE; then
+      AC_MSG_RESULT(not found)
+      $4
+   else
+      AC_MSG_RESULT($kde_cv_path)
+      $2=$kde_cv_path
+
+   fi
+])
+
+dnl -----------------------------------------------------------------------
+dnl libxml2 check from http://webcvs.kde.org/cgi-bin/cvsweb.cgi/kdelibs/kdoctools/configure.in.in?rev=1.38&content-type=text/x-cvsweb-markup
+# Autoconf 2.50 wants to disallow AM_ names.  We explicitly allow
+# the ones we care about.
+m4_pattern_allow([^AC_MSG_.*$])dnl
+
+KDE_FIND_PATH( xml2-config,
+					XML_CONFIG,
+					[${prefix}/bin ${exec_prefix}/bin /usr/local/bin /opt/local/bin],
+					[ AC_MSG_WARN([Could not find libxml2 anywhere, check ftp://xmlsoft.org/ for libxml >= 2.4.8. (we also keep a version of it in kdesupport for CVS users' convience)])
+					HELP_SUBDIR=
+])
+
+if test -n "$XML_CONFIG"; then
+	vers=`$XML_CONFIG --version 2>/dev/null | sed -e 's/libxml //' | awk 'BEGIN { FS = "."; } { printf "%d", ($1 * 1000 + $2) * 1000 + $3;}'`
+	if test -n "$vers" && test "$vers" -ge 2004008
+	then
+		LIBXML_LIBS="`$XML_CONFIG --libs`"
+		LIBXML_RPATH=
+		for args in $LIBXML_LIBS; do
+		case $args in
+			-L*)
+				LIBXML_RPATH="$LIBXML_RPATH $args"
+			;;
+			esac
+		done
+		LIBXML_RPATH=`echo $LIBXML_RPATH | sed -e "s/-L/-R/g"`
+		LIBXML_CFLAGS="`$XML_CONFIG --cflags`"
+
+		KDE_FIND_PATH(xmllint, XMLLINT, [${prefix}/bin ${exec_prefix}/bin /usr/local/bin /opt/local/bin], [XMLLINT=""])
+		AC_DEFINE_UNQUOTED(XMLLINT, "$XMLLINT", [Defines the executable of xmllint])
+	else
+		AC_MSG_WARN([You need at least libxml 2.4.8])
+		HELP_SUBDIR=
+	fi
+fi
+
+AC_SUBST(LIBXML_LIBS)
+AC_SUBST(LIBXML_CFLAGS)
+dnl -----------------------------------------------------------------------
+
+
+AC_OUTPUT(Makefile src/Makefile example/Makefile doc/Makefile)
