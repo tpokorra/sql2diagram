@@ -7,13 +7,19 @@
 <h2>Convert SQL Create Statements into a Database Schema Diagram and
 HTML representation<br>
 </h2>
+<a href="http://sourceforge.net"> <img
+ src="http://sourceforge.net/sflogo.php?group_id=97131&amp;type=5"
+ alt="SourceForge.net Logo" border="0" height="62" width="210"></a>
+<br>
+<a href="http://sourceforge.net/projects/sql2diagram">sourceforge
+project page</a>
 <br>
 This program can be used to produce diagrams in a XML format that is
 used by Dia, which is a free diagram editor for Linux and Windows.<br>
 <h3>Links<br>
 </h3>
 Dia website: <br>
-<a href="file:///D:/om-work/sql2dia/doc/www.lysator.liu.se/%7Ealla/dia/">www.lysator.liu.se/~alla/dia/</a><br>
+<a href="http://www.gnome.org/projects/dia/">http://www.gnome.org/projects/dia/</a><br>
 Dia for Windows:<br>
 <a href="http://dia-installer.sourceforge.net/">
 http://dia-installer.sourceforge.net/</a><br>
@@ -22,12 +28,80 @@ ImageMagick Convert is used to split the big images so that they can be
 printed on several pages.<br>
 <a href="http://www.imagemagick.org/">http://www.imagemagick.org/</a><br>
 <br>
-Sql2Dia can be compiled with cygwin.<br>
-<a href="http://www.cygwin.com/">http://www.cygwin.com/</a><br>
+Sql2Dia can be compiled on Windows with <a
+ href="http://sourceforge.net/projects/dev-cpp/"><span
+ style="text-decoration: underline;">Dev-C++ / Mingw</span></a>, and on
+Linux with normal make and gcc.<br>
 <br>
 I had my problems with autodia (<a href="http://droogs.org/autodia/">http://droogs.org/autodia/</a>),
 because there are no constraints inserted into the diagram, and I also
 wanted to have a linked HTML output.<br>
+<h3>Example to demonstrate functionality</h3>
+A good example can be found using the <a
+ href="http://cvs.sourceforge.net/viewcvs.py/compiere/db/database/Create/Compiere.sql?rev=1.64&amp;view=markup">data
+structure</a> of <a href="http://www.compiere.org/">Compiere</a>,
+because there are several modules with each containing many tables.<br>
+The goal is to reflect the database structure in diagrams and in HTML
+documentation. <br>
+A requirement is that you need the "Create Table" SQL statements, which
+you could also generate with the export functionality of phpMyAdmin etc.<br>
+<br>
+You can run the program like this:<br>
+<div style="margin-left: 40px;"><code>sql2dia Compiere.sql A</code><br>
+<code></code></div>
+<br>
+This will search for all tables in the SQL file that start with A_; You
+will have to run the call for all the modules, each with its own prefix.<br>
+<ul>
+  <li>These tables will be added to the dia file called A.dia</li>
+  <li>They will be integrated into an HTML site</li>
+  <li>You need to move the tables from the invisible layer to the
+background layer and arrange them. (see the more detailed explanation <a
+ href="#Example_Usage">below</a>)<br>
+  </li>
+  <li>You need to run the sql2dia program again, that will add the
+constraints to the diagram.</li>
+  <li>Rearrange the tables, run sql2dia again, till you are happy with
+the result.</li>
+  <li>You should export the dia file into a PNG file, and save it in
+the img directory. The A.png looks like <a
+ href="http://sql2diagram.sourceforge.net/example/img/img_A.html">this</a>.
+There is an HTML image map created for it automatically.<br>
+  </li>
+</ul>
+The result is:<br>
+<ul>
+  <li>the DIA file: <a
+ href="http://sql2diagram.sourceforge.net/example/dia/A.dia">A.dia</a>
+(it could be that this dia file looks broken, because I worked with dia
+0.92, and the fonts seem to be bigger with 0.94)</li>
+  <li>the PNG file with HTML image map: <a
+ href="http://sql2diagram.sourceforge.net/example/img/img_A.html">img_A.html</a></li>
+  <li>the HTML output, looking like this: <a
+ href="http://sql2diagram.sourceforge.net/example/index.html?table=A_Asset_Use&amp;group=A">http://sql2diagram.sourceforge.net/example/index.html?table=A_Asset_Use&amp;group=A</a></li>
+</ul>
+Things to note in the diagram:<br>
+<ul>
+  <li>The table <a
+ href="http://sql2diagram.sourceforge.net/example/img/img_A.html?C_AcctSchema">C_AcctSchema</a>
+is printed on the diagram of module A, because it is referenced from
+A_Asset_Change_Amt. But because C_AcctSchema does not belong to this
+module, only the primary key is displayed. The blue colour shows that
+the table is not complete, and the "..." show that not all fields are
+displayed.</li>
+  <li>The table <a
+ href="http://sql2diagram.sourceforge.net/example/img/img_A.html?A_Asset">A_Asset</a>
+is also displayed in blue colour. That means, that not all constraints
+have been drawn. The table R_Request references A_Asset, but is not on
+the diagram A. All tables that are referenced by A_Asset are drawn on
+the diagram A, but in the short version with the "...".</li>
+  <li>Constraints are only drawn once between 2 tables, otherwise the
+diagram would be really cluttered.</li>
+  <li>To read the diagram, you will see a table referencing another
+table: One field of the key will have a line to the title row of the
+other table.<br>
+  </li>
+</ul>
 <h3>Users Reference</h3>
 <h4>Functionality</h4>
 The program parses a number of text files which hold SQL CREATE TABLE
@@ -57,15 +131,12 @@ foreign key. All attributes that are part of a foreign key are marked
 with a "FK".<br>
 There is only one constraint painted between a pair of tables, even if
 there are several references.<br>
-<h4>Example Usage</h4>
+<h4><a name="Example_Usage"></a>Example Usage</h4>
 Howto use Sql2Dia:<br>
-New diagram: Add new command to sql2dia.cpp, e.g. process("personnel",
-"Personnel Tables", "pt,pm");<br>
-The parameters pt and pm mean that all tables with these prefixes are
-added to the diagram personnel.<br>
-Compile the sql2dia.exe, and run it with the first parameter being the
-path to the directory where your sql text files are<br>
-open personnel.dia<br>
+run sql2dia Compiere.sql A<br>
+The parameter A means that all tables with this prefix are
+added to the diagram A.<br>
+open A.dia<br>
 All tables are on the "invisible" layer. You can open with a right
 click the menu and go to Dialog/Layers. Hide the "background" layer,
 and
@@ -75,8 +146,8 @@ Select 5 or more tables from the invisible layer, cut them, hide the
 invisible layer, show the background layer, and switch to background.
 Insert the tables and move them to the correct position.<br>
 After having put all necessary tables on the background layer, save the
-personnel.dia file: Make sure you disable "compress diagram files".<br>
-close the personnel.dia <br>
+A.dia file: Make sure you disable "compress diagram files".<br>
+close the A.dia <br>
 Run sql2dia.exe again.<br>
 It creates a backup file in the bak directory. <br>
 If you forgot disabling compression, the current file is again a new
@@ -85,7 +156,7 @@ directory, and save it without compression.<br>
 It adds the constraints to the tables that are on the background layer.<br>
 It moves the end points of the constraint to the correct side of the
 table, left or right.<br>
-You open personnel.dia again, and align the constraints nicely.<br>
+You open A.dia again, and align the constraints nicely.<br>
 To insert new segments into a constraint, move the mouse over the line,
 hold the CTRL key, and press the right mouse button. Then comes a menu
 with "Add new segment". Make sure you add segments only behind the
@@ -130,18 +201,39 @@ with "Add new segment". Make sure you add segments only behind the
 first
 right angle from any table. That helps so that the constraints joins
 correctly when the tables are moved around.<br>
-<h3>Developers Reference<br>
+<h3>Files Reference<br>
 </h3>
-compile sql2dia with gcc and makefile:<br>
-cygwin: install full development<br>
-cd /cygdrive/&lt;drive letter&gt;/&lt;path to sql2dia&gt;<br>
-make<br>
+compile sql2dia with gcc and makefile, should work out of the box. <br>
+<div style="margin-left: 40px;"><code>cd sql2diagram/src</code><br>
+<code>make</code><br>
+<code></code></div>
+<br>
+compile with <a href="http://sourceforge.net/projects/dev-cpp/">Dev-C++/MinGW</a>:<br>
+make sure you have the <a href="http://devpaks.org/show.php?devpak=173">LibXML
+DevPak</a> and the <a href="http://devpaks.org/show.php?devpak=175">LibIConv
+DevPak</a> installed.<br>
+You will also need the dlls: iconv.dll, libxml2.dll, zlib1.dll<br>
+The IDE file is stored in sql2diagram/win32/sql2diagram.dev<br>
 <br>
 to tile/crop/dice the image with ImageMagick convert, just call<br>
 convert -crop &lt;width&gt;x&lt;height&gt;+&lt;x&gt;+&lt;y&gt;
 fullimage partimage<br>
 <br>
 use 140% smaller when printing the resulting tiles<br>
+<br>
+There are some <span style="font-weight: bold;">template files</span>
+in the sql2diagram/template directory that you will need and can modify
+for your own projects.<br>
+They are called: <br>
+<ul>
+  <li>index.html</li>
+  <li>table-doc-top.html</li>
+  <li>table-doc.js</li>
+  <li>table-doc-sub.js</li>
+  <li>index.css</li>
+  <li>table-doc.css<br>
+  </li>
+</ul>
 <h4>Classes</h4>
 There is a Parser class that is able to parse text files.<br>
 ParserSQL and ParserDIA are derived from that class.<br>
@@ -151,52 +243,7 @@ from sql statements are stored in the allTables vector.<br>
 A Table object holds Constraints and Attributes. And it knows about
 which other tables are referencing it.<br>
 There are derivations of DataBase, Table and Attribute for both HTML
-and DIA. There is also a file with beginnings of work on SVG, but I
-cancelled that for the moment.<br>
-<h4>What to do if<br>
-</h4>
-<ul>
-  <li>a new module has to be supported?<br>
-add the prefix to file mixed.cpp: string getModuleFile(string
-table_name);<br>
-the lines look like:<br>
-&nbsp;&nbsp;&nbsp; if (table_name.compare(0,2,"pt") == 0)<br>
-&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return "personnel";<br>
-    <br>
-in sql2dia.cpp:<br>
-add a line like:<br>
-&nbsp;&nbsp;&nbsp; outHtml("pt");<br>
-so that the details are written to a HTML file<br>
-    <br>
-    <br>
-  </li>
-  <li>a new text file with sql create table statements needs to be
-added?<br>
-in sql2dia.cpp:<br>
-add a line like:<br>
-&nbsp;&nbsp;&nbsp; sql.readSQL(path+"new_create_per.sql");<br>
-    <br>
-  </li>
-  <li>another diagram should be created?<br>
-in sql2dia.cpp:<br>
-add a line like:<br>
-&nbsp;&nbsp;&nbsp; process("personnel", "Personnel Tables", "pt,pm",
-Convertfile);<br>
-where personnel is the file name of the diagram, and all tables with
-the prefixes pt and pm are moved to the "invisible" layer of the diagram<br>
-It is also possible to add a set of tables to a diagram, for example:<br>
-&nbsp;&nbsp;&nbsp; process("accountspayable", "Accounts Payable
-Tables", "", Convertfile,<br>
-&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "[a_ap_supplier],
-[a_ap_document], [a_ap_payment], "<br>
-&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "[a_crdt_note_invoice_link],
-[a_ap_document_detail], [a_ap_payment], "<br>
-&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "[a_ap_anal_attrib]");<br>
-    <br>
-  </li>
-  <br>
-</ul>
-<br>
+and DIA. <br>
 <br>
 </body>
 </html>
