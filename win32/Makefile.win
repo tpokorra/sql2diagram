@@ -1,0 +1,72 @@
+# Project: sql2dia
+# Makefile created by Dev-C++ 4.9.8.5
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = sql2diagram_private.res
+OBJ  = ../win32/sql2dia.o ../win32/tableHTML.o ../win32/attributeDIA.o ../win32/attributeHTML.o ../win32/database.o ../win32/databaseDIA.o ../win32/databaseHTML.o ../win32/mixed.o ../win32/parsedia.o ../win32/parser_cmn.o ../win32/parsesql.o ../win32/table.o ../win32/tableDIA.o ../win32/attribute.o $(RES)
+LINKOBJ  = ../win32/sql2dia.o ../win32/tableHTML.o ../win32/attributeDIA.o ../win32/attributeHTML.o ../win32/database.o ../win32/databaseDIA.o ../win32/databaseHTML.o ../win32/mixed.o ../win32/parsedia.o ../win32/parser_cmn.o ../win32/parsesql.o ../win32/table.o ../win32/tableDIA.o ../win32/attribute.o $(RES)
+LIBS =  -L"C:/DEV-CPP/lib" -L"C:/Dev-Cpp/lib" C:/Dev-Cpp/lib/gcc-lib/mingw32/3.2/libgcc.a C:/Dev-Cpp/lib/libstdc++.a C:/Dev-Cpp/lib/libiberty.a C:/Dev-Cpp/lib/xml2.lib  -lgmon -pg
+INCS =  -I"C:/DEV-CPP/include" 
+CXXINCS =  -I"C:/DEV-CPP/include/c++"  -I"C:/DEV-CPP/include/c++/mingw32"  -I"C:/DEV-CPP/include/c++/backward"  -I"C:/DEV-CPP/include" 
+BIN  = ../example/sql2dia.exe
+CXXFLAGS = $(CXXINCS)-Wall -g3   -fexceptions -fverbose-asm -pg -g3
+CFLAGS = $(INCS)-Wall -g3   -fexceptions -fverbose-asm -pg -g3
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before ../example/sql2dia.exe all-after
+
+include Makefile-win98.mak
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "..\example\sql2dia.exe" $(LIBS)
+
+../win32/sql2dia.o: ../src/sql2dia.cpp
+	$(CPP) -c ../src/sql2dia.cpp -o ../win32/sql2dia.o $(CXXFLAGS)
+
+../win32/tableHTML.o: ../src/tableHTML.cpp
+	$(CPP) -c ../src/tableHTML.cpp -o ../win32/tableHTML.o $(CXXFLAGS)
+
+../win32/attributeDIA.o: ../src/attributeDIA.cpp
+	$(CPP) -c ../src/attributeDIA.cpp -o ../win32/attributeDIA.o $(CXXFLAGS)
+
+../win32/attributeHTML.o: ../src/attributeHTML.cpp
+	$(CPP) -c ../src/attributeHTML.cpp -o ../win32/attributeHTML.o $(CXXFLAGS)
+
+../win32/database.o: ../src/database.cpp
+	$(CPP) -c ../src/database.cpp -o ../win32/database.o $(CXXFLAGS)
+
+../win32/databaseDIA.o: ../src/databaseDIA.cpp
+	$(CPP) -c ../src/databaseDIA.cpp -o ../win32/databaseDIA.o $(CXXFLAGS)
+
+../win32/databaseHTML.o: ../src/databaseHTML.cpp
+	$(CPP) -c ../src/databaseHTML.cpp -o ../win32/databaseHTML.o $(CXXFLAGS)
+
+../win32/mixed.o: ../src/mixed.cpp
+	$(CPP) -c ../src/mixed.cpp -o ../win32/mixed.o $(CXXFLAGS)
+
+../win32/parsedia.o: ../src/parsedia.cpp
+	$(CPP) -c ../src/parsedia.cpp -o ../win32/parsedia.o $(CXXFLAGS)
+
+../win32/parser_cmn.o: ../src/parser_cmn.cpp
+	$(CPP) -c ../src/parser_cmn.cpp -o ../win32/parser_cmn.o $(CXXFLAGS)
+
+../win32/parsesql.o: ../src/parsesql.cpp
+	$(CPP) -c ../src/parsesql.cpp -o ../win32/parsesql.o $(CXXFLAGS)
+
+../win32/table.o: ../src/table.cpp
+	$(CPP) -c ../src/table.cpp -o ../win32/table.o $(CXXFLAGS)
+
+../win32/tableDIA.o: ../src/tableDIA.cpp
+	$(CPP) -c ../src/tableDIA.cpp -o ../win32/tableDIA.o $(CXXFLAGS)
+
+../win32/attribute.o: ../src/attribute.cpp
+	$(CPP) -c ../src/attribute.cpp -o ../win32/attribute.o $(CXXFLAGS)
+
+sql2diagram_private.res: sql2diagram_private.rc 
+	$(WINDRES) -i sql2diagram_private.rc -I rc -o sql2diagram_private.res -O coff 
