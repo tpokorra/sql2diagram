@@ -1,8 +1,9 @@
+
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/tableDIA.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:02 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2004/08/12 22:03:13 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -74,9 +75,14 @@ void TableDIA::drawConstraint(FILE* file, Constraint& constr, Table& src, Table&
 			char* start = s;
 			while (strlen(start) > 0) {
 				c = strstr(start, ";");
-				*c = '\0';
-				vpoints.push_back(start);
-				start = c+1;
+				if (NULL == c) {
+					vpoints.push_back(start);
+					start = start + strlen(start);
+				} else {
+					*c = '\0';	
+					vpoints.push_back(start);
+					start = c+1;
+				}
 			}
 			vector<string>::iterator it;
 			for (it = vpoints.begin(); it != vpoints.end(); it++) {
@@ -114,9 +120,15 @@ void TableDIA::drawConstraint(FILE* file, Constraint& constr, Table& src, Table&
 			char* start = s;
 			while (strlen(start) > 0) {
 				c = strstr(start, ";");
-				*c = '\0';
-				fprintf(file, "<dia:enum val=\"%d\" /> \n", atoi(start));
-				start = c+1;
+
+				if (NULL == c) {
+					fprintf(file, "<dia:enum val=\"%d\" /> \n", atoi(start));
+					start = start + strlen(start);
+				} else {				
+					*c = '\0';
+					fprintf(file, "<dia:enum val=\"%d\" /> \n", atoi(start));
+					start = c+1;
+				}
 			}
 
 		}
