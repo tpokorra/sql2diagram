@@ -1,13 +1,40 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/tableHTML.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:02 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
 #include "html.h"
+
+/* for searching directory for img_*.html */
+#include <stddef.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <dirent.h>
+
+#include <iostream>
+using namespace std;
+
+#define USED_LINE_END "\n"
+
+static string strHTMLTableHeader(
+	"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">" USED_LINE_END
+	"<HTML>" USED_LINE_END
+	"<HEAD>" USED_LINE_END
+	"<LINK REL=\"stylesheet\" HREF=\"../table-doc.css\" TYPE=\"text/css\"/>" USED_LINE_END
+	"<script type=\"text/javascript\" src=\"../table-doc-sub.js\"></script>" USED_LINE_END
+	"</HEAD>" USED_LINE_END
+	"<BODY class=\"table\" onload=\"popupInit()\">" USED_LINE_END
+	"<div id=\"divDescription\"> <!--Empty div--> </div>" USED_LINE_END
+	);
+
+static string strHTMLFooter(
+	"</BODY>" USED_LINE_END
+	"</HTML>" USED_LINE_END
+	);
 
 TableHTML::TableHTML(char* pName)
 :Table(pName)
@@ -24,143 +51,207 @@ void TableHTML::prepareDisplay(DataBase &db, string& module, bool repeatedRun)
 		}
 	}
 
-	outHtml(0);
+	outHtml();
 }
 
-int TableHTML::outHTMLforeignKeys(FILE* file, Attribute& attr)
-{
-	vector<Constraint>::iterator it;
-	int pos = 0;
-	if (!file) return 1;
-	int count =0;
-	for (it = constraints.begin(); it != constraints.end(); it++) {
-		if ( it->getType() == eForeignKey
-		&&   (pos = it->isInLocalAttr(attr.getName())) != -1) {
-			if (count > 0) {
-				fprintf(file, ", ");
+void TableHTML::printDiagramLinks(ofstream& file) {
+	/*
+	get all files img_*.html
+	search for "table=<tablename>&"
+	if yes, print a link to the diagram here
+	*/
+
+	char needle[255] = "\"";
+	strcat (needle, name.c_str());
+	strcat (needle, "\"");
+	DIR *dp;
+	struct dirent *ep;
+	dp = opendir("./img/");
+
+	bool done = false;
+	if (dp != NULL) {
+		while (!done) {
+			ep = readdir (dp);
+			if (!ep) {
+				done = true;
 			}
-			count++;
-			PointerAttribute pa = it->getRemoteAttributes(pos);
-			fprintf(	file, "<a href='%s'>%s</a>", pa.getAName().c_str(),
-						pa.getTableName().c_str());
-		}
-	}
-	return 1;
-}
+			else {
+				if (strstr(ep->d_name, "img_") != NULL) {
+					ifstream in((string("img/")+ep->d_name).c_str());
+					char line[255];
 
-int TableHTML::outHtmlConstraints(FILE* file, int num, eType type, string s)
-{
-	int nrLines = 0;
-	if ( num) {
-		if (file != 0) {
-			fprintf(file, "<tr><td><font class=\"Constraints\">%s</font></td></tr>\n", s.c_str());
-		}
-		nrLines++;
-		vector<Constraint>::iterator it;
-		int count = 0;
-		for ( it = constraints.begin(); it != constraints.end(); it++) {
-			if ( it->getType() == type) {
-				Constraint& con = *it;
-				nrLines += ((ConstraintHTML*)&con)->outHtml(file);
-				count++;
-				if (count < num) {
-					if (file != 0) {
-						fprintf(file, "<tr><td>---</td></tr>");
+					while (!in.eof())
+					{
+						in.getline(line, 255);
+						if (strstr(line, needle) != NULL) {
+							file << "<a href=\"../img/"<< ep->d_name << "?"
+								<< name << "\" target=\"_top\">Diagram ";
+							// remove .html
+							*strstr(ep->d_name, ".") = '\0';
+							file << ep->d_name+4 <<"</a>&nbsp;\n";
+							in.close();
+						}
 					}
-					nrLines++;
+					in.close();
 				}
 			}
 		}
-		if ( file != 0) {
-			fprintf(file, "</table></td></tr><tr><td><table border='0' width='100%%'>");
-		}
-	}
-	return nrLines;
+		(void) closedir (dp);
+    }
+	else
+		puts ("Couldn't open the directory.");
 }
 
-int TableHTML::outHtml(FILE* file)
+int TableHTML::outHtml()
 {
 	int nrLines = 0;
 
-	if ( file != 0) {
-		fprintf(	file, "<div class=\"TableInfo\"><a name='tab_%s'/><b>%s</b>",
-					name.c_str(), name.c_str());
-		if (!comment.empty()) {
-			fprintf(file, "<br/>%s", comment.c_str());
-		}
-		fprintf(file, "</div><table class=\"tabletable\">\n\n");
-		fprintf(file, "<tr><td><table border='0'>\n");
-	}
+	string strTableDocFileName = string("tables/") + name + ".html";
 
-	if (primary > 1) {
-		nrLines += outHtmlConstraints(file, primary, ePrimaryKey, "PRIMARY KEY");
-	}
-	if (unique > 1) {
-		nrLines += outHtmlConstraints(file, unique, eUnique, "UNIQUE");
+	ofstream dbTableDoc(strTableDocFileName.c_str());
+	if ( !dbTableDoc.is_open()) {
+		cout << "Cannot open file " << strTableDocFileName << "" << endl;
+		exit( 1);
+	} else {
+		dbTableDoc
+			<< strHTMLTableHeader
+			<< "<!-- Table: " << name << " -->" << USED_LINE_END
+			<< "<DIV CLASS=\"tab\" ID=\"tab_" << name << "\">" << USED_LINE_END
+			<< "<table class=\"name\">" << USED_LINE_END
+			<< "<tr><td>" << USED_LINE_END
+			<< "Table " << name << USED_LINE_END
+			<< "</td></tr>" << USED_LINE_END
+			<< "</table>" << USED_LINE_END;
+		printDiagramLinks(dbTableDoc);
+
+		dbTableDoc
+			<< "<table class=\"content\">" << USED_LINE_END
+			<< "<tr><td>" << USED_LINE_END;
+
+		if (comment != "")
+		{
+			dbTableDoc
+				<< "Description:<br>" << USED_LINE_END
+				<< comment << "<br>" << USED_LINE_END;
+		}
+		dbTableDoc
+			<< "</td></tr></table>" << USED_LINE_END
+			<< "<table class=\"fields\"><COL id=\"field\"><COL id=\"descr\"><COL id=\"foreignkey\">" << USED_LINE_END;
 	}
 
 	vector<Attribute>::iterator it;
-	if (primary == 1) {
-		if (file != 0) {
-			fprintf(file, "<tr><td><font class=\"PrimaryKey\">PRIMARY KEY</font></td><td></td></tr>\n");
-		}
+	if (primary >= 1) {
+		dbTableDoc << "<tr><td colspan=3><font class=\"PrimaryKey\">PRIMARY KEY</font></td></tr>\n";
+
 		for (it = attributes.begin(); it != attributes.end(); it++) {
-			Attribute& att = *it;
-			if (isKey(*it, ePrimaryKey)) {
-				nrLines += ((AttributeHTML*)&att)->outHtml(file, *this, name+"_");
+			AttributeHTML* att = (AttributeHTML*)it;
+			if (isKey(*att, ePrimaryKey)) {
+				att->outHtml(&dbTableDoc, *this);
 			}
 		}
-		if (file != 0) {
-			fprintf(file, "<tr><td colspan = '4'><hr/></td></tr>");
-		}
-		nrLines += 2;
+
+		dbTableDoc << "<tr><td colspan = '3'><hr/></td></tr>";
 	}
 
-	if ( unique == 1) {
-		if ( file) {
-			fprintf(file, "<tr><td><font class=\"Unique\">UNIQUE</font></td><td></td></tr>\n");
-		}
+	if (unique >= 1) {
+		dbTableDoc << "<tr><td colspan=3><font class=\"Unique\">UNIQUE KEY</font></td></tr>\n";
+
 		for (it = attributes.begin(); it != attributes.end(); it++) {
-			if (isKey(*it, eUnique)) {
-				Attribute& att = *it;
-				nrLines += ((AttributeHTML*)&att)->outHtml(file, *this,  name+"_");
+			AttributeHTML* att = (AttributeHTML*)it;
+			if (isKey(*att, eUnique)) {
+				att->outHtml(&dbTableDoc, *this);
 			}
 		}
-		if ( file) {
-			fprintf( file, "<tr><td colspan = '4'><hr/></td></tr>");
-		}
+
+		dbTableDoc << "<tr><td colspan = '3'><hr/></td></tr>";
 	}
 
 	for (it = attributes.begin(); it != attributes.end(); it++) {
-		if ( ! ( (unique == 1 && isKey(*it, eUnique))
-				 ||(primary == 1 && isKey(*it, ePrimaryKey))) ) {
-			Attribute& att = *it;
-			nrLines += ((AttributeHTML*)&att)->outHtml(file, *this);
-		}
+		AttributeHTML* att = (AttributeHTML*)it;
+		if (!isKey(*att, ePrimaryKey) && !isKey(*att, eUnique))
+			att->outHtml(&dbTableDoc, *this);
 	}
+
 	if ( foreign > 0) {
-		if ( file) {
-			fprintf(file, "<tr><td colspan = '4'><hr/><br/>");
-			fprintf(file, "<font class=\"ForeignKey\">FOREIGN KEY</font><br/>");
+		dbTableDoc << "<tr><td colspan = '3'><hr/><br/>";
+		dbTableDoc << "<font class=\"ForeignKey\">FOREIGN KEY</font><br/>";
+
+		vector<Constraint*>::iterator it;
+		vector<Constraint*> constraints;
+		getConstraints(constraints);
+		for (it = constraints.begin(); it != constraints.end(); it++)
+		if ((*it)->getType() == eForeignKey) {
+			Constraint& con = **it;
+			dbTableDoc << con.getName() << ": ";
+
+			dbTableDoc << con.getLocalAttributesString();
+			string strRemoteFields  = con.getRemoteAttributesString();
+			dbTableDoc
+				<< " => <a href=\"" << con.getRemoteTableName()
+				<< ".html#" << ((strRemoteFields.length() > 0)?con.getFirstRemoteAttribute():"top")
+				<< "\" target=\"table-info\" onMouseOver=\"popup( '" << strRemoteFields
+				<< "');\" onMouseOut=\"popout()\">"
+				<< con.getRemoteTableName() << "</a><br/>" << USED_LINE_END;
 		}
-		nrLines += 2;
+		dbTableDoc << "</td></tr>";
+	}
+	if ( referenced.size() != 0) {
+		dbTableDoc
+			<< "<tr><td colspan = '3'><hr/><br/>"
+			<< "<font class=\"ReferencedBy\">REFERENCED BY</font><br/>";
+
 		vector<Constraint>::iterator it;
-		for ( it = constraints.begin(); it != constraints.end(); it++) {
-			if ( it->getType() == eForeignKey) {
-				if ( file)  {
-					Constraint& con = *it;
-					fprintf(	file, "<a name='%s'/>%s: %s<br/>\n",
-								(it->getParentTableName()+ string("_")+it->getName()).c_str(),
-								((ConstraintHTML*)&con)->getName().c_str(),
-								((ConstraintHTML*)&con)->getHTMLAttributes().c_str());
-				}
-				nrLines++;
+		int count = 0;
+		for (it = referenced.begin(); it != referenced.end(); it++, count++) {
+			if (it != referenced.begin()) {
+				dbTableDoc << ",\n ";
+			}
+			if (count % 3 == 0 && count != 0) {
+				dbTableDoc << "<br/>";
+			}
+
+			dbTableDoc
+				<< "<a href=\"" << it->getParentTableName() << ".html#top\" target=\"table-info\">"
+				<< it->getParentTableName() << "</a>";
+		}
+		dbTableDoc << "</td><tr/>";
+	}
+	/*
+	*pdbDoc << "<tr><td colspan=3><hr/><font class=\"Index\">INDEXES</font></td></tr>";
+
+	vector<TIndex> indexes;
+	vector<TIndex>::iterator indexit;
+	vector<string> indexfields;
+	vector<string>::iterator fieldit;
+	vector<TIndexOrder> fieldorder;
+	vector<TIndexOrder>::iterator fieldorderit;
+	table.getIndexes(indexes);
+	for (indexit = indexes.begin(); indexit != indexes.end(); indexit++) {
+		*pdbDoc << "<tr><td colspan=3>" << indexit->getName();
+		if (indexit->getImplicit()) {
+			*pdbDoc << " (implicit)";
+		}
+		*pdbDoc << ": ";
+		indexit->getIndexFields(indexfields, fieldorder);
+		bool first = true;
+		for (fieldit = indexfields.begin(), fieldorderit = fieldorder.begin();
+				fieldit != indexfields.end(); fieldit++, fieldorderit++) {
+			if (!first) {
+				*pdbDoc << ", ";
+			}
+			first = false;
+			*pdbDoc << *fieldit;
+			if (*fieldorderit == inxo_Ascending) {
+				*pdbDoc << " (ascending)";
+			}
+			else if (*fieldorderit == inxo_Descending) {
+				*pdbDoc << " (descending)";
 			}
 		}
-		if ( file) {
-			fprintf(file, "</td></tr>");
-		}
+		*pdbDoc << "</td></tr>\n";
 	}
+*/
+/*
 	if ( referenced.size() != 0) {
 		if ( file) {
 			fprintf(file, "<tr><td colspan = '4'><hr/><br/>");
@@ -190,5 +281,13 @@ int TableHTML::outHtml(FILE* file)
 		fprintf( file, "</table></td></tr>\n");
 		fprintf( file, "</table><br/> <!-- %s -->\n", name.c_str());
 	}
+	fclose(file);
+*/
+	dbTableDoc
+		<< "</table><!-- end of fields -->" << USED_LINE_END
+		<< "<!-- end of table " << name << " -->" << USED_LINE_END
+		<< "</DIV>" << USED_LINE_END
+		<< strHTMLFooter;
+
 	return nrLines;
 }

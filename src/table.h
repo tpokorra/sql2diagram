@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/table.h,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -55,7 +55,10 @@ public:
 	string getParentTableName();
 	int isInLocalAttr(const string& attr); // -1 = false
 	PointerAttribute& getRemoteAttributes(int pos);
-	string getFirstLocalAttribute();
+	string getRemoteAttributesString() const;
+	string getLocalAttributesString() const;
+	string getFirstLocalAttribute() const;
+	string getFirstRemoteAttribute() const;
 	void setPosition(string& obj_pos, string& obj_bb, string& orth_orient, string& orth_points);
 	void getPosition(string& obj_pos, string& obj_bb, string& orth_orient, string& orth_points);
 protected:
@@ -87,11 +90,14 @@ public:
 	bool isKey(Attribute& attr, eType key);
 	int getPosAttribute(string keyname);
 	bool getAttributes(vector<string>& attributeNames) const;
+	bool getConstraints(vector<Constraint*>& pconstraints);
 	string getNameAttribute(int pos);
 	bool operator<(const Table& tab) const;
 	Table& operator=(const Table& tab);
 	int getImportance() const;
 	void addLink(Constraint& foreignKey);
+	bool setAttributeComment(const string& attr, const string& comment);
+	bool setAttributeCheck(const string& attr, const string& check);
 
 	void setPosition(string& id, string& obj_pos, string& obj_bb,
 		string& elem_corner, string& elem_width, string& elem_height, bool visible);

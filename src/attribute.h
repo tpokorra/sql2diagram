@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/attribute.h,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:27 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -40,9 +40,9 @@ class PointerAttribute
 {
 public:
 	PointerAttribute(string relation, string attribute);
-	string getAttributeName();
-	string getAName(); // for href
-	string getTableName();
+	string getAttributeName() const;
+	string getAName() const; // for href
+	string getTableName() const;
 private:
 	string sTable;
 	string sAttribute;

@@ -1,13 +1,14 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/databaseDIA.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
 #include "dia.h"
+#include "stringutils.h"
 
 void DataBaseDIA::prepareDisplay(string module, string tableList, bool repeatedRun)
 {
@@ -27,7 +28,7 @@ void DataBaseDIA::prepareDisplay(string module, string tableList, bool repeatedR
 	Table::resetColumn(tables.size());
 	for (it = tables.begin(); it != tables.end(); it++) {
 		Table& tab = *it;
-		((TableDIA*)&tab)->prepareDisplay(*this, m_module, repeatedRun);
+		((TableDIA*)&tab)->prepareDisplay(*this, m_module, repeatedRun, tableList);
 	}
 
 	// merge Positions of associations
@@ -110,7 +111,7 @@ void DataBaseDIA::outDia(FILE* file, bool repeatedRun, const string& strLocTable
 			it++) {
 		if (it->isVisible() && repeatedRun) {
 			Table& tab = *it;
-			((TableDIA*)&tab)->outDia(file, m_module, *this, repeatedRun);
+			((TableDIA*)&tab)->outDia(file, m_module, *this, repeatedRun, strLocTableList);
 			it->SetDisplayedAlready(true, m_module);
 			getAllTable(it->getName()).SetDisplayedAlready(true, m_module);
 		}
@@ -141,7 +142,7 @@ void DataBaseDIA::outDia(FILE* file, bool repeatedRun, const string& strLocTable
 		if ( !it->isVisible()
 		||   !repeatedRun) {
 			Table& tab = *it;
-			((TableDIA*)&tab)->outDia(file, m_module, *this, repeatedRun);
+			((TableDIA*)&tab)->outDia(file, m_module, *this, repeatedRun, strLocTableList);
 		}
 	}
 

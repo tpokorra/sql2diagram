@@ -1,14 +1,16 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/attributeHTML.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:27 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * The content of this file is under GPL
  *
  ********************************************************************** */
 #include <stdio.h>
 #include "html.h"
+
+#define USED_LINE_END "\n"
 
 ConstraintHTML::ConstraintHTML(char* pName, char* type) : Constraint(pName, type)
 {
@@ -17,29 +19,6 @@ ConstraintHTML::ConstraintHTML(char* pName, char* type) : Constraint(pName, type
 int ConstraintHTML::getNumLines()
 {
 	return localAttributes.elements.size();
-}
-
-int ConstraintHTML::outHtml(FILE* file)
-{
-	vector<string>::iterator it;
-	int nrLines = 0;
-	int pos = 0;
-	for ( it = localAttributes.elements.begin();
-			it != localAttributes.elements.end();
-			it++, pos++) {
-		if ( file) {
-			fprintf(file, "<tr><td class=\"fieldname\">");
-			if (type != eForeignKey) {
-				fprintf(file, "%s", it->c_str());
-			} else {
-				fprintf( file, "<a href='%s'>%s</a>", remoteAttributes[pos].getAName().c_str(), it->c_str());
-			}
-			fprintf( file, "</td><td>");
-		}
-		nrLines++;
-	}
-
-	return nrLines;
 }
 
 string ConstraintHTML::getHTMLAttributes()
@@ -63,45 +42,72 @@ string ConstraintHTML::getHTMLAttributes()
 	return s;
 }
 
-int AttributeHTML::outHtml(FILE* file, TableHTML& tab, string aname)
-{
-	int nrLines = 0;
-	if ( file) {
-		fprintf(file, "<tr><td class=\"fieldname\">");
-		if ( aname != "" ) {
-			fprintf(file, "<a name='%s'/>", (aname+sName).c_str());
+static string getHRef( const string& strTable, bool bWithOffset = false, const string& strTarget = "table-info", const string& strExtraTags = "", const string& anchor = "top") {
+	// TODO: maybe add parameter stuff...
+	return "<a href=\"" + ( bWithOffset ? string( "tables/") : string( "")) +
+	       "" + strTable + ".html#" + anchor + "\" target=\"" + strTarget + "\"" +
+	       strExtraTags + ">";
+}
+
+int AttributeHTML::outHtml(ofstream* pdbDoc, TableHTML& table) {
+	*pdbDoc << "<tr class=\"field\"><td width=\"35%\">" << USED_LINE_END;
+	*pdbDoc << "<a name=\""<< sName << "\">" << USED_LINE_END;
+	*pdbDoc
+		<< "<b>" << sName << "</b>" << USED_LINE_END
+		<< "<div style=\"margin-left: 20px;\">" << USED_LINE_END
+		<< sType << "";
+
+	if (typeParam.elements.size() > 0) {
+		*pdbDoc << " (";
+		vector<string>::iterator it;
+		for (it = typeParam.elements.begin(); it != typeParam.elements.end(); it++) {
+			if (it != typeParam.elements.begin()) *pdbDoc << ", ";
+			*pdbDoc << *it;
 		}
-		fprintf(file,"%s", sName.c_str());
-		fprintf(file, "</td><td class=\"fieldtype\">");
-		fprintf(file, "%s", sType.c_str());
-		if (typeParam.elements.size() != 0) {
-			vector<string>::iterator it;
-			fprintf(file, "(");
-			for ( it = typeParam.elements.begin();
-					it != typeParam.elements.end();
-					it++) {
-				if ( it != typeParam.elements.begin()) {
-					fprintf(file, ", ");
-				}
-				fprintf( file, "%s", it->c_str());
+		*pdbDoc << ")";
+	}
+	if (sDefault != "") {
+		*pdbDoc << " <font class=\"DefaultFieldValue\">default: " << sDefault << "</font>";
+	}
+
+	if (sCheck != "") {
+		*pdbDoc << " <font class=\"CheckField\">CHECK (" << sCheck << ")</font>";
+	}
+
+	if (sConstraint != "") {
+		*pdbDoc << " <font class=\"FieldConstraints\">"<< sConstraint << "</font>";
+	}
+
+	*pdbDoc
+		<< "</div></td><td>" << USED_LINE_END;
+	if ( sComment != "") {
+		*pdbDoc << sComment << USED_LINE_END;
+	}
+	*pdbDoc << "</td><td>";
+
+	vector<Constraint*>::iterator it;
+	vector<Constraint*> constraints;
+	table.getConstraints(constraints);
+	int pos = 0;
+	int count =0;
+	for (it = constraints.begin(); it != constraints.end(); it++) {
+
+		if ((*it)->getType() == eForeignKey
+		&& (pos = (*it)->isInLocalAttr(sName)) != -1) {
+			if (count > 0) {
+				*pdbDoc << ", ";
 			}
-			fprintf( file, ")");
+			count++;
+			string remoteAttribute = (*it)->getRemoteAttributes(pos).getAttributeName();
+			string remoteTable = (*it)->getRemoteTableName();
+			string strRemoteFields = (*it)->getRemoteAttributesString();
+			*pdbDoc
+				<< getHRef( remoteTable, false, "table-info", " onMouseOver=\"popup( '" + strRemoteFields + "');\" onMouseOut=\"popout()\"",
+					(strRemoteFields.length()>0)?strRemoteFields:"top")
+				<< remoteTable << "</a>";
+
 		}
-		if (sDefault != "") {
-			fprintf(file, " <font class=\"DefaultFieldValue\">default: %s</font>", sDefault.c_str());
-		}
-		if (sCheck != "") {
-			fprintf(file, " <font class=\"CheckField\">CHECK (%s)</font>", sCheck.c_str());
-		}
-		if (sConstraint != "") {
-			fprintf(file, " <font class=\"FieldConstraints\">%s</font>", sConstraint.c_str());
-		}
-		fprintf(file, "</td><td class=\"fieldcomment\">%s&nbsp;</td>\n<td>", sComment.c_str());
 	}
-	nrLines += 1;
-	tab.outHTMLforeignKeys(file, *this);
-	if ( file) {
-		fprintf(file, "</td></tr>\n");
-	}
-	return nrLines;
+	*pdbDoc << "</td></tr>" << USED_LINE_END;
+	return 0;
 }

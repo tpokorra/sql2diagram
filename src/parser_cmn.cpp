@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/parser_cmn.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -78,6 +78,7 @@ char* Parser::getNextToken(char* current, char* token)
 		&& token[i] != ')'
 		&& token[i] != '('
 		&& token[i] != ','
+		&& token[i] != '.'
 		&& token[i] != ';'
 		&& token[i] != '\t' ) {
 			if ( token[i] == '\'') {

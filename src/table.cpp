@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/table.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -168,6 +168,15 @@ int Table::getPosAttribute(string keyname)
 	return 0;
 }
 
+bool Table::getConstraints(vector<Constraint*>& pconstraints)
+{
+	vector<Constraint>::iterator it;
+	pconstraints.clear();
+	for (it = constraints.begin(); it != constraints.end(); it++)
+		pconstraints.push_back(it);
+	return true;
+}
+
 bool Table::getAttributes(vector<string>& attributeNames) const
 {
 	vector<Attribute>::const_iterator it2;
@@ -176,6 +185,30 @@ bool Table::getAttributes(vector<string>& attributeNames) const
 	}
 	return attributes.size() != 0;
 
+}
+
+bool Table::setAttributeComment(const string& attr, const string& comment)
+{
+	vector<Attribute>::iterator it2;
+	for ( it2 = attributes.begin(); it2!=attributes.end(); it2++) {
+		if (it2->getName() == attr) {
+			it2->setComment(comment);
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Table::setAttributeCheck(const string& attr, const string& check)
+{
+	vector<Attribute>::iterator it2;
+	for ( it2 = attributes.begin(); it2!=attributes.end(); it2++) {
+		if (it2->getName() == attr) {
+			it2->setCheck(check.c_str());
+			return true;
+		}
+	}
+	return false;
 }
 
 string Table::getNameAttribute(int pos)

@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/database.h,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  *
  *
@@ -42,6 +42,7 @@ public:
 	void displayNonDisplayedTables();
 
 	bool isDisplayedOnCurrentDiagram(string table);
+	void getCornersOfDiagram(float& left, float& top, float& right, float& bottom);
 
 	Table& getFromId(string id);
 	string getModule() const;

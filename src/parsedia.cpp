@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/parsedia.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -20,10 +20,10 @@ ParserDIA::ParserDIA(DataBase& database)
 bool ParserDIA::parse(const string& filename)
 {
 	xmlDocPtr diadoc;
-	
+
 	if (!openDia(diadoc, filename)) {
 		return false;
-	}		
+	}
 
 	xmlNodePtr cur, layer, object;
 	cur = xmlDocGetRootElement(diadoc);
@@ -51,7 +51,7 @@ bool ParserDIA::parse(const string& filename)
 					else if ( 0 == xmlStrcmp(szType, (const xmlChar *)"UML - Association")) {
 						parseAssociation(object, visible);
 					}
-					// should be: xmlFree(szType); 
+					// should be: xmlFree(szType);
 				}
 				object = object->next;
 			}
@@ -146,7 +146,7 @@ void ParserDIA::parseClass(xmlNodePtr cur, bool visible) {
 		cur = cur->next;
 	}
 	db.setPosition(id, name, obj_pos, obj_bb, elem_corner, elem_width, elem_height, visible);
-	cout << "Parse table: " << id << " " << name << " " << obj_pos << " " << obj_bb << " " << visible << endl;
+	//cout << "Parse table: " << id << " " << name << " " << obj_pos << " " << obj_bb << " " << visible << endl;
 }
 
 void ParserDIA::parseAssociation(xmlNodePtr cur, bool visible)
@@ -196,7 +196,7 @@ void ParserDIA::parseAssociation(xmlNodePtr cur, bool visible)
 		cur = cur->next;
 	}
 	db.setPosAssociation(id, obj_pos, obj_bb, orth_points, orth_orient, connections, connectionPoints);
-	cout << "Parse constraints: " << connections[0] << " " << connections[1] << " " <<connectionPoints[0] << " " << orth_points << endl;
+	// cout << "Parse constraints: " << connections[0] << " " << connections[1] << " " <<connectionPoints[0] << " " << orth_points << endl;
 }
 
 

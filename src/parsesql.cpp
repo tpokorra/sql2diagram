@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/parsesql.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -65,6 +65,41 @@ void ParserSQL::readConstraint(Table& tab)
 		cons.setLocalColumns(list);
 		current = getNextToken(current, token);
 	}
+	if (strcasecmp(token, "USING") == 0) {
+		// USING INDEX TABLESPACE INDX
+		while (token[0] != ')' && token[0] != ',') {
+			current = getNextToken(current, token);
+		}
+		if (strcasecmp(token, "INDEX") == 0) {
+			current = getNextToken(current, token);
+		}
+	}
+}
+
+void ParserSQL::readCheck(Table& tab)
+{
+	current = getNextToken(current, token);
+	if (strcasecmp(token, "(") == 0) {
+		string check;
+		current = getNextToken(current, token);
+		string attr = token;
+		int openBrackets = 1;
+		while (openBrackets > 0 && strlen(current) != 0 && !feof(hFile)) {
+			check += string(" ") + token;
+			current = getNextToken(current, token);
+			if (strcasecmp(token, ")") == 0) {
+				openBrackets --;
+			}
+			if (strcasecmp(token, "(") == 0) {
+				openBrackets ++;
+			}
+		}
+
+		if (!tab.setAttributeCheck(attr, check)) {
+			cout << "could not find attribute " << attr << " in table " << tab.getName() << " to add the check." << endl;
+		}
+		current = getNextToken(current, token);
+	}
 }
 
 void ParserSQL::readColumn(Table& tab)
@@ -83,7 +118,7 @@ void ParserSQL::readColumn(Table& tab)
 	}
 	if ( strcasecmp(token, "TIMESTAMP") == 0) {
 		current = getNextToken(current, token);
-		if ( strcasecmp(token, "WITH") == 0) {
+		if ( strcasecmp(token, "WITH") == 0 || strcasecmp(token, "WITHOUT") == 0) {
 			type = type + " " + token;
 			current = getNextToken(current, token);
 			if (strcasecmp(token, "TIME") == 0) {
@@ -108,14 +143,42 @@ void ParserSQL::readColumn(Table& tab)
 	if (strcasecmp(token, "DEFAULT") == 0) {
 		string default_token;
 		current = getNextToken(current, token);
-		default_token = token;
-		current = getNextToken(current, token);
-		if (strcasecmp(token, "(") == 0) {
+		default_token = "";
+		do {
 			default_token += token;
-			while (strcasecmp(token, ")") != 0) {
+			if (strcasecmp(token, "(") == 0) {
+				while (strcasecmp(token, ")") != 0) {
+					current = getNextToken(current, token);
+					default_token += token;
+				}
 				current = getNextToken(current, token);
-				default_token += token;
 			}
+			else {
+				current = getNextToken(current, token);
+				if (strcasecmp(token, "(") == 0) {
+					default_token += token;
+					while (strcasecmp(token, ")") != 0) {
+						current = getNextToken(current, token);
+						default_token += token;
+					}
+					current = getNextToken(current, token);
+				}
+			}
+		} while (token[0] == ':');
+		if ( (strcasecmp(token, "WITH") == 0) || (strcasecmp(token, "WITHOUT") == 0)) {
+			default_token = default_token + " " + token;
+			current = getNextToken(current, token);
+			if (strcasecmp(token, "TIME") == 0) {
+				default_token = default_token + " " + token;
+				current = getNextToken(current, token);
+				if (strcasecmp(token, "ZONE") == 0) {
+					default_token = default_token + " " + token;
+					current = getNextToken(current, token);
+				}
+			}
+		}
+		if (strcasecmp(token, "VARYING") == 0) {
+			default_token = default_token + " " + token; // Varying
 			current = getNextToken(current, token);
 		}
 		att.setDefault(default_token.c_str());
@@ -131,14 +194,22 @@ void ParserSQL::readColumn(Table& tab)
 		current = getNextToken(current, token);
 		att.setConstraint("NULL");
 	}
+
 	if (strcasecmp(token, "CHECK") == 0) {
 		current = getNextToken(current, token);
 		if (strcasecmp(token, "(") == 0) {
 			string check;
 			current = getNextToken(current, token);
-			while (strcasecmp(token, ")") != 0 && strlen(current) != 0 && !feof(hFile)) {
+			int openBrackets = 1;
+			while (openBrackets > 0 && strlen(current) != 0 && !feof(hFile)) {
 				check += string(" ") + token;
 				current = getNextToken(current, token);
+				if (strcasecmp(token, ")") == 0) {
+					openBrackets --;
+				}
+				if (strcasecmp(token, "(") == 0) {
+					openBrackets ++;
+				}
 			}
 			att.setCheck(check.c_str());
 			current = getNextToken(current, token);
@@ -161,15 +232,14 @@ void ParserSQL::readAlterTable()
 /* ALTER TABLE ONLY di_template_pos
     ADD CONSTRAINT di_template_pos_pk PRIMARY KEY (person_key, role, field_key);
 */
-	current = getNextToken(current, token); {
-	if (strcasecmp(token, "TABLE") != 0)
+	current = getNextToken(current, token);
+	if (strcasecmp(token, "TABLE") != 0) {
 		return;
 	}
 	current = getNextToken(current, token);
-	if (strcasecmp(token, "ONLY") != 0) {
-		return;
+	if (strcasecmp(token, "ONLY") == 0) {
+		current = getNextToken(current, token);
 	}
-	current = getNextToken(current, token);
 	Table& tab = db.getAllTable(token);
 	if (tab.getName() != token) {
 		cout << "could not create a constraint, table " << token << " not found "<< endl;
@@ -198,7 +268,10 @@ void ParserSQL::readTable()
 		current = getNextToken(current, token);
 		if (strcasecmp(token, "CONSTRAINT") == 0) {
 			readConstraint(tab);
-		} else {
+		} else if (strcasecmp(token, "CHECK") == 0) {
+			readCheck(tab);
+		}
+		else {
 			readColumn(tab);
 		}
 	} while ( strcasecmp(token, ")") != 0 && !feof(hFile));
@@ -208,6 +281,57 @@ void ParserSQL::readTable()
 		current = getNextToken(current, token);
 	}
 //	printf(" done\n");
+}
+
+void ParserSQL::readComment()
+{
+//COMMENT ON TABLE AD_Attribute IS 'User Defined Attributes'
+//COMMENT ON COLUMN T_Aging.DueDate IS 'Base Date for Aging calculation'
+	current = getNextToken(current, token);
+	if (strcasecmp(token, "ON") != 0) {
+		return;
+	}
+
+	current = getNextToken(current, token);
+	if (strcasecmp(token, "TABLE") == 0) {
+
+		current = getNextToken(current, token);
+		Table& tab = db.getAllTable(token);
+		if (tab.getName() != token) {
+			cout << "could not add a comment, table " << token << " not found "<< endl;
+			return;
+		}
+
+		current = getNextToken(current, token); // IS
+
+		current = getNextToken(current, token);
+		// without quotes
+		token[strlen(token)-1] = '\0';
+		tab.setComment(token+1);
+
+	} else if (strcasecmp(token, "COLUMN") == 0) {
+
+		current = getNextToken(current, token);
+		Table& tab = db.getAllTable(token);
+		if (tab.getName() != token) {
+			cout << "could not add a comment to a field, table " << token << " not found "<< endl;
+			return;
+		}
+		current = getNextToken(current, token); // .
+
+		current = getNextToken(current, token);
+		string attr = token;
+		current = getNextToken(current, token); // IS
+
+		current = getNextToken(current, token);
+		// without quotes
+		token[strlen(token)-1] = '\0';
+		if (!tab.setAttributeComment(attr, token+1)) {
+			cout << "could not add a comment to a field, field " << attr << "in table " << tab.getName() << " not found "<< endl;
+			return;
+		}
+	}
+
 }
 
 bool ParserSQL::readSQL(string filename)
@@ -227,6 +351,8 @@ bool ParserSQL::readSQL(string filename)
 			}
 		} else if (strcasecmp(token, "ALTER") == 0) {
 			readAlterTable();
+		} else if (strcasecmp(token, "COMMENT") == 0) {
+			readComment();
 		} else {
 			current = getNextToken(current, token);
 		}

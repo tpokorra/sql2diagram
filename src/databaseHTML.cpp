@@ -1,19 +1,52 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/databaseHTML.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
 #include "html.h"
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+/* for searching directory for *.dia */
+#include <stddef.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <dirent.h>
+
+#define USED_LINE_END "\n"
+
+static string strHTMLMenuHeader(
+	"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">" USED_LINE_END
+	"<HTML>" USED_LINE_END
+	"<HEAD>" USED_LINE_END
+	"<LINK REL=\"stylesheet\" HREF=\"table-doc.css\" TYPE=\"text/css\"/>" USED_LINE_END
+	"</HEAD>" USED_LINE_END
+	"<BODY CLASS=\"menu\">" USED_LINE_END
+	);
+
+static string strHTMLGroupHeader(
+	"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">" USED_LINE_END
+	"<HTML>" USED_LINE_END
+	"<HEAD>" USED_LINE_END
+	"<LINK REL=\"stylesheet\" HREF=\"table-doc.css\" TYPE=\"text/css\"/>" USED_LINE_END
+	"</HEAD>" USED_LINE_END
+	"<BODY class=\"group\">" USED_LINE_END
+	);
+
+static string strHTMLFooter(
+	"</BODY>" USED_LINE_END
+	"</HTML>" USED_LINE_END
+	);
 
 void DataBaseHTML::prepareDisplay(string module, bool repeatedRun)
 {
 	vector<Table>::iterator it;
 	m_module = module;
-
 	tables.clear();
 	for ( it = allTables.begin(); it != allTables.end(); it++) {
 		tables.push_back(*it);
@@ -42,56 +75,67 @@ void DataBaseHTML::prepareDisplay(string module, bool repeatedRun)
 }
 
 void DataBaseHTML::outHtmlMap(string name, string title)
+// call writeDiagram before!
 {
-	FILE* file;
-	file = fopen( ( name + "_img.html").c_str(), "wt");
-	fprintf( file, "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n");
-
-	fprintf( file, "\n<html>\n");
-	fprintf( file, "<body BGCOLOR=\"#FFFFFF\">\n");
-	fprintf( file, "<base target=\"_top\">\n");
-
-	fprintf( file, "\n<map name=\"PETRAtables\">\n" );
-
-	float left, top;
+	string diagramname = name.substr(0, name.find("."));
+	string filename = string("img/img_") + diagramname + ".html";
+	ofstream htmlfile(filename.c_str());
+	//TestFileOpen( &htmlfile, filename);
+	cout << "writing html map to file " << filename << endl;
 	vector<Table>::iterator it;
-	left = tables.begin()->getPosition().x;
-	top = tables.begin()->getPosition().y;
-	for (it = tables.begin(); it != tables.end(); it++) {
-		if (it->isVisible()) {
-			if (left > it->getPosition().x) {
-				left = it->getPosition().x;
-			}
-			if (top > it->getPosition().y) {
-				top = it->getPosition().y;
-			}
-		}
-	}
 
+	float left, top, right, bottom;
+	getCornersOfDiagram(left, top, right, bottom);
 	float xfactor = 20, yfactor = 20;
+
+	htmlfile << "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\n";
+
+	htmlfile << "\n<html><head><title>"<< title<< "</title></head>\n";
+	htmlfile << "\n<script type=\"text/javascript\">\n<!--\n";
+	htmlfile << "function scroll(tablename) {\n";
+	htmlfile << "\tswitch (tablename) {\n";
 	for (it = tables.begin(); it != tables.end(); it++) {
 		if (it->isVisible()) {
-			string href;
-			href = getModuleFile(it->getName());
-			href += ".html#tab_";
-			href += it->getName();
-			fprintf( file, "<area shape=\"rect\" coords=\"%d,%d,%d,%d\" href=\"%s\" target=\"_self\" alt=\"%s\">\n",
-				int((it->getPosition().x-left)*xfactor),
-				int((it->getPosition().y-top)*yfactor),
-				int((it->getPosition().x-left+it->getWidth())*xfactor),
-				int((it->getPosition().y-top+it->getHeight())*yfactor),
-				href.c_str(), it->getName().c_str()
-				);
+			htmlfile << "\t\tcase \"?" << it->getName() << "\": window.scrollTo("
+				<< int((it->getPosition().x-left)*xfactor-200) << ","
+				<< int((it->getPosition().y-top)*yfactor-200) << "); break;\n";
 		}
 	}
-	fprintf( file, "</map>\n");
+	htmlfile << "\t}\n}\n";
 
-	fprintf( file, "\n<div align=\"center\">\n");
-	fprintf( file, "<IMG SRC=\"%s.png\" ALT=\"%s\" BORDER=\"0\" usemap=\"#PETRAtables\">\n", name.c_str(), title.c_str());
-	fprintf( file, "</div>\n");
+	htmlfile << "//-->\n</script>\n\n";
 
-	fprintf( file, "\n</body>\n</html>\n");
-	fclose( file);
+	htmlfile << "<body BGCOLOR=\"#FFFFFF\" onload=\"scroll(location.search)\">\n";
+	htmlfile << "<base target=\"_top\">\n";
+
+	htmlfile << "\n<map name=\"PETRAtables\">\n" ;
+
+	for (it = tables.begin(); it != tables.end(); it++)
+		if (it->isVisible())
+		{
+			string href;
+			href = "index.html?table=";
+			href += it->getName();
+			href += "&group=";
+			href += it->getModule();
+
+			htmlfile << "<area shape=\"rect\" coords=\""
+				<< int((it->getPosition().x-left)*xfactor) << ", "
+				<< int((it->getPosition().y-top)*yfactor) << ", "
+				<< int((it->getPosition().x-left+it->getWidth())*xfactor) << ","
+				<< int((it->getPosition().y-top+it->getHeight())*yfactor+30)
+				<< "\" href=\"../"<< href <<"\" target=\"_top\" alt=\""
+				<< it->getName()<< "\">\n";
+		}
+	htmlfile << "</map>\n";
+
+	htmlfile << "\n<div align=\"center\">\n";
+	htmlfile << "<IMG SRC=\"" << diagramname <<".png\" ALT=\""
+		<< diagramname << "\" BORDER=\"0\" usemap=\"#PETRAtables\">\n";
+	htmlfile << "</div>\n";
+
+	htmlfile << "\n</body>\n</html>\n";
+	htmlfile.close();
 }
 
 void DataBaseHTML::outHtml(FILE* file, string module)
@@ -105,10 +149,10 @@ void DataBaseHTML::outHtml(FILE* file, string module)
 					   "<TITLE>Module %s</TITLE>\n"
 					   "<META NAME=\"Generator\" CONTENT=\"sql2dia\">\n"
 					   "<META NAME=\"Author\" CONTENT=\"?\">\n"
-					   "<LINK TYPE=\"text/css\" HREF=\"index.css\" REL=\"stylesheet\">\n"
-					   "</HEAD><BODY>\n", module.c_str());
+					   "<LINK REL=\"stylesheet\" HREF=\"table-doc.css\" TYPE=\"text/css\"/>\n"
+					   "</HEAD><BODY class=\"group\">\n", module.c_str());
+	fprintf( file, "<DIV id=\"%s"" class=\"links-tab\"><FONT class=\"tablenames\">", module.c_str());
 
-	fprintf( file, "<table width='100%%'>");
 	vector<string> names;
 	for ( it = tables.begin(); it != tables.end(); it++) {
 		if ( cmpModule( it->getModule(), module)) {
@@ -116,28 +160,108 @@ void DataBaseHTML::outHtml(FILE* file, string module)
 		}
 	}
 	sort( names.begin(), names.end());
-	unsigned int column, row;
-	for ( row = 0; row < names.size() / 3+1; row++) {
-		fprintf( file, "<tr>");
-		for ( column=0; column < 3; column++) {
-			if ((names.size()/3+1)*column+row < names.size()) {
-				fprintf( file, "<td><a href='#tab_%s'>%s</a></td>\n",
-					names[(names.size()/3+1)*column+row].c_str(),
-					names[(names.size()/3+1)*column+row].c_str()
-					);
-			}
-		}
-
-		fprintf( file, "</tr>");
+	unsigned int row;
+	for ( row = 0; row < names.size(); row++) {
+		fprintf( file, "\t\t<a href='tables/%s.html#top' target='table-info'>%s</a><br/>\n",
+			names[row].c_str(),
+			names[row].c_str()
+			);
 	}
-	fprintf( file, "</table>");
+	fprintf( file, "</DIV></FONT>");
+	fprintf( file, "</BODY>\n"
+					   "</HTML>\n");
 
 	for (it = tables.begin(), count = 0; it != tables.end(); it++, count++) {
 		if (cmpModule(it->getModule(), module)) {
 			Table& tab = *it;
-			((TableHTML*)&tab)->outHtml(file);
+			((TableHTML*)&tab)->outHtml();
 		}
 	}
-	fprintf( file, "</BODY>\n"
-					   "<HTML>\n");
+}
+
+void DataBaseHTML::writeTableGroup( string& group, vector<string>& tablenames) {
+/*
+	string strGroupDocFileName( "table-doc-tables-" + group + ".html");
+	ofstream dbGroupDoc( strGroupDocFileName.c_str());
+	if ( !dbGroupDoc.is_open()) {
+		cout << "Cannot open file " << strGroupDocFileName << "" << endl;
+		exit( 1);
+	} else {
+		vector<string>::iterator tableit;
+		sort(tablenames.begin(), tablenames.end());
+
+		// Setup new DIV
+		dbGroupDoc
+			<< strHTMLGroupHeader
+			<< "\t<DIV id=\"ts_" << group << "\" class=\"links-tab\"><FONT class=\"tablenames\">" << USED_LINE_END;
+
+		for (tableit = tablenames.begin(); tableit != tablenames.end(); tableit++) {
+			dbGroupDoc << "\t\t" << getHRef( *tableit, true) << *tableit << "</a><br/>" << USED_LINE_END;
+		}
+		tablenames.clear();
+
+		dbGroupDoc
+			<< "\t</FONT></DIV>" << USED_LINE_END
+			<< strHTMLFooter;
+		dbGroupDoc.close();
+	}
+*/
+}
+
+void DataBaseHTML::writeMenus() {
+	// Make a list of tables into groups
+	char* szGroupsFile = "table-doc-groups.html";
+	ofstream dbMenuDoc( szGroupsFile);
+	if ( !dbMenuDoc.is_open()) {
+		cout << "Cannot open file " << szGroupsFile << "" << endl;
+		exit( 1);
+	} else {
+		//find all groups by searching for the dia files;
+		DIR *dp;
+		struct dirent *ep;
+		dp = opendir("./");
+
+		dbMenuDoc
+			<< strHTMLMenuHeader
+		    << "<DIV class=\"links\">" << USED_LINE_END;
+
+		bool done = false;
+		if (dp != NULL) {
+			while (!done) {
+				ep = readdir (dp);
+				if (!ep) {
+					done = true;
+				}
+				else if (strstr(ep->d_name, ".dia") != NULL && *(strstr(ep->d_name, ".dia")+4) == '\0') {
+					*strstr(ep->d_name, ".") = '\0';
+					dbMenuDoc << "\t<a href=\"table-doc-tables-" << ep->d_name
+						<< ".html\" target=\"tables\"\">" << ep->d_name << "</a>" << USED_LINE_END;
+				}
+			}
+		}
+
+		dbMenuDoc << "</DIV>" << USED_LINE_END
+			<< strHTMLFooter;
+		dbMenuDoc.close();
+	}
+	/*
+	vector<string> tablenames;
+	vector<TTable*> tables;
+	vector<TTable*>::iterator it;
+	DDF.getAllTables(tables);
+	string strOldGroup;
+	sort(tables.begin(), tables.end(), sortGroup);
+	for ( it = tables.begin(); it != tables.end(); it++) {
+		string strGroup = (*it)->getGroup();
+		if ( strOldGroup != strGroup) {
+			if ( strOldGroup.length()) {
+				writeTableGroup( strOldGroup, tablenames);
+			}
+			strOldGroup = (*it)->getGroup();
+		}
+		tablenames.push_back((*it)->getName());
+	}
+
+	writeTableGroup( strOldGroup, tablenames);
+	*/
 }

@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/sql2dia.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -37,7 +37,6 @@ void outHtml(const string& prefix, const string& outfilename)
 	FILE* htmlFile;
 	htmlFile = fopen(outfilename.c_str(), "wt");
 	((DataBaseHTML*)&db)->outHtml(htmlFile, prefix);
-	printf("html file written: OK\n");
 	fclose(htmlFile);
 }
 
@@ -104,18 +103,22 @@ void BackwardCompat( int argc, char* argv[]) {
 
 	printf( "Reading sql files done\n");
 
+	system( "mkdir tables");
+	system( "mkdir img");
+
 	db.prepareLinks();
 	((DataBaseHTML*)&db)->prepareDisplay( "", false);
-	outHtml( prefix, prefix + ".html");
+	outHtml( prefix, "table-doc-tables-" + prefix + ".html");
 
 	FILE* Convertfile;
-	Convertfile = fopen((prefix+"_tile.bat").c_str(), "wt");
+	Convertfile = fopen(("img/"+prefix+"_tile.bat").c_str(), "wt");
 
 	process( prefix, prefix, Convertfile);
 
 	fclose( Convertfile);
+	((DataBaseHTML*)&db)->writeMenus();
 
-	db.displayNonDisplayedTables();
+	//db.displayNonDisplayedTables();
 }
 
 void DumpExampleProject( int argc, char* argv[]) {

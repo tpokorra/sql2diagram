@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/database.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:27 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -11,6 +11,7 @@
 
 #include "table.h"
 #include "database.h"
+#include "stringutils.h"
 
 void DataBase::addLink(Constraint& foreignkey)
 {
@@ -172,3 +173,48 @@ ostream& operator<<( ostream& o, const DataBase& oDataBase)
 	}
 	return o;
 }
+
+void DataBase::getCornersOfDiagram(float& left, float& top, float& right, float& bottom) {
+
+	// get the upper left corner and the lower right corner of the image
+
+	vector<Table>::iterator it;
+	right = left = tables.begin()->getPosition().x;
+	bottom = top = tables.begin()->getPosition().y;
+	for (it = tables.begin(); it != tables.end(); it++)
+		if (it->isVisible())
+		{
+			if (left > it->getPosition().x)
+				left = it->getPosition().x;
+			if (right < it->getPosition().x+it->getWidth())
+				right = it->getPosition().x+it->getWidth();
+			if (top > it->getPosition().y)
+				top = it->getPosition().y;
+			if (bottom < it->getPosition().y+it->getHeight())
+				bottom = it->getPosition().y+it->getHeight();
+		}
+
+	vector<PosAssociation>::iterator at;
+	for (at = posAssociations.begin(); at != posAssociations.end(); at++) {
+		vector<string> vpoints;
+		vector<string>::iterator pointsit;
+		StringToVector(at->orth_points, vpoints, ";");
+		for (pointsit = vpoints.begin(); pointsit != vpoints.end(); pointsit++) {
+			vector<string> vcoord;
+			StringToVector(*pointsit, vcoord, ",");
+			if (vcoord.size() == 2) { // x and y
+				float x = atof(vcoord.begin()->c_str());
+				float y = atof((vcoord.begin()+1)->c_str());
+				if (x > right)
+					right = x+1;
+				if (x < left)
+					left = x;
+				if (y > bottom)
+					bottom = y+1;
+				if (y < top)
+					top = y;
+			}
+		}
+	}
+}
+

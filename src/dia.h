@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/dia.h,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -24,8 +24,8 @@ class TableDIA: public Table
 {
 public:
 	TableDIA(char* pName);
-	void prepareDisplay(DataBase &db, string& module, bool repeatedRun);
-	void outDia(FILE* file, string module, DataBase& db, bool repeatedRun);
+	void prepareDisplay(DataBase &db, string& module, bool repeatedRun, const string& strLocTableList);
+	void outDia(FILE* file, string module, DataBase& db, bool repeatedRun, const string& strLocTableList);
 	bool outDiaConstraints(FILE* file, DataBase& db, const string& strLocTableList);
 	void drawConstraint(FILE* file, Constraint& constr, Table& src, Table&referenced);
 private:

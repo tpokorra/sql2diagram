@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/attribute.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:27 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -17,17 +17,17 @@ PointerAttribute::PointerAttribute(string relation, string attribute)
 	sTable = relation;
 }
 
-string PointerAttribute::getAttributeName()
+string PointerAttribute::getAttributeName() const
 {
 	return sAttribute;
 }
 
-string PointerAttribute::getTableName()
+string PointerAttribute::getTableName() const
 {
 	return sTable;
 }
 
-string PointerAttribute::getAName()
+string PointerAttribute::getAName() const
 {
 	if (sAttribute != "") {
 		return getModuleFile( sTable) + ".html#" + sTable + "_" + sAttribute;
@@ -73,7 +73,7 @@ Constraint& Constraint::operator=(const Constraint& c)
 	return *this;
 }
 
-string Constraint::getFirstLocalAttribute()
+string Constraint::getFirstLocalAttribute() const
 {
 	if (localAttributes.elements.size() > 0) {
 		return *localAttributes.elements.begin();
@@ -111,18 +111,50 @@ int Constraint::isInLocalAttr(const string& attr)
 {
 	vector<string>::iterator it;
 	int pos = 0;
-
 	for (it = localAttributes.elements.begin(); it != localAttributes.elements.end(); it++, pos++) {
 		if (*it == attr) {
 			return pos;
 		}
 	}
+
 	return -1;
 }
 
 PointerAttribute& Constraint::getRemoteAttributes(int pos)
 {
 	return remoteAttributes[pos];
+}
+
+string Constraint::getRemoteAttributesString() const
+{
+	vector<PointerAttribute>::const_iterator it;
+	string s;
+	for (it = remoteAttributes.begin(); it != remoteAttributes.end(); it++) {
+		if (s != "") s += ";";
+		s += it->getAttributeName();
+	}
+	return s;
+}
+
+string Constraint::getFirstRemoteAttribute() const
+{
+	if (remoteAttributes.size() == 0) {
+		return "";
+	}
+	else {
+		return remoteAttributes.begin()->getAttributeName();
+	}
+}
+
+string Constraint::getLocalAttributesString() const
+{
+	vector<string>::const_iterator it;
+	string s;
+	for (it = localAttributes.elements.begin(); it != localAttributes.elements.end(); it++) {
+		if (s != "") s += ";";
+		s += *it;
+	}
+	return s;
 }
 
 string Constraint::getRemoteTableName()

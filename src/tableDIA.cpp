@@ -2,13 +2,14 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/tableDIA.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2004/08/12 22:03:13 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
 #include "dia.h"
+#include "stringutils.h"
 
 TableDIA::TableDIA(char* pName)
 :Table(pName)
@@ -79,7 +80,7 @@ void TableDIA::drawConstraint(FILE* file, Constraint& constr, Table& src, Table&
 					vpoints.push_back(start);
 					start = start + strlen(start);
 				} else {
-					*c = '\0';	
+					*c = '\0';
 					vpoints.push_back(start);
 					start = c+1;
 				}
@@ -124,7 +125,7 @@ void TableDIA::drawConstraint(FILE* file, Constraint& constr, Table& src, Table&
 				if (NULL == c) {
 					fprintf(file, "<dia:enum val=\"%d\" /> \n", atoi(start));
 					start = start + strlen(start);
-				} else {				
+				} else {
 					*c = '\0';
 					fprintf(file, "<dia:enum val=\"%d\" /> \n", atoi(start));
 					start = c+1;
@@ -190,10 +191,10 @@ void TableDIA::drawConstraint(FILE* file, Constraint& constr, Table& src, Table&
 	}
 }
 
-void TableDIA::prepareDisplay(DataBase &db, string& module, bool repeatedRun)
+void TableDIA::prepareDisplay(DataBase &db, string& module, bool repeatedRun, const string& strLocTableList)
 {
 	Table::prepareDisplay(db, module);
-	outDia(0, "", db, repeatedRun);
+	outDia(0, "", db, repeatedRun, strLocTableList);
 }
 
 bool TableDIA::outDiaConstraints(FILE* file, DataBase& db, const string& strLocTableList)
@@ -219,11 +220,13 @@ bool TableDIA::outDiaConstraints(FILE* file, DataBase& db, const string& strLocT
 	return true;
 }
 
-void TableDIA::outDia(FILE* file, string module, DataBase& db, bool repeatedRun)
+void TableDIA::outDia(FILE* file, string module, DataBase& db, bool repeatedRun, const string& strLocTableList)
 {
 	float width=22, height=10;
 	float x = column*width;
 	float y = line;
+	bool displayAllFields = true;
+	bool incomplete = false;
 	if ( repeatedRun) {
 		x = 10;
 		y = 10;
@@ -276,6 +279,10 @@ void TableDIA::outDia(FILE* file, string module, DataBase& db, bool repeatedRun)
 				colour = true;
 			}
 		}
+		if (colour && !( cmpModule( getModule(), db.getModule())
+			|| db.inTableList( *this, strLocTableList))) {
+				displayAllFields = false;
+		}
 
 		if (colour) {
 			fprintf(file, "\t<dia:attribute name=\"background_color\"><dia:color val=\"#add8e6\"/></dia:attribute>\n");
@@ -302,6 +309,10 @@ void TableDIA::outDia(FILE* file, string module, DataBase& db, bool repeatedRun)
 
 	int length = 0, ltype = 0;
 	for (it = attributes.begin(); it != attributes.end(); it++) {
+		if (!displayAllFields && !isKey(*it, ePrimaryKey) && !isKey(*it, eUnique)) {
+			incomplete = true;
+			continue;
+		}
 		int l = it->getName().length();
 		if (l > length) {
 			length = l;
@@ -345,13 +356,18 @@ void TableDIA::outDia(FILE* file, string module, DataBase& db, bool repeatedRun)
 		currentheight ++;
 	}
 
-	for (it = attributes.begin(); it != attributes.end(); it++) {
+	for (it = attributes.begin(); it != attributes.end() && displayAllFields; it++) {
 		if ( !( ( unique == 1 && isKey(*it, eUnique))
 				||( primary == 1 && isKey(*it, ePrimaryKey))) ) {
 			Attribute& att = *it;
 			((AttributeDIA*)&att)->outDia(file, length, ltype, (int)currentheight, isKey(*it, eForeignKey));
 			currentheight ++;
 		}
+	}
+	if ( incomplete) {
+		AttributeDIA::addAttribute(file, "...", "");
+		AttributeDIA::addAttribute(file, " ", "");
+		currentheight+=2;
 	}
 
 	if ( file) {

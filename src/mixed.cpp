@@ -1,17 +1,19 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/mixed.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/02/17 18:30:28 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
+#include "stringutils.h"
 #include "mixed.h"
 #include <stdlib.h>
 #include <sys/types.h>
 #include <dirent.h>
 #include <errno.h>
+
 
 string trim(const string& s)
 {
@@ -64,20 +66,6 @@ bool cmpModule(string m1, string m2)
 
 string getModuleFile( string table_name) {
 	return table_name.substr( 0, 2);
-}
-
-string inttostr( int i)
-{
-	char buf[20];
-	sprintf( buf, "%d", i);
-	return buf;
-}
-
-string floattostr( float v)
-{
-	char buf[20];
-	sprintf(buf, "%.2f", v);
-	return buf;
 }
 
 void backup(const char* filename)
