@@ -1,14 +1,16 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/sql2dia.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2004/01/04 17:51:24 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2004/01/04 20:39:40 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
 #include <iostream>
 #include <string>
+#include <libxml/xmlmemory.h>
+#include <libxml/parser.h>
 
 #include "getopt.h"
 
@@ -72,11 +74,11 @@ void Usage( char *argv0, int exit_val) {
 	exit( exit_val);
 }
 
-string strProjectFile( "");
+string strProjectFile = "";
 
-void setProjectFile( string strIProjectFile)
+void setProjectFile( char* szProjectFile)
 {
-	strProjectFile = strIProjectFile;
+	strProjectFile = szProjectFile;
 }
 
 
@@ -101,7 +103,7 @@ int main(int argc, char* argv[])
 	int option_index = 0;
 	while ( 1) {
 		char c;
-		if ( ( c = getopt_long( argc, argv, "h?vpdF:g:",
+		if ( ( c = getopt_long( argc, argv, "h?vp:dF:g:",
 		                        long_options, &option_index)) == -1) {
 			break;
 		}
@@ -111,6 +113,9 @@ int main(int argc, char* argv[])
 				Usage( argv[0], 0);
 				break;
 			case 'p':
+   			if ( NULL == optarg) {
+   				Usage( argv[ 0], 1);
+   			}
 				setProjectFile( optarg);
 				bDoProject = true;
 				break;
@@ -120,7 +125,7 @@ int main(int argc, char* argv[])
 		}
 	}
 
-	// For backward compat. take arguments as the come...
+	// For backward compat. take arguments as they come...
 	if ( ( ! bDoDump)
 	&&   ( ! bDoProject) ) {
 		ParserSQL sql( db);
@@ -183,6 +188,42 @@ int main(int argc, char* argv[])
 		} else if ( bDoProject) {
 			// Now what should we do with the project file???
 			// Open it and read the source files.
+      	xmlDocPtr doc = xmlParseFile( strProjectFile.c_str());
+
+      	if (doc == NULL ) {
+      		cerr << "Document not parsed successfully." << endl;
+      		return -1;
+      	}
+      	xmlNodePtr cur;
+      	cur = xmlDocGetRootElement( doc);
+
+      	if ( cur == NULL) {
+      		cerr << "empty document" << endl;
+      		xmlFreeDoc( doc);
+      		return -1;
+      	}
+
+      	if ( 0 != xmlStrcmp( cur->name, (const xmlChar *) "database")) {
+      		cerr << "document of the wrong type, root node != database" << endl;
+      		xmlFreeDoc( doc);
+      		return -1;
+      	}
+
+			// Do what ever...
+      	cur = xmlDocGetRootElement(doc);
+      	cur = cur->xmlChildrenNode;
+      	while ( cur != NULL) {
+      		if ( 0 == xmlStrcmp(cur->name, (const xmlChar *)"group")) {
+            	xmlChar* szName = xmlGetProp( cur, (xmlChar*)"name");
+            	cout
+        				<< "Group: " << (char*)szName << endl;
+    				xmlFree( szName);
+      		}
+      		cur = cur->next;
+      	}
+
+      	// Free the lot
+			xmlFreeDoc( doc);
 		}
 	}
 

@@ -2,6 +2,8 @@
 <!DOCTYPE database SYSTEM "datastructure.dtd">
 
 <database name="xxxx">
+	<source filename="customer.sql" type="sql"/>
+	<source filename="order_system.sql" type="sql"/>
 	<group name="customer.sql">
 		<tablename name="abc.customer"/>
 		<tablename name="abc.address"/>

@@ -2,15 +2,16 @@ sqlfile=scheme.ddl
 CC=gcc
 CPP=g++
 #CCOPT=-I$(HOME)/petracvs/c/regexp -D_USE_REGEXP_=1
+CFLAGS=-I/usr/include/libxml2 -Wall
 CCOPT=
-LIBS=-lstdc++ 
+LIBS=-lstdc++ -lxml2
 
 SRC=attribute.cpp attributeDIA.cpp attributeHTML.cpp database.cpp databaseDIA.cpp databaseHTML.cpp mixed.cpp parsedia.cpp parser_cmn.cpp parsesql.cpp sql2dia.cpp table.cpp tableDIA.cpp tableHTML.cpp
 
 OBJS=attribute.o attributeDIA.o attributeHTML.o database.o databaseDIA.o databaseHTML.o mixed.o parsedia.o parser_cmn.o parsesql.o sql2dia.o table.o tableDIA.o tableHTML.o
 
 .cpp.o:
-	$(CPP) -c $(CCOPT) -o $@ $<
+	$(CPP) -c $(CCOPT) $(CFLAGS) -o $@ $<
 
 sql2dia: $(OBJS) parser_cmn.h table.h dia.h html.h mixed.h parsedia.h parsesql.h
 	$(CC) -o sql2dia $(OBJS) $(LIBS)

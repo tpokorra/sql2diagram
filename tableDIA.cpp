@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/tableDIA.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2003/12/17 16:26:58 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2004/01/04 20:39:40 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -24,7 +24,6 @@ void TableDIA::drawConstraint(FILE* file, Constraint& constr, Table& src, Table&
 		test++;
 		float points[4][2] = {{10.15f, -0.52f}, {5.0f,-0.52f}, {5.0f,7.73f}, {22.7f,7.73f}};
 
-		int i = 0;
 		int linenr = src.getPosAttribute(keyname);
 		int srcConnection = 8+linenr*2;
 		int destConnection = 3;
