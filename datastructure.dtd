@@ -1,0 +1,127 @@
+<!ELEMENT database ( (table?, sequence*)+, (source+,group+)+) >
+<!ATTLIST database
+   name				CDATA  #REQUIRED
+>
+
+<!ELEMENT source>
+<!ATTLIST source
+	filename			CDATA #REQUIRED
+	type				CDATA #IMPLIED
+>
+
+<!ELEMENT group (tablename, tableprefix, tablepattern)+>
+<!ATTLIST group
+	name			CDATA #REQUIRED
+>
+
+<!ELEMENT tablename>
+<!ATTLIST tablename
+	name			CDATA #REQUIRED
+>
+
+<!ELEMENT tablepattern>
+<!ATTLIST tablepattern
+	prefix			CDATA #REQUIRED
+>
+
+<!ELEMENT tablepattern>
+<!ATTLIST tablepattern
+	pattern			CDATA #REQUIRED
+>
+
+<!ELEMENT table (tablefield+, primarykey?, uniquekey*, foreignkey*, trigger*, index*) >
+<!ATTLIST table
+   name				CDATA  #REQUIRED
+   descr			CDATA  #REQUIRED
+   area				CDATA  #REQUIRED
+   label			CDATA  #IMPLIED
+   dumpname			CDATA  #IMPLIED
+   group			CDATA  #IMPLIED
+>
+
+<!ELEMENT trigger EMPTY >
+<!ATTLIST trigger
+   type			(create|write|delete|assign)  #REQUIRED
+   procname		CDATA     #REQUIRED
+   usecrc		(yes|no)  #IMPLIED
+   overrideble		(no|yes)  #IMPLIED
+>
+
+<!ELEMENT tablefield (trigger)? >
+<!ATTLIST tablefield
+   name			CDATA  #REQUIRED
+   type			(bit|number|integer|varchar|date)  #REQUIRED
+   length		CDATA  #IMPLIED
+   decimals		CDATA  #IMPLIED
+   descr		CDATA  #REQUIRED
+   format		CDATA  #REQUIRED
+   label		CDATA  #IMPLIED
+   position		CDATA  #REQUIRED
+   sqlwidth		CDATA  #REQUIRED
+   viewas		CDATA  #IMPLIED
+   columnlabel		CDATA  #IMPLIED
+   valueexpression	CDATA  #IMPLIED
+   valuemessage		CDATA  #IMPLIED
+   help			CDATA  #IMPLIED
+   extent		CDATA  #IMPLIED
+   order		CDATA  #IMPLIED
+   casesensitive	(no|yes)  #IMPLIED
+   notnull		(no|yes)  #IMPLIED
+   default		CDATA  #IMPLIED
+   check            	CDATA  #IMPLIED
+   initial4gl		CDATA  #IMPLIED
+>
+
+<!ELEMENT primarykey EMPTY >
+<!ATTLIST primarykey
+   name				CDATA  #REQUIRED
+   descr			CDATA  #IMPLIED
+   thisFields			CDATA  #REQUIRED
+>
+
+<!ELEMENT uniquekey EMPTY >
+<!ATTLIST uniquekey
+   name				CDATA  #REQUIRED
+   descr			CDATA  #IMPLIED
+   thisFields			CDATA  #REQUIRED
+>
+
+<!ELEMENT foreignkey EMPTY >
+<!ATTLIST foreignkey
+   name				CDATA  #REQUIRED
+   descr			CDATA  #IMPLIED
+   thisFields		CDATA  #REQUIRED
+   otherTable		CDATA  #REQUIRED
+   otherFields		CDATA  #REQUIRED
+>
+
+<!ELEMENT index (indexfield)+>
+<!ATTLIST index
+   name				CDATA  #REQUIRED
+   descr			CDATA  #IMPLIED
+   area				CDATA  #REQUIRED
+   primary			CDATA  #IMPLIED
+   unique			CDATA  #IMPLIED
+   aliases			CDATA  #IMPLIED
+   implicit			(no|yes) #REQUIRED
+   incomplete		(no|yes) #REQUIRED
+   from4gl			(no|yes) #IMPLIED
+>
+
+<!ELEMENT indexfield EMPTY>
+<!ATTLIST indexfield
+   name				CDATA  #REQUIRED
+   order			(ascending|descending) #IMPLIED
+>
+
+<!ELEMENT sequence EMPTY>
+<!ATTLIST sequence
+   name				CDATA  #REQUIRED
+   descr			CDATA  #REQUIRED
+   initial			CDATA  #REQUIRED
+   increment			CDATA  #REQUIRED
+   cycleonlimit			CDATA  #REQUIRED
+   minval			CDATA  #REQUIRED
+   maxval			CDATA  #REQUIRED
+   area				CDATA  #IMPLIED
+>

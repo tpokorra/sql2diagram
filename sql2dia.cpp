@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/sql2dia.cpp,v $
- * revision:            $Revision: 1.4 $
- * last changes:        $Date: 2004/01/04 20:39:40 $
+ * revision:            $Revision: 1.5 $
+ * last changes:        $Date: 2004/01/04 20:47:00 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -171,6 +171,7 @@ int main(int argc, char* argv[])
 				<< "<database name=\"xxxx\">" << endl;
 			for ( int i = optind; i < argc; i++) {
 				cout
+            	<< "\t<source filename=\"" << argv[ i] << "\" type=\"sql\"/>" << endl
 					<< "\t<group name=\"" << argv[ i] << "\">" << endl;
 				if ( !sql.readSQL( argv[ i])) {
 					cout << "Problem reading sql create script file: " << argv[ i] << endl;

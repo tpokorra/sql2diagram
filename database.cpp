@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/database.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2004/01/04 16:19:36 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2004/01/04 20:47:00 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -154,7 +154,7 @@ ostream& operator<<( ostream& o, const DataBase& oDataBase)
 	for ( it = oDataBase.allTables.begin();
 	      it != oDataBase.allTables.end();
 	      it++) {
-		o << "\t\t<tablename name=\"" << it->getName() << "\">" << endl;
+		o << "\t\t<tablename name=\"" << it->getName() << "\"/>" << endl;
 	}
 	return o;
 }
