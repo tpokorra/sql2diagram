@@ -10,4 +10,4 @@ METASOURCES = AUTO
 
 sql2diagram_LDADD = -lstdc++
 
-noinst_HEADERS =  sql2diagram.dev sql2diagram_private.h sql2diagram_private.rc sql2diagram_private.res
+noinst_HEADERS =  
