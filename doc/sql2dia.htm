@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>SQL 2 Diagram</title>
+</head>
+<body>
+<h2>Convert SQL Create Statements into a Database Schema Diagram and
+HTML representation<br>
+</h2>
+<br>
+This program can be used to produce diagrams in a XML format that is
+used by Dia, which is a free diagram editor for Linux and Windows.<br>
+<h3>Links<br>
+</h3>
+Dia website: <br>
+<a href="file:///D:/om-work/sql2dia/doc/www.lysator.liu.se/%7Ealla/dia/">www.lysator.liu.se/~alla/dia/</a><br>
+Dia for Windows:<br>
+<a href="http://dia-installer.sourceforge.net/">
+http://dia-installer.sourceforge.net/</a><br>
+<br>
+ImageMagick Convert is used to split the big images so that they can be
+printed on several pages.<br>
+<a href="http://www.imagemagick.org/">http://www.imagemagick.org/</a><br>
+<br>
+Sql2Dia can be compiled with cygwin.<br>
+<a href="http://www.cygwin.com/">http://www.cygwin.com/</a><br>
+<br>
+I had my problems with autodia (<a href="http://droogs.org/autodia/">http://droogs.org/autodia/</a>),
+because there are no constraints inserted into the diagram, and I also
+wanted to have a linked HTML output.<br>
+<h3>Users Reference</h3>
+<h4>Functionality</h4>
+The program parses a number of text files which hold SQL CREATE TABLE
+statements. <br>
+A module is a set of tables, which names start with the same prefix
+plus underscore.<br>
+It creates HTML files for each module that clearly show the links to
+other tables, and the references onto a table.<br>
+It creates a DIA file that can be edited with the Dia diagram editor.
+The diagrams can hold tables from different modules. Tables can be
+hidden.<br>
+It can read already existing DIA files and reuse the positions already
+assigned.<br>
+It can be rerun and automatically adds new constraints and new tables
+to the diagram, which then can be positioned in Dia diagram editor.<br>
+It creates an HTML image map that can be used with the png file that
+can be exported from Dia diagram editor.<br>
+It creates a batch file that holds statements to call ImageMagick
+Convert to tile/crop the big images to prepare them for printing.<br>
+<h4>Interpretation of the diagrams</h4>
+Colour: The tables that are shown on the current diagram without all
+their constraints or references are displayed with a blue background
+colour.<br>
+<br>
+Constraints: The constraint starts at one attribute that is part of a
+foreign key. All attributes that are part of a foreign key are marked
+with a "FK".<br>
+There is only one constraint painted between a pair of tables, even if
+there are several references.<br>
+<h4>Example Usage</h4>
+Howto use Sql2Dia:<br>
+New diagram: Add new command to sql2dia.cpp, e.g. process("personnel",
+"Personnel Tables", "pt,pm");<br>
+The parameters pt and pm mean that all tables with these prefixes are
+added to the diagram personnel.<br>
+Compile the sql2dia.exe, and run it with the first parameter being the
+path to the directory where your sql text files are<br>
+open personnel.dia<br>
+All tables are on the "invisible" layer. You can open with a right
+click the menu and go to Dialog/Layers. Hide the "background" layer,
+and
+bring the "invisible" layer to the front.<br>
+Switch to 50% Zoom.<br>
+Select 5 or more tables from the invisible layer, cut them, hide the
+invisible layer, show the background layer, and switch to background.
+Insert the tables and move them to the correct position.<br>
+After having put all necessary tables on the background layer, save the
+personnel.dia file: Make sure you disable "compress diagram files".<br>
+close the personnel.dia <br>
+Run sql2dia.exe again.<br>
+It creates a backup file in the bak directory. <br>
+If you forgot disabling compression, the current file is again a new
+start and has lost all your positions. You can open the file in the bak
+directory, and save it without compression.<br>
+It adds the constraints to the tables that are on the background layer.<br>
+It moves the end points of the constraint to the correct side of the
+table, left or right.<br>
+You open personnel.dia again, and align the constraints nicely.<br>
+To insert new segments into a constraint, move the mouse over the line,
+hold the CTRL key, and press the right mouse button. Then comes a menu
+with "Add new segment". Make sure you add segments only behind the
+first
+right angle from any table. That helps so that the constraints joins
+correctly when the tables are moved around.<br>
+Attention: only the position of the tables, as well as the relation to
+one of the 2 layers, and the position of constraints is restored,
+nothing else.<br>
+<br>
+If there is a new situation in the sql create statements, new tables
+are added in the upper left corner of the background layer.<br>
+New constraints are added all over the diagram, you need to adjust them.<br>
+If constraints or tables are removed from the sql statements, then they
+also are not displayed on the diagram anymore.<br>
+<br>
+To export the diagram to an image format, choose File/Export from the
+menu and select GdkPixBuf Bitmap, and let the filename have the
+extension png. This is the best way pngs are created running Dia on
+Windows at the moment. (The direct png export did not work for me on
+0.91). Page setup should be 100 %.<br>
+<br>
+The program creates a batch file called tile.bat. You call it with the
+first parameter as the path to your current location of ImageMagick
+convert.exe. A number of small images is created, eg. diagram0.png,
+diagram1.png, ....<br>
+<h4>Don'ts</h4>
+Don't add new tables / constraints in the DIA editor.<br>
+Don't change constraints; even not from the left side of the table to
+the right side.<br>
+Only move around the tables and constraints, and add/remove segments to
+the constraint lines.<br>
+<h4>Dia Diagram Editor Tipps</h4>
+For quickly moving around on the diagram use the cursor keys. it is
+much faster than move around with the mouse on the scrollbars.<br>
+Also for moving the lines: click the point, and then hold it with the
+mouse, and press the cursor keys to move around on the diagram<br>
+<br>
+To insert new segments into a constraint, move the mouse over the line,
+hold the CTRL key, and press the right mouse button. Then comes a menu
+with "Add new segment". Make sure you add segments only behind the
+first
+right angle from any table. That helps so that the constraints joins
+correctly when the tables are moved around.<br>
+<h3>Developers Reference<br>
+</h3>
+compile sql2dia with gcc and makefile:<br>
+cygwin: install full development<br>
+cd /cygdrive/&lt;drive letter&gt;/&lt;path to sql2dia&gt;<br>
+make<br>
+<br>
+to tile/crop/dice the image with ImageMagick convert, just call<br>
+convert -crop &lt;width&gt;x&lt;height&gt;+&lt;x&gt;+&lt;y&gt;
+fullimage partimage<br>
+<br>
+use 140% smaller when printing the resulting tiles<br>
+<h4>Classes</h4>
+There is a Parser class that is able to parse text files.<br>
+ParserSQL and ParserDIA are derived from that class.<br>
+A DataBase object holds several Table objects, the tables on the
+current diagram are stored in the tables vector, and all tables read
+from sql statements are stored in the allTables vector.<br>
+A Table object holds Constraints and Attributes. And it knows about
+which other tables are referencing it.<br>
+There are derivations of DataBase, Table and Attribute for both HTML
+and DIA. There is also a file with beginnings of work on SVG, but I
+cancelled that for the moment.<br>
+<h4>What to do if<br>
+</h4>
+<ul>
+  <li>a new module has to be supported?<br>
+add the prefix to file mixed.cpp: string getModuleFile(string
+table_name);<br>
+the lines look like:<br>
+&nbsp;&nbsp;&nbsp; if (table_name.compare(0,2,"pt") == 0)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return "personnel";<br>
+    <br>
+in sql2dia.cpp:<br>
+add a line like:<br>
+&nbsp;&nbsp;&nbsp; outHtml("pt");<br>
+so that the details are written to a HTML file<br>
+    <br>
+    <br>
+  </li>
+  <li>a new text file with sql create table statements needs to be
+added?<br>
+in sql2dia.cpp:<br>
+add a line like:<br>
+&nbsp;&nbsp;&nbsp; sql.readSQL(path+"new_create_per.sql");<br>
+    <br>
+  </li>
+  <li>another diagram should be created?<br>
+in sql2dia.cpp:<br>
+add a line like:<br>
+&nbsp;&nbsp;&nbsp; process("personnel", "Personnel Tables", "pt,pm",
+Convertfile);<br>
+where personnel is the file name of the diagram, and all tables with
+the prefixes pt and pm are moved to the "invisible" layer of the diagram<br>
+It is also possible to add a set of tables to a diagram, for example:<br>
+&nbsp;&nbsp;&nbsp; process("accountspayable", "Accounts Payable
+Tables", "", Convertfile,<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "[a_ap_supplier],
+[a_ap_document], [a_ap_payment], "<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "[a_crdt_note_invoice_link],
+[a_ap_document_detail], [a_ap_payment], "<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; "[a_ap_anal_attrib]");<br>
+    <br>
+  </li>
+  <br>
+</ul>
+<br>
+<br>
+</body>
+</html>
