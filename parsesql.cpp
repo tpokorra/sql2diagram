@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/parsesql.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2003/12/17 16:26:58 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2003/12/24 12:51:31 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -26,7 +26,7 @@ void ParserSQL::readList(List& list, bool withBracketOpen)
 
 	list.elements.push_back(token);
 	current = getNextToken(current, token);
-	while (stricmp(token, ")") != 0)
+	while (strcasecmp(token, ")") != 0)
 	{
 		current = getNextToken(current, token);
 		list.elements.push_back(token);
@@ -40,7 +40,7 @@ void ParserSQL::readConstraint(Table& tab)
 	char constraintName[MAX_LINE];
 	strcpy(constraintName, token);
 	current = getNextToken(current, token);
-	if (stricmp(token, "PRIMARY") == 0)
+	if (strcasecmp(token, "PRIMARY") == 0)
 	{
 		current = readToken(current, token, "KEY");
 		Constraint& cons = tab.addConstraint(constraintName, "primary key");
@@ -49,7 +49,7 @@ void ParserSQL::readConstraint(Table& tab)
 		cons.setLocalColumns(list);
 		current = getNextToken(current, token);
 	}
-	else if (stricmp(token, "FOREIGN") == 0)
+	else if (strcasecmp(token, "FOREIGN") == 0)
 	{
 		current = readToken(current, token, "KEY");
 		Constraint& cons = tab.addConstraint(constraintName, "foreign key");
@@ -64,7 +64,7 @@ void ParserSQL::readConstraint(Table& tab)
 		current = getNextToken(current, token);
 		cons.setRemoteColumns(tab.getName(), table, list);
 	}
-	else if (stricmp(token, "UNIQUE") == 0)
+	else if (strcasecmp(token, "UNIQUE") == 0)
 	{
 		Constraint& cons = tab.addConstraint(constraintName, "unique");
 		List list;
@@ -80,10 +80,10 @@ void ParserSQL::readColumn(Table& tab)
 	att.setComment(getComment());
 	current = getNextToken(current, token);
 	string type = token;
-	if (stricmp(token, "CHARACTER") == 0)
+	if (strcasecmp(token, "CHARACTER") == 0)
 	{
 		current = getNextToken(current, token);
-		if (stricmp(token, "VARYING") == 0)
+		if (strcasecmp(token, "VARYING") == 0)
 		{
 			type = type + " " + token; // Varying
 		}
@@ -92,18 +92,18 @@ void ParserSQL::readColumn(Table& tab)
 			current = goBackToken(current, token);
 		}
 	}
-	if (stricmp(token, "TIMESTAMP") == 0)
+	if (strcasecmp(token, "TIMESTAMP") == 0)
 	{
 		current = getNextToken(current, token);
-		if (stricmp(token, "WITH") == 0)
+		if (strcasecmp(token, "WITH") == 0)
 		{
 			type = type + " " + token;
 			current = getNextToken(current, token);
-			if (stricmp(token, "TIME") == 0)
+			if (strcasecmp(token, "TIME") == 0)
 			{
 				type = type + " " + token;
 				current = getNextToken(current, token);
-				if (stricmp(token, "ZONE") == 0)
+				if (strcasecmp(token, "ZONE") == 0)
 				{
 					type = type + " " + token;
 				}
@@ -115,22 +115,22 @@ void ParserSQL::readColumn(Table& tab)
 
 	current = getNextToken(current, token);
 	// parameter of type
-	if (stricmp(token, "(") == 0)
+	if (strcasecmp(token, "(") == 0)
 	{
 		readList(typeParam, false);
 		current = getNextToken(current, token);
 	}
 
-	if (stricmp(token, "DEFAULT") == 0)
+	if (strcasecmp(token, "DEFAULT") == 0)
 	{
 		string default_token;
 		current = getNextToken(current, token);
 		default_token = token;
 		current = getNextToken(current, token);
-		if (stricmp(token, "(") == 0)
+		if (strcasecmp(token, "(") == 0)
 		{
 			default_token += token;
-			while (stricmp(token, ")") != 0)
+			while (strcasecmp(token, ")") != 0)
 			{
 				current = getNextToken(current, token);
 				default_token += token;
@@ -139,28 +139,28 @@ void ParserSQL::readColumn(Table& tab)
 		}
 		att.setDefault(default_token.c_str());
 	}
-	if (stricmp(token, "NOT") == 0)
+	if (strcasecmp(token, "NOT") == 0)
 	{
 		current = getNextToken(current, token);
-		if (stricmp(token, "NULL") == 0)
+		if (strcasecmp(token, "NULL") == 0)
 		{
 			current = getNextToken(current, token);
 			att.setConstraint("NOT NULL");
 		}
 	}
-	if (stricmp(token, "NULL") == 0)
+	if (strcasecmp(token, "NULL") == 0)
 	{
 		current = getNextToken(current, token);
 		att.setConstraint("NULL");
 	}
-	if (stricmp(token, "CHECK") == 0)
+	if (strcasecmp(token, "CHECK") == 0)
 	{
 		current = getNextToken(current, token);
-		if (stricmp(token, "(") == 0)
+		if (strcasecmp(token, "(") == 0)
 		{
 			string check;
 			current = getNextToken(current, token);
-			while (stricmp(token, ")") != 0 && strlen(current) != 0 && !feof(hFile))
+			while (strcasecmp(token, ")") != 0 && strlen(current) != 0 && !feof(hFile))
 			{
 				check += string(" ") + token;
 				current = getNextToken(current, token);
@@ -170,7 +170,7 @@ void ParserSQL::readColumn(Table& tab)
 		}
 
 	}
-	while (stricmp(token, ",") != 0 && stricmp(token, ")") != 0 && strlen(current) != 0 && !feof(hFile))
+	while (strcasecmp(token, ",") != 0 && strcasecmp(token, ")") != 0 && strlen(current) != 0 && !feof(hFile))
 		current = getNextToken(current, token);
 	if (strncmp(trim(current), "--", 2) == 0)
 	{
@@ -185,10 +185,10 @@ void ParserSQL::readAlterTable()
     ADD CONSTRAINT di_template_pos_pk PRIMARY KEY (person_key, role, field_key);
 */
 	current = getNextToken(current, token);
-	if (stricmp(token, "TABLE") != 0)
+	if (strcasecmp(token, "TABLE") != 0)
 		return;
 	current = getNextToken(current, token);
-	if (stricmp(token, "ONLY") != 0)
+	if (strcasecmp(token, "ONLY") != 0)
 		return;
 	current = getNextToken(current, token);
 	Table& tab = db.getAllTable(token);
@@ -198,10 +198,10 @@ void ParserSQL::readAlterTable()
 		return;
 	}
 	current = getNextToken(current, token);
-	if (stricmp(token, "ADD") != 0)
+	if (strcasecmp(token, "ADD") != 0)
 		return;
 	current = getNextToken(current, token);
-	if (stricmp(token, "CONSTRAINT") != 0)
+	if (strcasecmp(token, "CONSTRAINT") != 0)
 		return;
 	readConstraint(tab);
 }
@@ -217,7 +217,7 @@ void ParserSQL::readTable()
 	do
 	{
 		current = getNextToken(current, token);
-		if (stricmp(token, "CONSTRAINT") == 0)
+		if (strcasecmp(token, "CONSTRAINT") == 0)
 		{
 			readConstraint(tab);
 		}
@@ -225,9 +225,9 @@ void ParserSQL::readTable()
 		{
 			readColumn(tab);
 		}
-	} while (stricmp(token, ")") != 0 && !feof(hFile));
+	} while (strcasecmp(token, ")") != 0 && !feof(hFile));
 
-	while (stricmp(token, ";") != 0 && !feof(hFile))
+	while (strcasecmp(token, ";") != 0 && !feof(hFile))
 		current = getNextToken(current, token);
 //	printf(" done\n");
 }
@@ -242,15 +242,15 @@ bool ParserSQL::readSQL(string filename)
 	current = getNextToken("", token);
 	while (!feof(hFile))
 	{
-		if (stricmp(token, "CREATE") == 0)
+		if (strcasecmp(token, "CREATE") == 0)
 		{
 			current = getNextToken(current, token);
-			if (stricmp(token, "TABLE") == 0)
+			if (strcasecmp(token, "TABLE") == 0)
 			{
 				readTable();
 			}
 		}
-		else if (stricmp(token, "ALTER") == 0)
+		else if (strcasecmp(token, "ALTER") == 0)
 		{
 			readAlterTable();
 		}

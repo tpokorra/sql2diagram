@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/attribute.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2003/12/17 16:26:57 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2003/12/24 12:51:31 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -46,11 +46,11 @@ Constraint::Constraint(char* pName, char* ptype)
 : remoteTable(""), parentTable("")
 {
 	sName = pName;
-	if (stricmp(ptype, "FOREIGN KEY") == 0)
+	if (strcasecmp(ptype, "FOREIGN KEY") == 0)
 		type = eForeignKey;
-	else if (stricmp(ptype, "PRIMARY KEY") == 0)
+	else if (strcasecmp(ptype, "PRIMARY KEY") == 0)
 		type = ePrimaryKey;
-	else if (stricmp(ptype, "UNIQUE") == 0)
+	else if (strcasecmp(ptype, "UNIQUE") == 0)
 		type = eUnique;
 }
 
