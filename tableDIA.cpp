@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/tableDIA.cpp,v $
- * revision:            $Revision: 1.4 $
- * last changes:        $Date: 2004/01/06 14:57:29 $
+ * revision:            $Revision: 1.5 $
+ * last changes:        $Date: 2004/01/26 08:45:03 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
