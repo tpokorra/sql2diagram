@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE database SYSTEM "datastructure.dtd">
+
+<database name="xxxx">
+	<group name="customer.sql">
+		<tablename name="abc.customer"/>
+		<tablename name="abc.address"/>
+	</group>
+	<group name="order_system.sql">
+		<tablename name="abc.customer"/>
+		<tablename name="abc.address"/>
+		<tablename name="abc.items"/>
+		<tablename name="abc.stock"/>
+		<tablename name="abc.cust_order"/>
+	</group>
+</database>
