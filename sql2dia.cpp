@@ -1,15 +1,16 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/sql2dia.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2004/01/04 16:19:36 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2004/01/04 17:51:24 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
 #include <iostream>
 #include <string>
-#include <getopt.h>
+
+#include "getopt.h"
 
 #include "mixed.h"
 #include "parser_cmn.h"
@@ -180,6 +181,8 @@ int main(int argc, char* argv[])
 			cout
 				<< "</database>" << endl;
 		} else if ( bDoProject) {
+			// Now what should we do with the project file???
+			// Open it and read the source files.
 		}
 	}
 
