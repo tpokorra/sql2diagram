@@ -6,9 +6,9 @@ CCOPT=
 LIBS=-lstdc++ -lxml2 
 CFLAGS=-I/usr/include/libxml2 -Wall
 
-SRC=attribute.cpp attributeDIA.cpp attributeHTML.cpp database.cpp databaseDIA.cpp databaseHTML.cpp mixed.cpp parsedia.cpp parser_cmn.cpp parsesql.cpp sql2dia.cpp table.cpp tableDIA.cpp tableHTML.cpp stringutils.cpp
+SRC=attribute.cpp attributeDIA.cpp attributeHTML.cpp database.cpp databaseDIA.cpp databaseHTML.cpp mixed.cpp parsedia.cpp parser_cmn.cpp parsesql.cpp sql2dia.cpp table.cpp tableDIA.cpp tableHTML.cpp
 
-OBJS=attribute.o attributeDIA.o attributeHTML.o database.o databaseDIA.o databaseHTML.o mixed.o parsedia.o parser_cmn.o parsesql.o sql2dia.o table.o tableDIA.o tableHTML.o stringutils.o
+OBJS=attribute.o attributeDIA.o attributeHTML.o database.o databaseDIA.o databaseHTML.o mixed.o parsedia.o parser_cmn.o parsesql.o sql2dia.o table.o tableDIA.o tableHTML.o
 
 .cpp.o:
 	$(CPP) -c $(CCOPT) $(CFLAGS) -o $@ $<
