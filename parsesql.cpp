@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/parsesql.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2003/12/24 12:51:31 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2004/01/04 16:19:36 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -259,6 +259,5 @@ bool ParserSQL::readSQL(string filename)
 		count ++;
 	}
 	close();
-	printf("read sql file %s ... done\n", filename.c_str());
 	return true;
 }

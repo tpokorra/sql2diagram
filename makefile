@@ -50,4 +50,3 @@ all:    sql2dia allmodules
 # After the line "# DO NOT DELETE" gccmakedep will add all lines to make sure
 # dependencies are handled correctly.
 # DO NOT DELETE
-

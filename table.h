@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/table.h,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2003/12/17 16:26:58 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2004/01/04 16:19:36 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -10,11 +10,12 @@
 #ifndef TABLE_H
 #define TABLE_H
 
-#include "mixed.h"
-
 class Table;
-class DataBase;
 class Constraint;
+
+#include "mixed.h"
+#include "database.h"
+#include "attribute.h"
 
 struct Point
 {
@@ -25,52 +26,6 @@ struct Point
 struct Item
 {
 	int column, y, height;
-};
-
-class List
-{
-public:
-	List() {}
-	List(const List& l) {}
-	vector<string> elements;
-};
-
-class Attribute
-{
-public:
-	Attribute(const Attribute& attr);
-	Attribute();
-	Attribute(char* sName);
-	void setComment(string s);
-	List& setType(const char* sType);
-	void setConstraint(char* sConstraint);
-	void setDefault(const char* sDefault);
-	void setCheck(const char* sCheck);
-	const string& getName() const;
-	string getType();
-	int getLineNr();
-	string getCheck() const;
-
-protected:
-	string sName, sComment;
-	string sType;
-	string sCheck;
-	List typeParam;
-	string sConstraint;
-	string sDefault;
-	int lineNr;
-};
-
-class PointerAttribute
-{
-public:
-	PointerAttribute(string relation, string attribute);
-	string getAttributeName();
-	string getAName(); // for href
-	string getTableName();
-private:
-	string sTable;
-	string sAttribute;
 };
 
 class PointerTable
@@ -172,45 +127,4 @@ protected:
 	bool displayed_already, displayed_already_inModule;
 };
 
-struct PosAssociation
-{
-	string id, obj_pos, obj_bb,
-		orth_points, orth_orient;
-	string connections[2];
-	int connectionPoints[2];
-};
-
-class DataBase
-{
-public:
-	Table& addTable(char* tablename);
-	void addLink(Constraint& foreignkey);
-	void addToCurrentDiagram(Constraint& foreignkey);
-
-	void prepareLinks();
-	void prepareDisplay(string module, bool repeatedRun);
-	Table& getTable(string name);
-	void resetSizePosition();
-	void setPosition(string& id, string& name, string& obj_pos, string& obj_bb,
-		string& elem_corner, string& elem_width, string& elem_height, bool visible);
-	void setPosAssociation(string& id, string& obj_pos, string& obj_bb,
-		string& orth_points, string& orth_orient,
-		string connections[2], int connectionPoints[2]);
-	void displayNonDisplayedTables();
-
-	bool isDisplayedOnCurrentDiagram(string table);
-
-	Table& getFromId(string id);
-	string getModule() const;
-	bool inTableList(const Table& tab) const;
-	Table& getAllTable(string name);
-
-protected:
-
-	string m_module, m_tableList;
-	vector<Table> tables;
-	vector<Table> allTables;
-	vector<PosAssociation> posAssociations;
-};
-
-#endif //TABLE_H
+#endif // TABLE_H

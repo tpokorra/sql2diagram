@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/mixed.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2003/12/17 16:26:58 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2004/01/04 16:19:36 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -107,3 +107,4 @@ void backup(const char* filename)
 		fclose(hfile);
 	}
 }
+

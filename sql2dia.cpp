@@ -1,12 +1,16 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/sql2dia.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2003/12/17 16:26:58 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2004/01/04 16:19:36 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
+#include <iostream>
+#include <string>
+#include <getopt.h>
+
 #include "mixed.h"
 #include "parser_cmn.h"
 #include "parsesql.h"
@@ -50,40 +54,134 @@ void process(string name, string prefix, FILE* Convertfile, string listTables=""
 	((DataBaseDIA*)&db)->outDiaPngCrop(Convertfile, name);
 }
 
+void Usage( char *argv0, int exit_val) {
+	cout
+		<< "Usage: " << endl
+		<< "  " << argv0 << " sql2dia <file with sql create script> <prefix of tables>" << endl
+		<< "  " << argv0 << " sql2dia -p project-file | --dump source-file(s)" << endl
+		<< endl
+		<< "Output format:" << endl
+		<< "\t[-d|--dump]    Generate a sample project file with given source file" << endl
+		<< "\t[-p|--project] Create/update diagrams according to given project file" << endl
+		<< endl
+		<< "Options:" << endl
+		<< "\t[-v|--verbose]  - make it verbose" << endl
+		<< "\t[-h|-?|--help]  - show this usage message" << endl
+		;
+	exit( exit_val);
+}
+
+string strProjectFile( "");
+
+void setProjectFile( string strIProjectFile)
+{
+	strProjectFile = strIProjectFile;
+}
+
+
 int main(int argc, char* argv[])
 {
-	ParserSQL sql(db);
-	string path, prefix;
-	if (argc != 3)
- 	{
-	        printf("sql2dia <file with sql create script> <prefix of tables>\n");
-        	return -1;
+	bool bDoProject = false;
+	bool bDoDump = false;
+
+	/* The options that can be given */
+	static struct option long_options[] = {
+		/* What to produce */
+		{"dump",     no_argument,       0, 'd'},
+		{"project",  no_argument,       0, 'p'},
+		/* Options */
+//		{"diagram-file",             required_argument, 0, 'F'},
+//		{"group",                    required_argument, 0, 'g'},
+		{"verbose",                  no_argument,       0, 'v'},
+		{"help",                     no_argument,       0, 'h'},
+		{0, 0, 0, 0}
+	};
+	/* getopt_long stores the option index here. */
+	int option_index = 0;
+	while ( 1) {
+		char c;
+		if ( ( c = getopt_long( argc, argv, "h?vpdF:g:",
+		                        long_options, &option_index)) == -1) {
+			break;
+		}
+		switch ( c) {
+			case 'h':										  /* help */
+			case '?':
+				Usage( argv[0], 0);
+				break;
+			case 'p':
+				setProjectFile( optarg);
+				bDoProject = true;
+				break;
+			case 'd':
+				bDoDump = true;
+				break;
+		}
 	}
 
-	path = argv[1];
-	prefix = argv[2];
+	// For backward compat. take arguments as the come...
+	if ( ( ! bDoDump)
+	&&   ( ! bDoProject) ) {
+		ParserSQL sql( db);
+		string path, prefix;
 
-	if (!sql.readSQL(path))
-	{
-		printf("problem reading sql create script file: %s\n", path.c_str());
-		exit(-1);
+		path = argv[1];
+		prefix = argv[2];
+
+		printf( "Reading sql files...\n");
+		if ( !sql.readSQL(path)) {
+			printf( "Problem reading sql create script file: %s\n", path.c_str());
+			return -1;
+		} else {
+			printf( "\tread sql file %s ... done\n", path.c_str());
+		}
+
+		printf( "Reading sql files done\n");
+
+		db.prepareLinks();
+		((DataBaseHTML*)&db)->prepareDisplay( "", false);
+		outHtml( prefix, prefix + ".html");
+
+		FILE* Convertfile;
+		Convertfile = fopen((prefix+"_tile.bat").c_str(), "wt");
+
+		process( prefix, prefix, Convertfile);
+
+		fclose( Convertfile);
+
+		db.displayNonDisplayedTables();
+	} else {
+		// The normal new processing
+		if ( bDoDump) {
+			// Create a sample project file for the given source file(s)
+			if ( NULL == argv[ optind]) {
+				Usage( argv[ 0], 1);
+			}
+			ParserSQL sql( db);
+			cout
+				<< "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>" << endl
+				<< "<!DOCTYPE database SYSTEM \"datastructure.dtd\">" << endl
+				<< endl
+				<< "<database name=\"xxxx\">" << endl;
+			for ( int i = optind; i < argc; i++) {
+				cout
+					<< "\t<group name=\"" << argv[ i] << "\">" << endl;
+				if ( !sql.readSQL( argv[ i])) {
+					cout << "Problem reading sql create script file: " << argv[ i] << endl;
+					return -1;
+				}
+				// For all tables read: dump their names in this group
+				cout
+					<< db;
+				// End of this group
+				cout
+					<< "\t</group>" << endl;
+			}
+			cout
+				<< "</database>" << endl;
+		} else if ( bDoProject) {
+		}
 	}
-
-	printf("reading sql files ... done\n");
-
-	db.prepareLinks();
-	((DataBaseHTML*)&db)->prepareDisplay("", false);
-	outHtml(prefix, prefix+".html");
-
-	FILE* Convertfile;
-	Convertfile = fopen((prefix+"_tile.bat").c_str(), "wt");
-
-	process(prefix, prefix, Convertfile);
-
-	fclose(Convertfile);
-
-	db.displayNonDisplayedTables();
 
 	return 0;
 }
-

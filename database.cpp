@@ -1,13 +1,16 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/database.cpp,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2003/12/17 16:26:57 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2004/01/04 16:19:36 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
+#include <iostream>
+
 #include "table.h"
+#include "database.h"
 
 void DataBase::addLink(Constraint& foreignkey)
 {
@@ -130,6 +133,7 @@ void DataBase::displayNonDisplayedTables()
 		if (!it->isDisplayedAlready())
 			printf("%s\n",it->getName().c_str());
 }
+
 bool DataBase::isDisplayedOnCurrentDiagram(string table)
 {
 	vector<Table>::iterator it;
@@ -138,7 +142,19 @@ bool DataBase::isDisplayedOnCurrentDiagram(string table)
 			return it->isVisible();
 	return false;
 }
+
 bool DataBase::inTableList(const Table& tab) const
 {
 	return m_tableList.find(string("[")+tab.getName()+"]") != string::npos;
+}
+
+ostream& operator<<( ostream& o, const DataBase& oDataBase)
+{
+	vector<Table>::const_iterator it;
+	for ( it = oDataBase.allTables.begin();
+	      it != oDataBase.allTables.end();
+	      it++) {
+		o << "\t\t<tablename name=\"" << it->getName() << "\">" << endl;
+	}
+	return o;
 }
