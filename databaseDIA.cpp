@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/databaseDIA.cpp,v $
- * revision:            $Revision: 1.4 $
- * last changes:        $Date: 2004/01/06 14:57:29 $
+ * revision:            $Revision: 1.5 $
+ * last changes:        $Date: 2004/01/26 08:22:21 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -14,13 +14,19 @@ void DataBaseDIA::prepareDisplay(string module, string tableList, bool repeatedR
 	vector<Table>::iterator it;
 	m_module = module;
 
+	printf( "DataBaseDIA::prepareDisplay(string module = %s, string tableList = %s, bool repeatedRun + %d)\n",
+			  module.c_str(), tableList.c_str(), repeatedRun);
+
 	tables.clear();
 	/* TODO : Maybe add regular expressions ( using "man regexp") */
 	for (it = allTables.begin(); it != allTables.end(); it++) {
 		if ( cmpModule(it->getModule(), m_module)
       || inTableList( *it, tableList)
       || ( module == "nondisplayed" && !it->isDisplayedAlready())) {
+			printf( "Taken into this diagram: %s\n", it->getName().c_str());
 			tables.push_back(*it);
+		} else {
+			printf( "Dropped: %s\n", it->getName().c_str());
 		}
 	}
 
