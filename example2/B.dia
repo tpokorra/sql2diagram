@@ -1,0 +1,1192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dia:diagram xmlns:dia="http://www.lysator.liu.se/~alla/dia/"><dia:diagramdata>
+<dia:attribute name="invisible"><dia:color val="#ffffff"/></dia:attribute><dia:attribute name="paper"><dia:composite type="paper"><dia:attribute name="name"><dia:string>#A3#</dia:string></dia:attribute><dia:attribute name="tmargin"><dia:real val="1"/></dia:attribute><dia:attribute name="bmargin"><dia:real val="1"/></dia:attribute><dia:attribute name="lmargin"><dia:real val="1"/></dia:attribute><dia:attribute name="rmargin"><dia:real val="1"/></dia:attribute><dia:attribute name="is_portrait"><dia:boolean val="true"/></dia:attribute><dia:attribute name="scaling"><dia:real val="1.00"/></dia:attribute><dia:attribute name="fitto"><dia:boolean val="false"/></dia:attribute></dia:composite></dia:attribute><dia:attribute name="grid"><dia:composite type="grid"><dia:attribute name="width_x"><dia:real val="1"/></dia:attribute><dia:attribute name="width_y"><dia:real val="1"/></dia:attribute><dia:attribute name="visible_x"><dia:int val="1"/></dia:attribute><dia:attribute name="visible_y"><dia:int val="1"/></dia:attribute></dia:composite></dia:attribute><dia:attribute name="guides"><dia:composite type="guides"><dia:attribute name="hguides"/><dia:attribute name="vguides"/></dia:composite></dia:attribute>
+<dia:attribute name="background"><dia:color val="#ffffff"/></dia:attribute><dia:attribute name="paper"><dia:composite type="paper"><dia:attribute name="name"><dia:string>#A3#</dia:string></dia:attribute><dia:attribute name="tmargin"><dia:real val="1"/></dia:attribute><dia:attribute name="bmargin"><dia:real val="1"/></dia:attribute><dia:attribute name="lmargin"><dia:real val="1"/></dia:attribute><dia:attribute name="rmargin"><dia:real val="1"/></dia:attribute><dia:attribute name="is_portrait"><dia:boolean val="true"/></dia:attribute><dia:attribute name="scaling"><dia:real val="1.00"/></dia:attribute><dia:attribute name="fitto"><dia:boolean val="false"/></dia:attribute></dia:composite></dia:attribute><dia:attribute name="grid"><dia:composite type="grid"><dia:attribute name="width_x"><dia:real val="1"/></dia:attribute><dia:attribute name="width_y"><dia:real val="1"/></dia:attribute><dia:attribute name="visible_x"><dia:int val="1"/></dia:attribute><dia:attribute name="visible_y"><dia:int val="1"/></dia:attribute></dia:composite></dia:attribute><dia:attribute name="guides"><dia:composite type="guides"><dia:attribute name="hguides"/><dia:attribute name="vguides"/></dia:composite></dia:attribute>
+</dia:diagramdata>
+<dia:layer name="Background" visible="true">
+<dia:object type="UML - Class" version="0" id="tab_AD_User">
+	<dia:attribute name="obj_pos"><dia:point val="13.05,30.75"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="13,30.7;22.45,35.2"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="13.05,30.75"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="9.35"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="19.80"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#AD_User#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#add8e6"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_User_ID NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#...#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string># #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_B_Bid">
+	<dia:attribute name="obj_pos"><dia:point val="31.80,19.04"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="31.75,18.99;45.4,30.69"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="31.80,19.04"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="13.55"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="10.20"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#B_Bid#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#ffffff"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_Bid_ID          NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#---------------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Client_ID      NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Org_ID         NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsActive          CHAR(1)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Created           DATE           #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#CreatedBy         NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Updated           DATE           #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#UpdatedBy         NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Name              NVARCHAR2(60)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_Topic_ID        NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_User_ID        NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsWillingToCommit CHAR(1)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_BuyerFunds_ID   NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#TextMsg           NVARCHAR2(2000)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PrivateNote       NVARCHAR2(2000)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_B_BidComment">
+	<dia:attribute name="obj_pos"><dia:point val="30.30,7.29"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="30.25,7.24;43.2,16.54"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="30.30,7.29"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="12.85"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="7.80"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#B_BidComment#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#ffffff"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_Topic_ID      NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_BidComment_ID NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#-------------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Client_ID    NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Org_ID       NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsActive        CHAR(1)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Created         DATE           #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#CreatedBy       NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Updated         DATE           #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#UpdatedBy       NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_User_ID      NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#TextMsg         NVARCHAR2(2000)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_B_Buyer">
+	<dia:attribute name="obj_pos"><dia:point val="30.80,31.99"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="30.75,31.94;42.3,41.24"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="30.80,31.99"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="11.45"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="7.80"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#B_Buyer#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#ffffff"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_User_ID   NUMBER(10, 0)  FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#---------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Client_ID NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Org_ID    NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsActive     CHAR(1)       #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Created      DATE          #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#CreatedBy    NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Updated      DATE          #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#UpdatedBy    NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Name         NVARCHAR2(60) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Description  NVARCHAR2(255)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#ValidTo      DATE          #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_B_BuyerFunds">
+	<dia:attribute name="obj_pos"><dia:point val="52.25,39.69"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="52.2,39.64;64.45,50.14"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="52.25,39.69"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="12.15"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="9.00"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#B_BuyerFunds#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#ffffff"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_BuyerFunds_ID NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#-----------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Client_ID    NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Org_ID       NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsActive        CHAR(1)      #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Created         DATE         #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#CreatedBy       NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Updated         DATE         #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#UpdatedBy       NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_User_ID      NUMBER(10, 0) FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#C_Order_ID      NUMBER(10, 0) FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#C_Payment_ID    NUMBER(10, 0) FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#CommittedAmt    NUMBER       #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#NonCommittedAmt NUMBER       #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_B_Offer">
+	<dia:attribute name="obj_pos"><dia:point val="13.25,0.34"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="13.2,0.29;26.85,11.99"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="13.25,0.34"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="13.55"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="10.20"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#B_Offer#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#ffffff"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_Offer_ID        NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#---------------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Client_ID      NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Org_ID         NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsActive          CHAR(1)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Created           DATE           #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#CreatedBy         NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Updated           DATE           #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#UpdatedBy         NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Name              NVARCHAR2(60)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_Topic_ID        NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_User_ID        NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsWillingToCommit CHAR(1)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_SellerFunds_ID  NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#TextMsg           NVARCHAR2(2000)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PrivateNote       NVARCHAR2(2000)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_B_Seller">
+	<dia:attribute name="obj_pos"><dia:point val="13.65,16.14"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="13.6,16.09;25.15,25.99"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="13.65,16.14"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="11.45"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="8.40"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#B_Seller#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#ffffff"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_User_ID   NUMBER(10, 0)  FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#---------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Client_ID NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Org_ID    NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsActive     CHAR(1)       #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Created      DATE          #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#CreatedBy    NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Updated      DATE          #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#UpdatedBy    NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Name         NVARCHAR2(60) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Description  NVARCHAR2(255)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#ValidTo      DATE          #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsInternal   CHAR(1)       #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_B_SellerFunds">
+	<dia:attribute name="obj_pos"><dia:point val="13.70,40.14"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="13.65,40.09;26.25,50.59"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="13.70,40.14"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="12.50"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="9.00"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#B_SellerFunds#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#ffffff"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_SellerFunds_ID NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#------------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Client_ID     NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Org_ID        NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsActive         CHAR(1)      #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Created          DATE         #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#CreatedBy        NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Updated          DATE         #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#UpdatedBy        NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_User_ID       NUMBER(10, 0) FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#C_Order_ID       NUMBER(10, 0) FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#C_Payment_ID     NUMBER(10, 0) FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#CommittedAmt     NUMBER       #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#NonCommittedAmt  NUMBER       #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_B_Topic">
+	<dia:attribute name="obj_pos"><dia:point val="52.30,17.84"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="52.25,17.79;66.25,33.09"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="52.30,17.84"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="13.90"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="13.80"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#B_Topic#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#ffffff"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_Topic_ID         NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#----------------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Client_ID       NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Org_ID          NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsActive           CHAR(1)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Created            DATE           #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#CreatedBy          NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Updated            DATE           #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#UpdatedBy          NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#DocumentNo         NVARCHAR2(30)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Name               NVARCHAR2(60)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Description        NVARCHAR2(255) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#TextMsg            NVARCHAR2(2000)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#TopicStatus        CHAR(2)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#TopicAction        CHAR(2)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#DecisionDate       DATE           #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsPublished        CHAR(1)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#TextDetails        CLOB           #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Processing         CHAR(1)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Processed          CHAR(1)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_TopicType_ID     NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_TopicCategory_ID NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_B_TopicCategory">
+	<dia:attribute name="obj_pos"><dia:point val="72.10,31.09"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="72.05,31.04;85.7,40.34"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="72.10,31.09"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="13.55"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="7.80"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#B_TopicCategory#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#ffffff"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_TopicCategory_ID NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#---------------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Client_ID       NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Org_ID          NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsActive           CHAR(1)       #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Created            DATE          #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#CreatedBy          NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Updated            DATE          #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#UpdatedBy          NUMBER(10, 0) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Name               NVARCHAR2(60) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Description        NVARCHAR2(255)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_TopicType_ID     NUMBER(10, 0)  FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_B_TopicType">
+	<dia:attribute name="obj_pos"><dia:point val="69.50,17.44"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="69.45,17.39;83.1,29.09"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="69.50,17.44"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="13.55"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="10.20"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#B_TopicType#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#ffffff"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#B_TopicType_ID    NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#---------------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Client_ID      NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AD_Org_ID         NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#IsActive          CHAR(1)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Created           DATE           #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#CreatedBy         NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Updated           DATE           #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#UpdatedBy         NUMBER(10, 0)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Name              NVARCHAR2(60)  #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Description       NVARCHAR2(255) #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#Help              NVARCHAR2(2000)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#AuctionType       CHAR(1)        #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#M_PriceList_ID    NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#M_Product_ID      NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#MProductMember_ID NUMBER(10, 0)   FK#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_C_Order">
+	<dia:attribute name="obj_pos"><dia:point val="31.70,42.10"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="31.65,42.05;41.1,46.55"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="31.70,42.10"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="9.35"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="43.80"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#C_Order#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#add8e6"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#C_Order_ID NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#...#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string># #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_C_Payment">
+	<dia:attribute name="obj_pos"><dia:point val="31.65,49.15"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="31.6,49.1;41.75,53.6"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="31.65,49.15"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="10.05"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="48.60"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#C_Payment#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#add8e6"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#C_Payment_ID NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#--------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#...#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string># #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_M_PriceList">
+	<dia:attribute name="obj_pos"><dia:point val="87.40,19.60"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="87.35,19.55;98.2,24.05"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="87.40,19.60"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="10.75"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="10.80"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#M_PriceList#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#add8e6"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#M_PriceList_ID NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#----------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#...#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string># #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Class" version="0" id="tab_M_Product">
+	<dia:attribute name="obj_pos"><dia:point val="87.75,28.10"/></dia:attribute>
+	<dia:attribute name="obj_bb"><dia:rectangle val="87.7,28.05;97.85,32.55"/></dia:attribute>
+	<dia:attribute name="elem_corner"><dia:point val="87.75,28.10"/></dia:attribute>
+	<dia:attribute name="elem_width"><dia:real val="10.05"/></dia:attribute>
+	<dia:attribute name="elem_height"><dia:real val="34.20"/></dia:attribute>
+	<dia:attribute name="name"><dia:string>#M_Product#</dia:string></dia:attribute>
+	<dia:attribute name="stereotype"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="comment"><dia:string>##</dia:string></dia:attribute>
+	<dia:attribute name="abstract"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_attributes"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="suppress_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_attributes"><dia:boolean val="true"/></dia:attribute>
+	<dia:attribute name="visible_operations"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="visible_comments"><dia:boolean val="false"/></dia:attribute>
+	<dia:attribute name="foreground_color"><dia:color val="#000000"/></dia:attribute>
+	<dia:attribute name="background_color"><dia:color val="#add8e6"/></dia:attribute>
+	<dia:attribute name="normal_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_font"><dia:font family="monospace" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="polymorphic_font"><dia:font family="monospace" style="8" name="Courier"/></dia:attribute>
+	<dia:attribute name="classname_font"><dia:font family="sans" style="80" name="Courier"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font"><dia:font family="sans" style="88" name="Courier"/></dia:attribute>
+	<dia:attribute name="comment_font"><dia:font family="monospace" style="0" name="Courier"/></dia:attribute>
+	<dia:attribute name="font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="polymorphic_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="abstract_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="classname_font_height"><dia:real val="0.800000"/></dia:attribute>
+	<dia:attribute name="abstract_classname_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="comment_font_height"><dia:real val="0.600000"/></dia:attribute>
+	<dia:attribute name="attributes">
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#PRIMARY KEY:#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#M_Product_ID NUMBER(10, 0)#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#--------------------------#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string>#...#</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+		<dia:composite type='umlattribute'><dia:attribute name='name'><dia:string># #</dia:string> </dia:attribute><dia:attribute name='type'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='value'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='comment'><dia:string>##</dia:string> </dia:attribute><dia:attribute name='visibility'><dia:enum val='3' /> </dia:attribute><dia:attribute name='abstract'><dia:boolean val='false' /> </dia:attribute><dia:attribute name='class_scope'><dia:boolean val='false' /> </dia:attribute></dia:composite>
+	</dia:attribute>
+	<dia:attribute name='operations' />
+	<dia:attribute name='template'>
+	<dia:boolean val='false' />
+	</dia:attribute>
+	<dia:attribute name='templates' />
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_Bid_BBuyer_BBid">
+	<dia:attribute name="obj_pos"><dia:point val="31.8,27.84" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="29.75,27.79;31.85,34.19" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="31.80,27.84" /> 
+<dia:point val="29.8,27.84" /> 
+<dia:point val="29.8,32.59" /> 
+<dia:point val="30.80,32.59" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_Bid" connection="32" />
+ <dia:connection handle="1" to="tab_B_Buyer" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_Bid_BBuyerFunds_BBid">
+	<dia:attribute name="obj_pos"><dia:point val="45.35,29.04" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="45.3,28.99;52.3,41.89" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="45.35,29.04" /> 
+<dia:point val="48.8001,29.04" /> 
+<dia:point val="48.8001,40.29" /> 
+<dia:point val="52.25,40.29" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_Bid" connection="37" />
+ <dia:connection handle="1" to="tab_B_BuyerFunds" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_Bid_BTopic_BBid">
+	<dia:attribute name="obj_pos"><dia:point val="45.35,27.24" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="45.3,18.39;52.35,28.84" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="45.35,27.24" /> 
+<dia:point val="50.35,27.24" /> 
+<dia:point val="50.35,18.44" /> 
+<dia:point val="52.30,18.44" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_Bid" connection="31" />
+ <dia:connection handle="1" to="tab_B_Topic" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_BidComment_ADUser_BidComment">
+	<dia:attribute name="obj_pos"><dia:point val="30.3,15.49" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="22.35,15.44;30.35,32.95" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="30.30,15.49" /> 
+<dia:point val="26.35,15.49" /> 
+<dia:point val="26.35,31.35" /> 
+<dia:point val="22.40,31.35" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_BidComment" connection="30" />
+ <dia:connection handle="1" to="tab_AD_User" connection="4" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_BidComment_BTopic_BBidComment">
+	<dia:attribute name="obj_pos"><dia:point val="43.15,9.49" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="43.1,9.44;52.35,20.04" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="43.15,9.49" /> 
+<dia:point val="47.725,9.49" /> 
+<dia:point val="47.725,18.44" /> 
+<dia:point val="52.30,18.44" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_BidComment" connection="11" />
+ <dia:connection handle="1" to="tab_B_Topic" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_Buyer_ADUser_BBuyer">
+	<dia:attribute name="obj_pos"><dia:point val="30.8,34.19" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="22.35,31.3;30.85,35.79" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="30.80,34.19" /> 
+<dia:point val="26.6,34.19" /> 
+<dia:point val="26.6,31.35" /> 
+<dia:point val="22.40,31.35" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_Buyer" connection="10" />
+ <dia:connection handle="1" to="tab_AD_User" connection="4" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_BuyerFunds_BBuyer_BBuyerFunds">
+	<dia:attribute name="obj_pos"><dia:point val="52.25,47.29" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="42.2,32.54;52.3,48.89" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="52.25,47.29" /> 
+<dia:point val="44.1001,47.29" /> 
+<dia:point val="44.1001,32.59" /> 
+<dia:point val="42.25,32.59" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_BuyerFunds" connection="28" />
+ <dia:connection handle="1" to="tab_B_Buyer" connection="4" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_BuyerFunds_COrder_BBuyersFunds">
+	<dia:attribute name="obj_pos"><dia:point val="52.25,47.89" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="41,42.65;52.3,49.49" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="52.25,47.89" /> 
+<dia:point val="42.95,47.89" /> 
+<dia:point val="42.95,42.70" /> 
+<dia:point val="41.05,42.70" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_BuyerFunds" connection="30" />
+ <dia:connection handle="1" to="tab_C_Order" connection="4" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_BuyerFunds_CPayment_BBuyerFunds">
+	<dia:attribute name="obj_pos"><dia:point val="52.25,48.49" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="31.6,48.44;52.3,51.35" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="52.25,48.49" /> 
+<dia:point val="47,48.49" /> 
+<dia:point val="47,49.75" /> 
+<dia:point val="41.70,49.75" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_BuyerFunds" connection="32" />
+ <dia:connection handle="1" to="tab_C_Payment" connection="4" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_Offer_BSeller_BOffer">
+	<dia:attribute name="obj_pos"><dia:point val="13.25,9.14" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="12.2,9.09;13.7,18.34" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="13.25,9.14" /> 
+<dia:point val="12.25,9.14" /> 
+<dia:point val="12.25,16.74" /> 
+<dia:point val="13.65,16.74" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_Offer" connection="32" />
+ <dia:connection handle="1" to="tab_B_Seller" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_Offer_BSellerFunds_BOffer">
+	<dia:attribute name="obj_pos"><dia:point val="26.8,10.34" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="13.65,10.29;28.3,42.34" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="26.80,10.34" /> 
+<dia:point val="28.2,10.34" /> 
+<dia:point val="28.2,40.74" /> 
+<dia:point val="26.20,40.74" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_Offer" connection="37" />
+ <dia:connection handle="1" to="tab_B_SellerFunds" connection="4" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_Offer_BTopic_BOffer">
+	<dia:attribute name="obj_pos"><dia:point val="26.8,8.54" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="26.75,4.54;52.35,20.04" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="26.80,8.54" /> 
+<dia:point val="28.5,8.54" /> 
+<dia:point val="28.5,4.59" /> 
+<dia:point val="47.85,4.59" /> 
+<dia:point val="47.85,18.44" /> 
+<dia:point val="52.30,18.44" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_Offer" connection="31" />
+ <dia:connection handle="1" to="tab_B_Topic" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_Seller_ADUser_BSeller">
+	<dia:attribute name="obj_pos"><dia:point val="13.65,18.34" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="12,18.29;13.7,32.95" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="13.65,18.34" /> 
+<dia:point val="12.05,18.34" /> 
+<dia:point val="12.05,31.35" /> 
+<dia:point val="13.05,31.35" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_Seller" connection="10" />
+ <dia:connection handle="1" to="tab_AD_User" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_SellerFunds_BSeller_BSellerFunds">
+	<dia:attribute name="obj_pos"><dia:point val="13.7,47.74" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="11.1,16.69;25.15,49.34" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="13.70,47.74" /> 
+<dia:point val="11.15,47.74" /> 
+<dia:point val="11.15,16.74" /> 
+<dia:point val="13.65,16.74" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_SellerFunds" connection="28" />
+ <dia:connection handle="1" to="tab_B_Seller" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_SellerFunds_COrder_BSellerFunds">
+	<dia:attribute name="obj_pos"><dia:point val="13.7,48.34" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="13.65,42.65;31.75,49.94" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="26.20,48.34" /> 
+<dia:point val="30.15,48.34" /> 
+<dia:point val="30.15,42.70" /> 
+<dia:point val="31.70,42.70" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_SellerFunds" connection="31" />
+ <dia:connection handle="1" to="tab_C_Order" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_SellerFunds_CPayment_BSellerFunds">
+	<dia:attribute name="obj_pos"><dia:point val="13.7,48.94" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="13.65,48.89;31.7,51.35" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="26.20,48.94" /> 
+<dia:point val="30.65,48.94" /> 
+<dia:point val="30.65,49.75" /> 
+<dia:point val="31.65,49.75" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_SellerFunds" connection="33" />
+ <dia:connection handle="1" to="tab_C_Payment" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_Topic_BTopicCategory_BTopic">
+	<dia:attribute name="obj_pos"><dia:point val="66.2,32.64" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="66.15,31.64;72.15,34.24" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="66.20,32.64" /> 
+<dia:point val="71.1,32.64" /> 
+<dia:point val="71.1,31.69" /> 
+<dia:point val="72.10,31.69" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_Topic" connection="53" />
+ <dia:connection handle="1" to="tab_B_TopicCategory" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_Topic_BTopicType_BTopic">
+	<dia:attribute name="obj_pos"><dia:point val="66.2,32.04" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="66.15,17.99;69.55,33.64" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="66.20,32.04" /> 
+<dia:point val="67.95,32.04" /> 
+<dia:point val="67.95,18.04" /> 
+<dia:point val="69.50,18.04" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_Topic" connection="51" />
+ <dia:connection handle="1" to="tab_B_TopicType" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_TopicCategory_BTopicType_BTopicCategory">
+	<dia:attribute name="obj_pos"><dia:point val="72.1,39.89" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="68.45,17.99;72.15,41.49" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="72.10,39.89" /> 
+<dia:point val="68.5,39.89" /> 
+<dia:point val="68.5,18.04" /> 
+<dia:point val="69.50,18.04" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_TopicCategory" connection="32" />
+ <dia:connection handle="1" to="tab_B_TopicType" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_TopicType_MPriceList_BTopicType">
+	<dia:attribute name="obj_pos"><dia:point val="83.05,27.44" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="83,20.15;87.45,29.04" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="83.05,27.44" /> 
+<dia:point val="85.225,27.44" /> 
+<dia:point val="85.225,20.20" /> 
+<dia:point val="87.40,20.20" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_TopicType" connection="37" />
+ <dia:connection handle="1" to="tab_M_PriceList" connection="3" />
+ </dia:connections>
+</dia:object>
+<dia:object type="UML - Association" version="0" id="B_TopicType_MProduct_BTopicType">
+	<dia:attribute name="obj_pos"><dia:point val="83.05,28.04" /></dia:attribute>	<dia:attribute name="obj_bb"><dia:rectangle val="83,27.99;87.8,30.3" /> </dia:attribute>
+<dia:attribute name="orth_points">
+<dia:point val="83.05,28.04" /> 
+<dia:point val="85.4,28.04" /> 
+<dia:point val="85.4,28.70" /> 
+<dia:point val="87.75,28.70" /> 
+</dia:attribute>
+<dia:attribute name="orth_orient">
+<dia:enum val="0" /> 
+<dia:enum val="1" /> 
+<dia:enum val="0" /> 
+</dia:attribute>
+<dia:attribute name="name"><dia:string>##</dia:string> </dia:attribute>
+<dia:attribute name="direction"><dia:enum val="0" /> </dia:attribute><dia:attribute name="ends"><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute>
+<dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite><dia:composite><dia:attribute name="role"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="multiplicity"><dia:string>##</dia:string> </dia:attribute><dia:attribute name="arrow"><dia:boolean val="false" /> </dia:attribute><dia:attribute name="aggregate"><dia:enum val="0" /> </dia:attribute></dia:composite></dia:attribute>
+<dia:connections>
+<dia:connection handle="0" to="tab_B_TopicType" connection="39" />
+ <dia:connection handle="1" to="tab_M_Product" connection="3" />
+ </dia:connections>
+</dia:object>
+</dia:layer>
+<dia:layer name="invisible" visible="false">
+</dia:layer>
+</dia:diagram>
