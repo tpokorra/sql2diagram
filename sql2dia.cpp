@@ -1,11 +1,14 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/sql2dia.cpp,v $
- * revision:            $Revision: 1.6 $
- * last changes:        $Date: 2004/01/04 22:36:39 $
+ * revision:            $Revision: 1.7 $
+ * last changes:        $Date: 2004/01/05 14:27:48 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
+ * Example parameters
+ * 	-p example\example.xml
+ * 	-d example/customer.sql example/order_system.sql >example/example.xml
  ********************************************************************** */
 #include <iostream>
 #include <string>
@@ -132,34 +135,37 @@ void DumpExampleProject( int argc, char* argv[]) {
 		<< "</database>" << endl;
 }
 
-void RunProject( char* szProject, int argc, char* argv[]) {
-	// Now what should we do with the project file???
-	// Open it and read the source files.
-	xmlDocPtr doc = xmlParseFile( szProject);
+void CheckProjectFile( char* szProject, xmlDocPtr* doc) {
+	*doc = xmlParseFile( szProject);
 
-	if (doc == NULL ) {
+	if ( (*doc) == NULL ) {
 		cerr << "Document not parsed successfully." << endl;
 		exit( -1);
 	}
 	xmlNodePtr cur;
-	cur = xmlDocGetRootElement( doc);
+	cur = xmlDocGetRootElement( *doc);
 
 	if ( cur == NULL) {
 		cerr << "empty document" << endl;
-		xmlFreeDoc( doc);
+		xmlFreeDoc( *doc);
 		exit( -2);
 	}
 
 	if ( 0 != xmlStrcmp( cur->name, (const xmlChar *) "database")) {
 		cerr << "document of the wrong type, root node != database" << endl;
-		xmlFreeDoc( doc);
+		xmlFreeDoc( *doc);
 		exit( -3);
 	}
+}
+
+void RunProject( char* szProject, int argc, char* argv[]) {
+	// Open the project file and check the structure
+	xmlDocPtr doc;
+	CheckProjectFile( szProject, &doc);
 
 	// Read all the source-files
 	ParserSQL sql( db);
-
-	cur = xmlDocGetRootElement(doc);
+	xmlNodePtr cur = xmlDocGetRootElement(doc);
 	cur = cur->xmlChildrenNode;
 	while ( cur != NULL) {
 		if ( 0 == xmlStrcmp(cur->name, (const xmlChar *)"source")) {
@@ -176,6 +182,8 @@ void RunProject( char* szProject, int argc, char* argv[]) {
 	}
 
 	// Group the tables.
+	db.prepareLinks();
+	((DataBaseHTML*)&db)->prepareDisplay( "", false);
 	cur = xmlDocGetRootElement(doc);
 	cur = cur->xmlChildrenNode;
 	while ( cur != NULL) {
@@ -183,6 +191,26 @@ void RunProject( char* szProject, int argc, char* argv[]) {
 			xmlChar* szName = xmlGetProp( cur, (xmlChar*)"name");
 			cout
 				<< "Group: " << (char*)szName << endl;
+			string strGroup = (char*)szName;
+      	FILE* Convertfile;
+      	Convertfile = fopen(( strGroup + "_tile.bat").c_str(), "wt");
+			xmlNodePtr tables = cur->xmlChildrenNode;
+			// Run over tables...
+			string strTableList( "");
+			while ( tables != NULL) {
+				if ( 0 == xmlStrcmp(tables->name, (const xmlChar *)"tablename")) {
+					xmlChar* szName = xmlGetProp( tables, (xmlChar*)"name");
+					if ( strTableList.length() > 0) {
+						strTableList = strTableList + string( ",");
+					}
+					strTableList = strTableList + string( "[") + (char*)szName + "]";
+				}
+				tables = tables->next;
+			}
+			cout
+				<< "strTableList = " << strTableList << endl;
+			process( strGroup, "", Convertfile, strTableList);
+      	fclose( Convertfile);
 			//xmlFree( szName);
 		}
 		cur = cur->next;

@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/database.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2004/01/04 20:47:00 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2004/01/05 14:27:48 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -16,27 +16,27 @@ void DataBase::addLink(Constraint& foreignkey)
 {
 	string destTable = foreignkey.getRemoteTableName();
 	Table& tab = getAllTable(destTable);
-	if (tab.getName() == destTable)
-	{
+	if (tab.getName() == destTable) {
 		tab.addLink(foreignkey);
 	}
 }
 void DataBase::prepareLinks()
 {
 	vector<Table>::iterator it;
-	for (it = allTables.begin(); it != allTables.end(); it++)
+	for (it = allTables.begin(); it != allTables.end(); it++) {
 		it->prepareLinks(*this);
+	}
 }
 
 void DataBase::addToCurrentDiagram(Constraint& foreignkey)
 {
 	string destTable = foreignkey.getRemoteTableName();
 	Table& tab = getTable(destTable);
-	if (tab.getName() != destTable) // not already there
-	{
+	if ( tab.getName() != destTable) { // not already there
 		Table& tab = getAllTable(destTable);
-		if (tab.getName().length() != 0)
+		if (tab.getName().length() != 0) {
 			tables.push_back(tab);
+		}
 	}
 }
 
@@ -44,18 +44,23 @@ void DataBase::resetSizePosition()
 {
 	vector<Table>::iterator it;
 	string empty;
-	for (it = allTables.begin(); it != allTables.end(); it++)
-			it->setPosition(empty, empty, empty, empty, empty, empty, true);
+	for ( it = allTables.begin();
+			it != allTables.end();
+			it++) {
+		it->setPosition(empty, empty, empty, empty, empty, empty, true);
+	}
 }
 
 void DataBase::setPosition(string& id, string& name, string& obj_pos, string& obj_bb,
 	string& elem_corner, string& elem_width, string& elem_height, bool visible)
 {
 	vector<Table>::iterator it;
-	for (it = allTables.begin(); it != allTables.end(); it++)
-	{
-		if (it->getName() == name)
+	for ( it = allTables.begin();
+			it != allTables.end();
+			it++) {
+		if (it->getName() == name) {
 			it->setPosition(id, obj_pos, obj_bb, elem_corner, elem_width, elem_height, visible);
+		}
 	}
 }
 
@@ -79,23 +84,26 @@ void DataBase::setPosAssociation(string& id, string& obj_pos, string& obj_bb,
 Table& DataBase::getFromId(string id)
 {
 	vector<Table>::iterator it;
-	for (it = tables.begin(); it != tables.end(); it++)
-	{
-		if (it->getId() == id)
+	for ( it = tables.begin();
+			it != tables.end();
+			it++) {
+		if (it->getId() == id) {
 			return *it;
+		}
 	}
 	static Table table("");
 	return table;
 }
 
-
 Table& DataBase::getTable(string name)
 {
 	vector<Table>::iterator it;
-	for (it = tables.begin(); it != tables.end(); it++)
-	{
-		if (it->getName() == name)
+	for ( it = tables.begin();
+			it != tables.end();
+			it++) {
+		if ( it->getName() == name) {
 			return *it;
+		}
 	}
 	static Table table("");
 	return table;
@@ -104,10 +112,10 @@ Table& DataBase::getTable(string name)
 Table& DataBase::getAllTable(string name)
 {
 	vector<Table>::iterator it;
-	for (it = allTables.begin(); it != allTables.end(); it++)
-	{
-		if (it->getName() == name)
-		{
+	for ( it = allTables.begin();
+			it != allTables.end();
+			it++) {
+		if ( it->getName() == name) {
 			return *it;
 		}
 	}
@@ -129,23 +137,29 @@ Table& DataBase::addTable(char* tablename)
 void DataBase::displayNonDisplayedTables()
 {
 	vector<Table>::iterator it;
-	for (it = allTables.begin(); it != allTables.end(); it++)
-		if (!it->isDisplayedAlready())
-			printf("%s\n",it->getName().c_str());
+	for ( it = allTables.begin();
+			it != allTables.end();
+			it++) {
+		if ( !it->isDisplayedAlready()) {
+			printf( "%s\n", it->getName().c_str());
+		}
+	}
 }
 
 bool DataBase::isDisplayedOnCurrentDiagram(string table)
 {
 	vector<Table>::iterator it;
-	for (it = tables.begin(); it != tables.end(); it++)
-		if (it->getName() == table)
+	for (it = tables.begin(); it != tables.end(); it++) {
+		if (it->getName() == table) {
 			return it->isVisible();
+		}
+	}
 	return false;
 }
 
-bool DataBase::inTableList(const Table& tab) const
+bool DataBase::inTableList(const Table& tab, string strTableList) const
 {
-	return m_tableList.find(string("[")+tab.getName()+"]") != string::npos;
+	return strTableList.find( string( "[") + tab.getName() + "]") != string::npos;
 }
 
 ostream& operator<<( ostream& o, const DataBase& oDataBase)

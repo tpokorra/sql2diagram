@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/attribute.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2004/01/04 16:19:36 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2004/01/05 14:27:48 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -29,8 +29,9 @@ string PointerAttribute::getTableName()
 
 string PointerAttribute::getAName()
 {
-	if (sAttribute != "")
-		return getModuleFile(sTable)+".html#"+sTable + "_" + sAttribute;
+	if (sAttribute != "") {
+		return getModuleFile( sTable) + ".html#" + sTable + "_" + sAttribute;
+	}
 	return "";
 }
 
@@ -45,15 +46,16 @@ string PointerTable::getTableName()
 }
 
 Constraint::Constraint(char* pName, char* ptype)
-: remoteTable(""), parentTable("")
+: parentTable(""), remoteTable("")
 {
 	sName = pName;
-	if (strcasecmp(ptype, "FOREIGN KEY") == 0)
+	if (strcasecmp(ptype, "FOREIGN KEY") == 0) {
 		type = eForeignKey;
-	else if (strcasecmp(ptype, "PRIMARY KEY") == 0)
+	} else if (strcasecmp(ptype, "PRIMARY KEY") == 0) {
 		type = ePrimaryKey;
-	else if (strcasecmp(ptype, "UNIQUE") == 0)
+	} else if (strcasecmp(ptype, "UNIQUE") == 0) {
 		type = eUnique;
+	}
 }
 
 Constraint& Constraint::operator=(const Constraint& c)
@@ -73,8 +75,9 @@ Constraint& Constraint::operator=(const Constraint& c)
 
 string Constraint::getFirstLocalAttribute()
 {
-	if (localAttributes.elements.size() > 0)
+	if (localAttributes.elements.size() > 0) {
 		return *localAttributes.elements.begin();
+	}
 	return "";
 }
 
@@ -109,9 +112,11 @@ int Constraint::isInLocalAttr(const string& attr)
 	vector<string>::iterator it;
 	int pos = 0;
 
-	for (it = localAttributes.elements.begin(); it != localAttributes.elements.end(); it++, pos++)
-		if (*it == attr)
+	for (it = localAttributes.elements.begin(); it != localAttributes.elements.end(); it++, pos++) {
+		if (*it == attr) {
 			return pos;
+		}
+	}
 	return -1;
 }
 
@@ -141,8 +146,9 @@ void Constraint::setRemoteColumns(string ParentTable, string RemoteTable, List& 
 	vector<string>::iterator it;
 	parentTable = PointerTable(ParentTable);
 	remoteTable = PointerTable(RemoteTable);
-	for (it = columns.elements.begin(); it != columns.elements.end(); it++)
+	for (it = columns.elements.begin(); it != columns.elements.end(); it++) {
 		remoteAttributes.push_back(PointerAttribute(RemoteTable, *it));
+	}
 }
 
 Attribute::Attribute()
@@ -211,18 +217,16 @@ int Attribute::getLineNr()
 string Attribute::getType()
 {
 	string type = sType;
-	if (typeParam.elements.size()!=0)
-	{
+	if ( typeParam.elements.size() != 0) {
 		type += "(";
 		vector<string>::iterator it;
-		for (it = typeParam.elements.begin(); it != typeParam.elements.end(); it++)
-		{
-			if (it != typeParam.elements.begin())
+		for (it = typeParam.elements.begin(); it != typeParam.elements.end(); it++) {
+			if (it != typeParam.elements.begin()) {
 				type += ", ";
+			}
 			type += *it;
 		}
 		type += ")";
 	}
 	return type;
 }
-

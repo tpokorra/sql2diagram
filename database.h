@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/database.h,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/04 16:19:36 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2004/01/05 14:27:48 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  *
  *
@@ -43,14 +43,14 @@ public:
 
 	Table& getFromId(string id);
 	string getModule() const;
-	bool inTableList(const Table& tab) const;
+	bool inTableList(const Table& tab, string strTableList) const;
 	Table& getAllTable(string name);
 
 	// For export to a project file:
 	friend ostream& operator<<( ostream& o, const DataBase& oDataBase);
 protected:
 
-	string m_module, m_tableList;
+	string m_module;
 	vector<Table> tables;
 	vector<Table> allTables;
 	vector<PosAssociation> posAssociations;

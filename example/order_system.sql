@@ -1,4 +1,4 @@
-CREATE TABLE abc.items (
+CREATE TABLE items (
 	id number,
 	name varchar( 50),
 	descr varchar( 70),
@@ -6,7 +6,7 @@ CREATE TABLE abc.items (
 		PRIMARY KEY ( id)
 );
 
-CREATE TABLE abc.stock (
+CREATE TABLE stock (
 	id number,
 	item number,
 	amount number,
@@ -15,10 +15,10 @@ CREATE TABLE abc.stock (
 		PRIMARY KEY ( id),
 	CONSTRAINT stock_fk1
 		FOREIGN KEY ( item)
-		REFERENCES abc.items ( id)
+		REFERENCES items ( id)
 );
 
-CREATE TABLE abc.cust_order (
+CREATE TABLE cust_order (
 	id number,
 	customer number,
 	item number,
@@ -27,8 +27,8 @@ CREATE TABLE abc.cust_order (
 		PRIMARY KEY ( id),
 	CONSTRAINT cust_order_fk1
 		FOREIGN KEY ( customer)
-		REFERENCES abc.customer ( id),
+		REFERENCES customer ( id),
 	CONSTRAINT cust_order_fk2
 		FOREIGN KEY ( item)
-		REFERENCES abc.items ( id)
+		REFERENCES items ( id)
 );
