@@ -107,4 +107,4 @@ AC_SUBST(LIBXML_CFLAGS)
 dnl -----------------------------------------------------------------------
 
 
-AC_OUTPUT(Makefile src/Makefile example/Makefile doc/Makefile)
+AC_OUTPUT(Makefile src/Makefile example/Makefile doc/Makefile win32/Makefile)
