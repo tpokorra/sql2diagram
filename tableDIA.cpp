@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/tableDIA.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2004/01/05 14:27:48 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2004/01/06 14:57:29 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -184,11 +184,9 @@ void TableDIA::prepareDisplay(DataBase &db, string& module, bool repeatedRun)
 	outDia(0, "", db, repeatedRun);
 }
 
-bool TableDIA::outDiaConstraints(FILE* file, DataBase& db)
+bool TableDIA::outDiaConstraints(FILE* file, DataBase& db, const string& strLocTableList)
 {
 	vector<Constraint>::iterator it, it2;
-	/* TODO (gkokmdam#1#): Help! I don't know where the TableList should come from */
-	string strLocTableList = "";
 	if ( cmpModule( getModule(), db.getModule())
 	|| db.inTableList( *this, strLocTableList)) {
 		for ( it = constraints.begin(); it != constraints.end(); it++) {

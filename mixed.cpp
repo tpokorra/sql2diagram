@@ -1,14 +1,16 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/mixed.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2004/01/05 14:27:48 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2004/01/06 14:57:29 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
 #include "mixed.h"
 #include <stdlib.h>
+#include <sys/types.h>
+#include <dirent.h>
 
 string trim(const string& s)
 {
@@ -79,18 +81,35 @@ string floattostr( float v)
 
 void backup(const char* filename)
 {
+	DIR* bak_dir;
+	if ( ( bak_dir = opendir( "bak"))) {
+		// Nothing to do for us here, the dir is already there...
+		closedir( bak_dir);
+	} else {
+		if ( ENOENT == errno) {
+			// It is not there, let us make it now.
+			system( "mkdir bak");
+			// And to check if we succeeded, just run us self again... ;-)
+			backup( filename);
+		} else {
+			// Stop when we cannot make the dir...
+			printf( "Cannot backup %s\n", filename);
+			exit( -10);
+		}
+	}
 	int count = 0;
 	string name;
 	FILE* rfile, *hfile;
-	system("mkdir bak");
-	name += "bak/"+string(filename)+inttostr(count) + ".dia";
+	name += "bak/" + string( filename) + inttostr( count) + ".dia";
+	// See if we can find a file that is not already there.
 	while ( ( hfile = fopen( name.c_str(), "rb") ) != NULL) {
 		fclose( hfile);
 		name = "";
 		name += "bak/" + string( filename) + inttostr( count) + ".bak";
 		count++;
 	}
-	hfile = fopen(name.c_str(), "wb");
+	// Copy the given file
+	hfile = fopen( name.c_str(), "wb");
 	if ( hfile != 0) {
 		rfile = fopen( filename, "rb");
 		if ( rfile != 0) {
@@ -103,6 +122,12 @@ void backup(const char* filename)
 			fclose( rfile);
 		}
 		fclose( hfile);
+	} else {
+		// Stop when we cannot make the dir...
+		char* szMsg = new char[ 20 + strlen( filename) + 4 + name.length()];
+		sprintf( szMsg, "Cannot backup %s to %s", filename, name.c_str());
+		perror( szMsg);
+		exit( -10);
 	}
 }
 

@@ -1,16 +1,13 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/databaseDIA.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2004/01/05 14:27:48 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2004/01/06 14:57:29 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
 #include "dia.h"
-#ifdef _USE_REGEXP_
-  #include <boost/regex.hpp>
-#endif
 
 void DataBaseDIA::prepareDisplay(string module, string tableList, bool repeatedRun)
 {
@@ -18,22 +15,11 @@ void DataBaseDIA::prepareDisplay(string module, string tableList, bool repeatedR
 	m_module = module;
 
 	tables.clear();
-#ifdef _USE_REGEXP_
-	boost::regex e_mod( m_module.c_str());
-	printf( "DataBaseDIA::prepareDisplay for %s\n", m_module.c_str());
-#else
-	printf( "DataBaseDIA::prepareDisplay for %s (no regexp++)\n", m_module.c_str());
-#endif
+	/* TODO : Maybe add regular expressions ( using "man regexp") */
 	for (it = allTables.begin(); it != allTables.end(); it++) {
-#ifdef _USE_REGEXP_
-#pragma message "Using regular expressions!"
-		if ( boost::regex_match(it->getModule(), e_mod) || (module == "nondisplayed" && !it->isDisplayedAlready())) {
-#else
-#pragma message "No regular expressions will be used"
 		if ( cmpModule(it->getModule(), m_module)
       || inTableList( *it, tableList)
       || ( module == "nondisplayed" && !it->isDisplayedAlready())) {
-#endif
 			tables.push_back(*it);
 		}
 	}
@@ -103,7 +89,7 @@ void DataBaseDIA::outDiaPngCrop(FILE* file, string diagramname)
 	}
 }
 
-void DataBaseDIA::outDia(FILE* file, bool repeatedRun)
+void DataBaseDIA::outDia(FILE* file, bool repeatedRun, const string& strLocTableList)
 {
 	vector<Table>::iterator it;
 	Table::resetColumn(-1);
@@ -136,7 +122,7 @@ void DataBaseDIA::outDia(FILE* file, bool repeatedRun)
 				it != tables.end();
 				it++) {
 			Table& tab = *it;
-			((TableDIA*)&tab)->outDiaConstraints(file, *this);
+			((TableDIA*)&tab)->outDiaConstraints(file, *this, strLocTableList);
 		}
 	}
 

@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/Attic/sql2dia.cpp,v $
- * revision:            $Revision: 1.7 $
- * last changes:        $Date: 2004/01/05 14:27:48 $
+ * revision:            $Revision: 1.8 $
+ * last changes:        $Date: 2004/01/06 14:57:29 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -41,20 +41,21 @@ void process(string name, string prefix, FILE* Convertfile, string listTables=""
 	FILE* diaFile;
 	bool positionsRead = false;
 
-	printf("in work: %s\n", name.c_str());
+	printf("Processing: %s\n", name.c_str());
+	printf("\tbackup: %s\n", (name+".dia").c_str());
 	backup((name+".dia").c_str());
+	printf("\tbackup done: %s\n", (name+".dia").c_str());
 	db.resetSizePosition();
 	ParserDIA dia(db);
-	if (dia.readSizePosition(name+".dia"))
-	{
-		printf("  read existing positions: OK\n");
+	if ( dia.readSizePosition(name+".dia")) {
+		printf( "\tread existing positions: OK\n");
 		positionsRead = true;
 	}
 	DataBaseDIA* dbdia = (DataBaseDIA*)&db;
 	dbdia->prepareDisplay(prefix, listTables, positionsRead);
 	diaFile = fopen((name+".dia").c_str(), "wt");
-	dbdia->outDia(diaFile, positionsRead);
-	printf("  dia file written: OK\n");
+	dbdia->outDia(diaFile, positionsRead, listTables);
+	printf("\tdia file written: OK\n");
 	fclose(diaFile);
 	((DataBaseHTML*)&db)->outHtmlMap(name, prefix);
 	((DataBaseDIA*)&db)->outDiaPngCrop(Convertfile, name);
@@ -80,6 +81,10 @@ void Usage( char *argv0, int exit_val) {
 void BackwardCompat( int argc, char* argv[]) {
 	ParserSQL sql( db);
 	string path, prefix;
+
+	if ( argc < 3) {
+		Usage( argv[0], 0);
+	}
 
 	path = argv[1];
 	prefix = argv[2];
@@ -110,13 +115,14 @@ void BackwardCompat( int argc, char* argv[]) {
 
 void DumpExampleProject( int argc, char* argv[]) {
 	// Create a sample project file for the given source file(s)
-	ParserSQL sql( db);
 	cout
 		<< "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>" << endl
 		<< "<!DOCTYPE database SYSTEM \"datastructure.dtd\">" << endl
 		<< endl
 		<< "<database name=\"xxxx\">" << endl;
 	for ( int i = optind; i < argc; i++) {
+		DataBase db;
+		ParserSQL sql( db);
 		cout
 			<< "\t<source filename=\"" << argv[ i] << "\" type=\"sql\"/>" << endl
 			<< "\t<group name=\"" << argv[ i] << "\">" << endl;
@@ -207,8 +213,6 @@ void RunProject( char* szProject, int argc, char* argv[]) {
 				}
 				tables = tables->next;
 			}
-			cout
-				<< "strTableList = " << strTableList << endl;
 			process( strGroup, "", Convertfile, strTableList);
       	fclose( Convertfile);
 			//xmlFree( szName);

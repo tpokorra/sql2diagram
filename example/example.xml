@@ -2,14 +2,14 @@
 <!DOCTYPE database SYSTEM "datastructure.dtd">
 
 <database name="xxxx">
-	<source filename="example/customer.sql" type="sql"/>
-	<group name="example/customer.sql">
+	<source filename="customer.sql" type="sql"/>
+	<group name="customer.sql">
 		<tablename name="customer"/>
 		<tablename name="country"/>
 		<tablename name="address"/>
 	</group>
-	<source filename="example/order_system.sql" type="sql"/>
-	<group name="example/order_system.sql">
+	<source filename="order_system.sql" type="sql"/>
+	<group name="order_system.sql">
 		<tablename name="customer"/>
 		<tablename name="items"/>
 		<tablename name="stock"/>

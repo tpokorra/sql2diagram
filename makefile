@@ -1,7 +1,6 @@
 sqlfile=scheme.ddl
 CC=gcc
 CPP=g++
-#CCOPT=-I$(HOME)/petracvs/c/regexp -D_USE_REGEXP_=1
 CFLAGS=-I/usr/include/libxml2 -Wall
 CCOPT=
 LIBS=-lstdc++ -lxml2
