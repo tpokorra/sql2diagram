@@ -6,3 +6,7 @@ all:
 	automake
 	autoconf
 
+distclean:
+	- rm -f `find . -name "Makefile"`
+	- rm -f `find . -name "Makefile.in*"`
+	- rm -f `find . -name "config.status"`
