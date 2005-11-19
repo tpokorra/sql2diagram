@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/parser_cmn.h,v $
- * revision:            $Revision: 1.1 $
- * last changes:        $Date: 2004/01/26 08:33:01 $
+ * revision:            $Revision: 1.2 $
+ * last changes:        $Date: 2005/11/19 14:34:31 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -25,6 +25,7 @@ public:
 	void close();
 	char* goBackToken(char* current, char* token);
 	char* getNextToken(char* current, char* token);
+	char* getNextTokenWithoutQuotes(char* current, char* token);
 	char* goToNextLine(char* current);
 	char* readToken(char* current, char* token, char* expected);
 	char* readUntilStr(char* current, char* str);

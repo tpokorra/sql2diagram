@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/mixed.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2005/03/28 18:52:53 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2005/11/19 14:34:31 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -56,6 +56,17 @@ bool cmpModule(string m1, string m2)
 		list2 = m2;
 		while ((item2 = getNextCSV(list2)) != "") {
 			if (item1 == item2) {
+				return true;
+			}
+		}
+	}
+
+	list1 = m1;
+	// for scenarios, where no underscore is used
+	while ( ( item1 = getNextCSV(list1)) != "") {
+		list2 = m2;
+		while ((item2 = getNextCSV(list2)) != "") {
+			if ((item1.find(item2) == 0) || (item2.find(item1) == 0)) {
 				return true;
 			}
 		}

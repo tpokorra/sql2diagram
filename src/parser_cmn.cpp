@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/parser_cmn.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2005/02/17 18:30:28 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2005/11/19 14:34:31 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -94,6 +94,13 @@ char* Parser::getNextToken(char* current, char* token)
 					i++;
 				}
 				i++;
+			}
+			else if (token[i] == '`') {
+				i++;
+				while (i < strlen(token) && token[i] != '`') {
+					i++;
+				}
+				i++;
 			} else {
 				i++;
 			}
@@ -109,6 +116,20 @@ char* Parser::getNextToken(char* current, char* token)
 	} while ( (i == 0 || strcmp(token, " ") == 0) && !feof( hFile));
 
 	return current+strlen(token);
+}
+
+char* Parser::getNextTokenWithoutQuotes(char* current, char* token)
+{
+    char * result = getNextToken(current, token);
+    if (token[0] == token[strlen(token)-1]) {
+        if ((token[0] == '\'')
+           || (token[0] == '"')
+           || (token[0] == '`')) {
+           token[strlen(token)-1] = '\0';
+           strcpy(token, token+1);
+        }
+    }           
+    return result;
 }
 
 char* Parser::goToNextLine(char* current)
