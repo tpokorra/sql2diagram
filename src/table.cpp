@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/table.cpp,v $
- * revision:            $Revision: 1.4 $
- * last changes:        $Date: 2005/11/19 14:34:31 $
+ * revision:            $Revision: 1.5 $
+ * last changes:        $Date: 2005/11/20 13:17:11 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -252,6 +252,7 @@ void Table::prepareLinks(DataBase &db)
 		switch( itc->getType()) {
 			case ePrimaryKey: primary ++; break;
 			case eForeignKey: foreign ++; break;
+			case eKey: break;		  
 			case eUnique: unique ++; break;
 		}
 	}

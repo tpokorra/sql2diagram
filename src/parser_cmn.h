@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/parser_cmn.h,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2005/11/19 14:34:31 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2005/11/20 13:17:11 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -33,6 +33,7 @@ public:
 	string getComment();
 protected:
 	char* trim(char* s);
+	char* trimQuotes(char* s);
 	FILE* hFile;
 	char line[MAX_LINE];
 	char token[MAX_LINE];

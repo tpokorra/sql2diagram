@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/parser_cmn.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2005/11/19 14:34:31 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2005/11/20 13:17:11 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -38,6 +38,19 @@ char* Parser::trim(char* s)
 		result[strlen(result)-1] = '\0';
 	}
 	return result;
+}
+
+char* Parser::trimQuotes(char*s)
+{
+	if (s[0] == s[strlen(s)-1]) {
+		if ((s[0] == '\'')
+		    || (s[0] == '"')
+		    || (s[0] == '`')) {
+			s[strlen(s)-1] = '\0';
+			strcpy(s, s+1);
+        	}
+	}
+	return s;	
 }
 
 char* Parser::readfromfile(char* line, int max, FILE* hFile, char eol)
@@ -120,16 +133,8 @@ char* Parser::getNextToken(char* current, char* token)
 
 char* Parser::getNextTokenWithoutQuotes(char* current, char* token)
 {
-    char * result = getNextToken(current, token);
-    if (token[0] == token[strlen(token)-1]) {
-        if ((token[0] == '\'')
-           || (token[0] == '"')
-           || (token[0] == '`')) {
-           token[strlen(token)-1] = '\0';
-           strcpy(token, token+1);
-        }
-    }           
-    return result;
+    getNextToken(current, token);
+    return trimQuotes(token);
 }
 
 char* Parser::goToNextLine(char* current)
