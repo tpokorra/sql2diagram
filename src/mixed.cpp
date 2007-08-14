@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/mixed.cpp,v $
- * revision:            $Revision: 1.5 $
- * last changes:        $Date: 2007/08/14 22:16:51 $
+ * revision:            $Revision: 1.6 $
+ * last changes:        $Date: 2007/08/14 22:32:46 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -51,7 +51,13 @@ string getNextCSV(string &list)
 
 bool cmpModule(string m1, string m2)
 {
-	string item1, item2, list1, list2;
+    // for scenarios without any prefix at all
+	if (m2.compare("all") == 0)
+	{
+       return true;
+    }
+    
+    string item1, item2, list1, list2;
 	list1 = m1;
 	while ( ( item1 = getNextCSV(list1)) != "") {
 		list2 = m2;

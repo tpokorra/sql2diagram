@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/sql2dia.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2007/08/14 22:19:20 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2007/08/14 22:32:46 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -69,6 +69,8 @@ void Usage( char *argv0, int exit_val) {
 	cout
 		<< "Usage: " << endl
 		<< "  " << argv0 << " <file with sql create script> <prefix of tables>" << endl
+		<< "                                   prefix can be: all, ie. " << endl
+        << "                                   all tables are selected, no prefixes required"<< endl
 		<< "  " << argv0 << " -p project-file | --dump source-file(s)" << endl
 		<< endl
 		<< "Output format:" << endl
