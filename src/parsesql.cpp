@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/parsesql.cpp,v $
- * revision:            $Revision: 1.4 $
- * last changes:        $Date: 2005/11/20 13:17:11 $
+ * revision:            $Revision: 1.5 $
+ * last changes:        $Date: 2007/08/14 22:18:45 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -136,6 +136,21 @@ void ParserSQL::readCheck(Table& tab)
 	}
 }
 
+void ParserSQL::readColumnNULL(Attribute& att)
+{
+	if (strcasecmp(token, "NOT") == 0) {
+		current = getNextToken(current, token);
+		if (strcasecmp(token, "NULL") == 0) {
+			current = getNextToken(current, token);
+			att.setConstraint("NOT NULL");
+		}
+	}
+	if (strcasecmp(token, "NULL") == 0) {
+		current = getNextToken(current, token);
+		att.setConstraint("NULL");
+	}
+}
+
 void ParserSQL::readColumn(Table& tab)
 {
 	Attribute& att = tab.addAttribute(trimQuotes(token));
@@ -173,6 +188,12 @@ void ParserSQL::readColumn(Table& tab)
 		readList(typeParam, false);
 		current = getNextToken(current, token);
 	}
+
+	if (strcasecmp(token, "UNSIGNED") == 0) {
+		current = getNextToken(current, token);
+	}
+
+    readColumnNULL(att);
 
 	if (strcasecmp(token, "DEFAULT") == 0) {
 		string default_token;
@@ -217,18 +238,9 @@ void ParserSQL::readColumn(Table& tab)
 		}
 		att.setDefault(default_token.c_str());
 	}
-	if (strcasecmp(token, "NOT") == 0) {
-		current = getNextToken(current, token);
-		if (strcasecmp(token, "NULL") == 0) {
-			current = getNextToken(current, token);
-			att.setConstraint("NOT NULL");
-		}
-	}
-	if (strcasecmp(token, "NULL") == 0) {
-		current = getNextToken(current, token);
-		att.setConstraint("NULL");
-	}
 
+    readColumnNULL(att);
+ 
 	if (strcasecmp(token, "CHECK") == 0) {
 		current = getNextToken(current, token);
 		if (strcasecmp(token, "(") == 0) {
