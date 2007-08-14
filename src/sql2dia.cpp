@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/sql2dia.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2005/02/17 18:30:28 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2007/08/14 22:19:20 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -68,8 +68,8 @@ void process(string name, string prefix, FILE* Convertfile, string listTables=""
 void Usage( char *argv0, int exit_val) {
 	cout
 		<< "Usage: " << endl
-		<< "  " << argv0 << " sql2dia <file with sql create script> <prefix of tables>" << endl
-		<< "  " << argv0 << " sql2dia -p project-file | --dump source-file(s)" << endl
+		<< "  " << argv0 << " <file with sql create script> <prefix of tables>" << endl
+		<< "  " << argv0 << " -p project-file | --dump source-file(s)" << endl
 		<< endl
 		<< "Output format:" << endl
 		<< "\t[-d|--dump]    Generate a sample project file with given source file(s)" << endl
