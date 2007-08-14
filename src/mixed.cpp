@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/mixed.cpp,v $
- * revision:            $Revision: 1.4 $
- * last changes:        $Date: 2005/11/19 14:34:31 $
+ * revision:            $Revision: 1.5 $
+ * last changes:        $Date: 2007/08/14 22:16:51 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -16,7 +16,8 @@
 
 string trim(const string& s)
 {
-	unsigned int start, end;
+	unsigned int start;
+    int end;
 	for ( start = 0;
 		   start < s.length()
 		   	&& (s[start] == ' '
@@ -24,7 +25,7 @@ string trim(const string& s)
 				|| s[start] == 10);
 			start++);
 	for ( end = s.length() - 1;
-			end > 0 && ( s[end] == ' ' || s[end] == 13 || s[end] == 10);
+			end > 0 && ( s[(unsigned int)end] == ' ' || s[(unsigned int)end] == 13 || s[(unsigned int)end] == 10);
 			end --);
 	return s.substr( start, end - start + 1);
 }
