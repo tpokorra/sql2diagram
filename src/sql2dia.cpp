@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/sql2dia.cpp,v $
- * revision:            $Revision: 1.4 $
- * last changes:        $Date: 2007/08/14 22:32:46 $
+ * revision:            $Revision: 1.5 $
+ * last changes:        $Date: 2009/03/31 20:21:02 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -75,9 +75,10 @@ void Usage( char *argv0, int exit_val) {
 		<< endl
 		<< "Output format:" << endl
 		<< "\t[-d|--dump]    Generate a sample project file with given source file(s)" << endl
-		<< "\t[-p|--project] Create/update diagrams according to given project file" << endl
+		<< "\t[-p|--project] Create/update diagrams according to given project file (requires -f|--sqlfile)" << endl
 		<< endl
 		<< "Options:" << endl
+		<< "\t[-f|--sqlfile]  - which sql file to use" << endl
 		<< "\t[-v|--verbose]  - make it verbose" << endl
 		<< "\t[-h|-?|--help]  - show this usage message" << endl
 		;
@@ -127,15 +128,13 @@ void DumpExampleProject( int argc, char* argv[]) {
 	// Create a sample project file for the given source file(s)
 	cout
 		<< "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>" << endl
-		<< "<!DOCTYPE database SYSTEM \"datastructure.dtd\">" << endl
 		<< endl
-		<< "<database name=\"xxxx\">" << endl;
+		<< "<database>" << endl;
 	for ( int i = optind; i < argc; i++) {
 		DataBase db;
 		ParserSQL sql( db);
 		cout
-			<< "\t<source filename=\"" << argv[ i] << "\" type=\"sql\"/>" << endl
-			<< "\t<group name=\"" << argv[ i] << "\">" << endl;
+			<< "\t<group name=\"all\">" << endl;
 		if ( !sql.readSQL( argv[ i])) {
 			cout << "Problem reading sql create script file: " << argv[ i] << endl;
 			exit( -1);
@@ -174,7 +173,7 @@ void CheckProjectFile( char* szProject, xmlDocPtr* doc) {
 	}
 }
 
-void RunProject( char* szProject, int argc, char* argv[]) {
+void RunProject( char* szProject, char* szDBSqlfile, int argc, char* argv[]) {
 	// Open the project file and check the structure
 	xmlDocPtr doc;
 	CheckProjectFile( szProject, &doc);
@@ -182,33 +181,18 @@ void RunProject( char* szProject, int argc, char* argv[]) {
 	// Read all the source-files
 	cout << "Reading source-files..." << endl;
 	ParserSQL sql( db);
-	xmlNodePtr cur = xmlDocGetRootElement(doc);
-	cur = cur->xmlChildrenNode;
-	while ( cur != NULL) {
-		if ( 0 == xmlStrcmp(cur->name, (const xmlChar *)"source")) {
-			xmlChar* szType = xmlGetProp( cur, (xmlChar*)"type");
-			if ( 0 == xmlStrcmp( szType, (const xmlChar *)"sql")) {
-   			xmlChar* szName = xmlGetProp( cur, (xmlChar*)"filename");
-   			cout
-   				<< "Source: " << (char*)szName << endl;
-   			if ( !sql.readSQL( (char*)szName)) {
-   				cout << "\tProblem reading sql file: " << (char*)szName << endl;
-   				exit( -3);
-   			}
-   			free( szName);
-			} else {
-			   cout << "Don't know how to read files of type: " << (char*)szType << endl;
-			}
-			free( szType);
-		}
-		cur = cur->next;
+	cout
+		<< "Source: " << (char*)szDBSqlfile << endl;
+	if ( !sql.readSQL( (char*)szDBSqlfile)) {
+		cout << "\tProblem reading sql file: " << (char*)szDBSqlfile << endl;
+		exit( -3);
 	}
-
+	
 	// Group the tables.
 	cout << "Grouping tables..." << endl;
 	db.prepareLinks();
 	((DataBaseHTML*)&db)->prepareDisplay( "", false);
-	cur = xmlDocGetRootElement(doc);
+	xmlNodePtr cur = xmlDocGetRootElement(doc);
 	cur = cur->xmlChildrenNode;
 	FILE* Convertfile;
 	while ( cur != NULL) {
@@ -251,16 +235,15 @@ int main(int argc, char* argv[])
 	bool bDoProject = false;
 	bool bDoDump = false;
 	char* szProjectFile = NULL;
+	char* szSqlFile = NULL;
 
 	/* The options that can be given */
 	static struct option long_options[] = {
 		/* What to produce */
-		{"dump",     		no_argument,       0, 'd'},
-		{"project",  		required_argument, 0, 'p'},
+		{"dump",     	  no_argument,       0, 'd'},
+		{"project",       required_argument, 0, 'p'},
 		/* Options */
-// Left here as an example of how we could pass parameters
-//		{"diagram-file",	required_argument, 0, 'F'},
-//		{"group",         required_argument, 0, 'g'},
+		{"sqlfile",       required_argument, 0, 'f'},
 		{"verbose",       no_argument,       0, 'v'},
 		{"help",          no_argument,       0, 'h'},
 		{0, 0, 0, 0}
@@ -269,7 +252,7 @@ int main(int argc, char* argv[])
 	int option_index = 0;
 	while ( 1) {
 		char c;
-		if ( ( c = getopt_long( argc, argv, "h?vp:dF:g:",
+		if ( ( c = getopt_long( argc, argv, "h?vp:df:",
 		                        long_options, &option_index)) == -1) {
 			break;
 		}
@@ -279,11 +262,17 @@ int main(int argc, char* argv[])
 				Usage( argv[0], 0);
 				break;
 			case 'p':
-   			if ( NULL == optarg) {
-   				Usage( argv[ 0], 1);
-   			}
+       			if ( NULL == optarg) {
+       				Usage( argv[ 0], 1);
+       			}
 				szProjectFile = optarg;
 				bDoProject = true;
+				break;
+			case 'f':
+       			if ( NULL == optarg) {
+       				Usage( argv[ 0], 2);
+       			}
+				szSqlFile = optarg;
 				break;
 			case 'd':
 				bDoDump = true;
@@ -303,7 +292,10 @@ int main(int argc, char* argv[])
 			}
 			DumpExampleProject( argc, argv);
 		} else if ( bDoProject) {
-			RunProject( szProjectFile, argc, argv);
+            if (szSqlFile == NULL) {
+                Usage( argv[0], 1);
+            }
+			RunProject( szProjectFile, szSqlFile, argc, argv);
 		}
 	}
 
