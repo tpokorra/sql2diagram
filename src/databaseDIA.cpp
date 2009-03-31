@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/databaseDIA.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2005/03/28 18:52:53 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2009/03/31 20:20:13 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -142,7 +142,7 @@ void DataBaseDIA::outDia(FILE* file, bool repeatedRun, const string& strLocTable
 		if ( !it->isVisible()
 		||   !repeatedRun) {
 			Table& tab = *it;
-			((TableDIA*)&tab)->outDia(file, m_module, *this, repeatedRun, strLocTableList);
+			((TableDIA*)&tab)->outDia(file, m_module, *this, repeatedRun, strLocTableList, true);
 		}
 	}
 

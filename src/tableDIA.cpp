@@ -2,8 +2,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/tableDIA.cpp,v $
- * revision:            $Revision: 1.4 $
- * last changes:        $Date: 2005/03/28 18:52:53 $
+ * revision:            $Revision: 1.5 $
+ * last changes:        $Date: 2009/03/31 20:20:13 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -228,13 +228,20 @@ bool TableDIA::outDiaConstraints(FILE* file, DataBase& db, const string& strLocT
 	return true;
 }
 
-void TableDIA::outDia(FILE* file, string module, DataBase& db, bool repeatedRun, const string& strLocTableList)
+void TableDIA::outDia(FILE* file, string module, DataBase& db, bool repeatedRun, const string& strLocTableList, bool justDisplayName)
 {
 	float width=22, height=10;
 	float x = column*width;
 	float y = line;
 	bool displayAllFields = true;
 	bool incomplete = false;
+	
+	if (justDisplayName)
+	{
+      displayAllFields = false;
+      incomplete = true;
+    }
+	
 	if ( repeatedRun) {
 		x = 10;
 		y = 10;
@@ -313,71 +320,73 @@ void TableDIA::outDia(FILE* file, string module, DataBase& db, bool repeatedRun,
 
 		fprintf(file, "\t<dia:attribute name=\"attributes\">\n");
 	}
-	vector<Attribute>::iterator it;
 
-	int length = 0, ltype = 0;
-	for (it = attributes.begin(); it != attributes.end(); it++) {
-		if (!displayAllFields && !isKey(*it, ePrimaryKey) && !isKey(*it, eUnique)) {
-			incomplete = true;
-			continue;
-		}
-		int l = it->getName().length();
-		if (l > length) {
-			length = l;
-		}
-		l = it->getType().length();
-		if (l > ltype) {
-			ltype = l;
-		}
-	}
-	string bar;
-	int count;
-	for (count = 0; count < length+1+ltype; count++) {
-		bar += "-";
-	}
-
-	if (primary >= 1) {
-		AttributeDIA::addAttribute(file, "PRIMARY KEY:", "");
-		currentheight ++;
-		for (it = attributes.begin(); it != attributes.end(); it++) {
-			if (isKey(*it, ePrimaryKey)) {
-				Attribute& att = *it;
-				((AttributeDIA*)&att)->outDia(file, length, ltype, (int)currentheight, isKey(*it, eForeignKey));
-				currentheight ++;
-			}
-		}
-		AttributeDIA::addAttribute(file, bar, "");
-		currentheight ++;
-	}
-
-	if (unique >= 1) {
-		AttributeDIA::addAttribute(file, "UNIQUE:", "");
-		currentheight ++;
-		for (it = attributes.begin(); it != attributes.end(); it++) {
-			if (isKey(*it, eUnique)) {
-				Attribute& att = *it;
-				((AttributeDIA*)&att)->outDia(file, length, ltype, (int)currentheight, isKey(*it, eForeignKey));
-				currentheight ++;
-			}
-		}
-		AttributeDIA::addAttribute(file, bar, "");
-		currentheight ++;
-	}
-
-	for (it = attributes.begin(); it != attributes.end() && displayAllFields; it++) {
-		if ( !( ( unique == 1 && isKey(*it, eUnique))
-				||( primary == 1 && isKey(*it, ePrimaryKey))) ) {
-			Attribute& att = *it;
-			((AttributeDIA*)&att)->outDia(file, length, ltype, (int)currentheight, isKey(*it, eForeignKey));
-			currentheight ++;
-		}
-	}
-	if ( incomplete) {
-		AttributeDIA::addAttribute(file, "...", "");
-		AttributeDIA::addAttribute(file, " ", "");
-		currentheight+=2;
-	}
-
+    if (!justDisplayName)
+    {
+    	vector<Attribute>::iterator it;
+    	int length = 0, ltype = 0;
+    	for (it = attributes.begin(); it != attributes.end(); it++) {
+    		if (!displayAllFields && !isKey(*it, ePrimaryKey) && !isKey(*it, eUnique)) {
+    			incomplete = true;
+    			continue;
+    		}
+    		int l = it->getName().length();
+    		if (l > length) {
+    			length = l;
+    		}
+    		l = it->getType().length();
+    		if (l > ltype) {
+    			ltype = l;
+    		}
+    	}
+    	string bar;
+    	int count;
+    	for (count = 0; count < length+1+ltype; count++) {
+    		bar += "-";
+    	}
+    
+    	if (primary >= 1) {
+    		AttributeDIA::addAttribute(file, "PRIMARY KEY:", "");
+    		currentheight ++;
+    		for (it = attributes.begin(); it != attributes.end(); it++) {
+    			if (isKey(*it, ePrimaryKey)) {
+    				Attribute& att = *it;
+    				((AttributeDIA*)&att)->outDia(file, length, ltype, (int)currentheight, isKey(*it, eForeignKey));
+    				currentheight ++;
+    			}
+    		}
+    		AttributeDIA::addAttribute(file, bar, "");
+    		currentheight ++;
+    	}
+    
+    	if (unique >= 1) {
+    		AttributeDIA::addAttribute(file, "UNIQUE:", "");
+    		currentheight ++;
+    		for (it = attributes.begin(); it != attributes.end(); it++) {
+    			if (isKey(*it, eUnique)) {
+    				Attribute& att = *it;
+    				((AttributeDIA*)&att)->outDia(file, length, ltype, (int)currentheight, isKey(*it, eForeignKey));
+    				currentheight ++;
+    			}
+    		}
+    		AttributeDIA::addAttribute(file, bar, "");
+    		currentheight ++;
+    	}
+    
+    	for (it = attributes.begin(); it != attributes.end() && displayAllFields; it++) {
+    		if ( !( ( unique == 1 && isKey(*it, eUnique))
+    				||( primary == 1 && isKey(*it, ePrimaryKey))) ) {
+    			Attribute& att = *it;
+    			((AttributeDIA*)&att)->outDia(file, length, ltype, (int)currentheight, isKey(*it, eForeignKey));
+    			currentheight ++;
+    		}
+    	}
+    	if ( incomplete) {
+    		AttributeDIA::addAttribute(file, "...", "");
+    		AttributeDIA::addAttribute(file, " ", "");
+    		currentheight+=2;
+    	}
+    }
 	if ( file) {
 		fprintf(file, "\t</dia:attribute>\n");
 
