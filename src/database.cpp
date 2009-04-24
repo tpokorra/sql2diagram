@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/database.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2005/03/28 18:52:52 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2009/04/24 12:11:52 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -121,6 +121,44 @@ Table& DataBase::getAllTable(string name)
 	}
 	static Table table("");
 	return table;
+}
+
+vector<string> DataBase::getGroupNames()
+{
+    vector<string> result;
+	vector<Table>::iterator it;
+	for ( it = allTables.begin();
+			it != allTables.end();
+			it++) {
+        bool groupFound = false;
+        for (vector<string>::iterator group = result.begin(); group != result.end(); group++)
+        {
+            if (*group == it->getGroup())
+            {
+                groupFound = true;
+            }
+        }
+		if ( !groupFound ) {
+            result.push_back(it->getGroup());
+		}
+	}
+	return result;
+}
+               
+vector<string> DataBase::getTableNamesInGroup(string groupname)
+{
+    vector<string> result;
+	vector<Table>::iterator it;
+	for ( it = allTables.begin();
+			it != allTables.end();
+			it++) {
+        if (it->getGroup() == groupname)
+        {
+            result.push_back(it->getName());
+		}
+	}
+	sort(result.begin(), result.end());
+	return result;
 }
 
 string DataBase::getModule() const

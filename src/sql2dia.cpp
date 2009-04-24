@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/sql2dia.cpp,v $
- * revision:            $Revision: 1.5 $
- * last changes:        $Date: 2009/03/31 20:21:02 $
+ * revision:            $Revision: 1.6 $
+ * last changes:        $Date: 2009/04/24 12:11:52 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -71,10 +71,12 @@ void Usage( char *argv0, int exit_val) {
 		<< "  " << argv0 << " <file with sql create script> <prefix of tables>" << endl
 		<< "                                   prefix can be: all, ie. " << endl
         << "                                   all tables are selected, no prefixes required"<< endl
-		<< "  " << argv0 << " -p project-file | --dump source-file(s)" << endl
+		<< "  " << argv0 << " -p project-file | --dump sql-file(s)" << endl
+		<< "  " << argv0 << " -g -f sql-file" << endl
 		<< endl
 		<< "Output format:" << endl
 		<< "\t[-d|--dump]    Generate a sample project file with given source file(s)" << endl
+		<< "\t[-g|--dumpgroups] Generate project file by group names with given source file" << endl
 		<< "\t[-p|--project] Create/update diagrams according to given project file (requires -f|--sqlfile)" << endl
 		<< endl
 		<< "Options:" << endl
@@ -124,7 +126,7 @@ void BackwardCompat( int argc, char* argv[]) {
 	//db.displayNonDisplayedTables();
 }
 
-void DumpExampleProject( int argc, char* argv[]) {
+void DumpProjectAllTables( int argc, char* argv[]) {
 	// Create a sample project file for the given source file(s)
 	cout
 		<< "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>" << endl
@@ -148,6 +150,45 @@ void DumpExampleProject( int argc, char* argv[]) {
 	}
 	cout
 		<< "</database>" << endl;
+}
+
+void DumpProjectAllTablesByGroup( char* sqlfile) {
+	// Create a project file for the given source file by group comment that is with each table: 
+    //   for example: 
+    // -- my table description  
+    // -- GROUP: account
+    // CREATE TABLE a_ledger ...
+	cout
+		<< "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>" << endl
+		<< endl
+		<< "<database>" << endl;
+	DataBase db;
+	ParserSQL sql( db);
+
+    if ( sql.readSQL( sqlfile )) {	
+        vector<string> groups = db.getGroupNames();
+
+        for (vector<string>::iterator itGroup = groups.begin(); itGroup != groups.end(); itGroup++)
+        {    
+    		cout
+    			<< "\t<group name=\"" << *itGroup << "\">" << endl;
+    		// For all tables in that group dump their names here
+            vector<string> tableNamesInGroup = db.getTableNamesInGroup(*itGroup);
+            vector<string>::const_iterator itTable;
+            for ( itTable = tableNamesInGroup.begin();
+           	      itTable != tableNamesInGroup.end();
+        	      itTable++) 
+            {
+              cout << "\t\t<tablename name=\"" << *itTable << "\"/>" << endl;
+            }
+    		// End of this group
+    		cout
+    			<< "\t</group>" << endl;
+       }
+	}
+	cout
+		<< "</database>" << endl;
+	((DataBaseHTML*)&db)->writeMenus();
 }
 
 void CheckProjectFile( char* szProject, xmlDocPtr* doc) {
@@ -234,6 +275,7 @@ int main(int argc, char* argv[])
 {
 	bool bDoProject = false;
 	bool bDoDump = false;
+	bool bDoDumpGroups = false;
 	char* szProjectFile = NULL;
 	char* szSqlFile = NULL;
 
@@ -241,6 +283,7 @@ int main(int argc, char* argv[])
 	static struct option long_options[] = {
 		/* What to produce */
 		{"dump",     	  no_argument,       0, 'd'},
+		{"dumpgroups",    no_argument,       0, 'g'},
 		{"project",       required_argument, 0, 'p'},
 		/* Options */
 		{"sqlfile",       required_argument, 0, 'f'},
@@ -252,7 +295,7 @@ int main(int argc, char* argv[])
 	int option_index = 0;
 	while ( 1) {
 		char c;
-		if ( ( c = getopt_long( argc, argv, "h?vp:df:",
+		if ( ( c = getopt_long( argc, argv, "h?vp:df:g",
 		                        long_options, &option_index)) == -1) {
 			break;
 		}
@@ -277,12 +320,16 @@ int main(int argc, char* argv[])
 			case 'd':
 				bDoDump = true;
 				break;
+			case 'g':
+				bDoDumpGroups = true;
+				break;
 		}
 	}
 
 	// For backward compat. take arguments as they come...
-	if ( ( ! bDoDump)
-	&&   ( ! bDoProject) ) {
+	if ( ! bDoDump
+	  && ! bDoDumpGroups
+  	  && ! bDoProject ) {
 		BackwardCompat( argc, argv);
 	} else {
 		// The normal new processing
@@ -290,7 +337,12 @@ int main(int argc, char* argv[])
 			if ( NULL == argv[ optind]) {
 				Usage( argv[ 0], 1);
 			}
-			DumpExampleProject( argc, argv);
+			DumpProjectAllTables(argc, argv);
+        } else if ( bDoDumpGroups) {
+			if ( NULL == szSqlFile) {
+				Usage( argv[ 0], 1);
+			}
+			DumpProjectAllTablesByGroup(szSqlFile);
 		} else if ( bDoProject) {
             if (szSqlFile == NULL) {
                 Usage( argv[0], 1);

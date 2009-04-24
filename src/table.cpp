@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/table.cpp,v $
- * revision:            $Revision: 1.5 $
- * last changes:        $Date: 2005/11/20 13:17:11 $
+ * revision:            $Revision: 1.6 $
+ * last changes:        $Date: 2009/04/24 12:11:52 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -20,6 +20,7 @@ Table::Table(char* pName)
 	m_elem_height = 0.0f;
 	position = Point(-1,-1);
 	name = pName;
+	group = "undefined";
 	m_visible = false;
 	displayed_already = false;
 	displayed_already_inModule = false;
@@ -42,6 +43,7 @@ Table& Table::operator=(const Table& tab)
 	m_id = tab.m_id;
 	name = tab.name;
  	comment = tab.comment;
+ 	group = tab.group;
 	primary = tab.primary;
 	unique = tab.unique;
 	referenced = tab.referenced;
@@ -53,7 +55,15 @@ Table& Table::operator=(const Table& tab)
 
 void Table::setComment(string s)
 {
-	comment = s;
+    if (s.find("GROUP: ") != string::npos)
+    {
+       comment = s.substr(0, s.find("GROUP: "));
+       group = s.substr(s.find("GROUP: ") + strlen("GROUP: "));
+    }
+    else
+    {
+        comment = s;
+    }
 }
 
 string Table::getName() const
@@ -73,6 +83,11 @@ string Table::getModule() const
 		return name.substr(0, pos);
 	}
 	return name;
+}
+
+string Table::getGroup() const
+{
+	return group;
 }
 
 Attribute& Table::addAttribute(char* name)

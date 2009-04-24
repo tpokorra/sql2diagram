@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/attributeHTML.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2005/02/17 18:30:27 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2009/04/24 12:11:52 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * The content of this file is under GPL
  *
@@ -42,7 +42,7 @@ string ConstraintHTML::getHTMLAttributes()
 	return s;
 }
 
-static string getHRef( const string& strTable, bool bWithOffset = false, const string& strTarget = "table-info", const string& strExtraTags = "", const string& anchor = "top") {
+string AttributeHTML::getHRef( const string& strTable, bool bWithOffset, const string& strTarget, const string& strExtraTags, const string& anchor) {
 	// TODO: maybe add parameter stuff...
 	return "<a href=\"" + ( bWithOffset ? string( "tables/") : string( "")) +
 	       "" + strTable + ".html#" + anchor + "\" target=\"" + strTarget + "\"" +

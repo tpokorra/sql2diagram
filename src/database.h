@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/database.h,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2005/02/17 18:30:28 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2009/04/24 12:11:52 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  *
  *
@@ -51,6 +51,10 @@ public:
 
 	// For export to a project file:
 	friend ostream& operator<<( ostream& o, const DataBase& oDataBase);
+	
+	// returns a list of all group names
+	vector<string> getGroupNames();
+	vector<string> getTableNamesInGroup(string groupname);
 protected:
 
 	string m_module;

@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/databaseHTML.cpp,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2005/02/17 18:30:28 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2009/04/24 12:11:52 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -179,24 +179,24 @@ void DataBaseHTML::outHtml(FILE* file, string module)
 	}
 }
 
-void DataBaseHTML::writeTableGroup( string& group, vector<string>& tablenames) {
-/*
+void DataBaseHTML::writeTableGroup( string& group) {
+
 	string strGroupDocFileName( "table-doc-tables-" + group + ".html");
 	ofstream dbGroupDoc( strGroupDocFileName.c_str());
 	if ( !dbGroupDoc.is_open()) {
 		cout << "Cannot open file " << strGroupDocFileName << "" << endl;
 		exit( 1);
 	} else {
-		vector<string>::iterator tableit;
-		sort(tablenames.begin(), tablenames.end());
+        vector<string> tablenames = getTableNamesInGroup(group);
 
 		// Setup new DIV
 		dbGroupDoc
 			<< strHTMLGroupHeader
 			<< "\t<DIV id=\"ts_" << group << "\" class=\"links-tab\"><FONT class=\"tablenames\">" << USED_LINE_END;
 
+		vector<string>::iterator tableit;
 		for (tableit = tablenames.begin(); tableit != tablenames.end(); tableit++) {
-			dbGroupDoc << "\t\t" << getHRef( *tableit, true) << *tableit << "</a><br/>" << USED_LINE_END;
+			dbGroupDoc << "\t\t" << AttributeHTML::getHRef( *tableit, true) << *tableit << "</a><br/>" << USED_LINE_END;
 		}
 		tablenames.clear();
 
@@ -205,7 +205,6 @@ void DataBaseHTML::writeTableGroup( string& group, vector<string>& tablenames) {
 			<< strHTMLFooter;
 		dbGroupDoc.close();
 	}
-*/
 }
 
 void DataBaseHTML::writeMenus() {
@@ -216,52 +215,46 @@ void DataBaseHTML::writeMenus() {
 		cout << "Cannot open file " << szGroupsFile << "" << endl;
 		exit( 1);
 	} else {
-		//find all groups by searching for the dia files;
-		DIR *dp;
-		struct dirent *ep;
-		dp = opendir("./");
 
 		dbMenuDoc
 			<< strHTMLMenuHeader
 		    << "<DIV class=\"links\">" << USED_LINE_END;
 
-		bool done = false;
-		if (dp != NULL) {
-			while (!done) {
-				ep = readdir (dp);
-				if (!ep) {
-					done = true;
-				}
-				else if (strstr(ep->d_name, ".dia") != NULL && *(strstr(ep->d_name, ".dia")+4) == '\0') {
-					*strstr(ep->d_name, ".") = '\0';
-					dbMenuDoc << "\t<a href=\"table-doc-tables-" << ep->d_name
-						<< ".html\" target=\"tables\"\">" << ep->d_name << "</a>" << USED_LINE_END;
-				}
-			}
-		}
-
+        vector<string> groups = getGroupNames();
+        if (groups.size() == 0)
+        {
+    		//find all groups by searching for the dia files;
+    		DIR *dp;
+    		struct dirent *ep;
+    		dp = opendir("./");
+    
+    		bool done = false;
+    		if (dp != NULL) {
+    			while (!done) {
+    				ep = readdir (dp);
+    				if (!ep) {
+    					done = true;
+    				}
+    				else if (strstr(ep->d_name, ".dia") != NULL && *(strstr(ep->d_name, ".dia")+4) == '\0') {
+    					*strstr(ep->d_name, ".") = '\0';
+    					dbMenuDoc << "\t<a href=\"table-doc-tables-" << ep->d_name
+    						<< ".html\" target=\"tables\"\">" << ep->d_name << "</a>" << USED_LINE_END;
+    				}
+    			}
+    		}
+        }
+        else
+        {
+            // use the group names that are assigned to each table
+            for (vector<string>::iterator itGroup = groups.begin(); itGroup != groups.end(); itGroup++)
+            {
+				dbMenuDoc << "\t<a href=\"table-doc-tables-" << *itGroup
+					<< ".html\" target=\"tables\"\">" << *itGroup << "</a>" << USED_LINE_END;
+                writeTableGroup(*itGroup);
+            }
+        }
 		dbMenuDoc << "</DIV>" << USED_LINE_END
 			<< strHTMLFooter;
 		dbMenuDoc.close();
 	}
-	/*
-	vector<string> tablenames;
-	vector<TTable*> tables;
-	vector<TTable*>::iterator it;
-	DDF.getAllTables(tables);
-	string strOldGroup;
-	sort(tables.begin(), tables.end(), sortGroup);
-	for ( it = tables.begin(); it != tables.end(); it++) {
-		string strGroup = (*it)->getGroup();
-		if ( strOldGroup != strGroup) {
-			if ( strOldGroup.length()) {
-				writeTableGroup( strOldGroup, tablenames);
-			}
-			strOldGroup = (*it)->getGroup();
-		}
-		tablenames.push_back((*it)->getName());
-	}
-
-	writeTableGroup( strOldGroup, tablenames);
-	*/
 }
