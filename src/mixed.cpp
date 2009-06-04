@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/mixed.cpp,v $
- * revision:            $Revision: 1.6 $
- * last changes:        $Date: 2007/08/14 22:32:46 $
+ * revision:            $Revision: 1.7 $
+ * last changes:        $Date: 2009/06/04 14:54:32 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -13,6 +13,15 @@
 #include <dirent.h>
 #include <errno.h>
 
+// basename should be part of string.h, but it is not in my msys environment???
+const char* basename (const char* fullPath) {
+    char* baseName;
+    // careful: do we need backslash as well?
+    baseName = strrchr(fullPath,(int)'/');
+    if (baseName++) {
+        return baseName;
+    } else return fullPath;
+}
 
 string trim(const string& s)
 {
@@ -107,13 +116,13 @@ void backup(const char* filename)
 	string name;
 	FILE* rfile, *hfile;
     char s[20];
-	name += "bak/" + string( filename) + "0.dia";
+	name += "bak/" + string( basename(filename)) + "0.dia";
 	// See if we can find a file that is not already there.
 	while ( ( hfile = fopen( name.c_str(), "rb") ) != NULL) {
 		fclose( hfile);
 		name = "";
         sprintf(s, "%d", count);
-		name += "bak/" + string( filename) + s + ".bak";
+		name += "bak/" + string( basename(filename)) + s + ".bak";
 		count++;
 	}
 	// Copy the given file

@@ -2,8 +2,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/tableDIA.cpp,v $
- * revision:            $Revision: 1.5 $
- * last changes:        $Date: 2009/03/31 20:20:13 $
+ * revision:            $Revision: 1.6 $
+ * last changes:        $Date: 2009/06/04 14:54:32 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -18,6 +18,7 @@ string floattostr(float f)
 	return streamOut.str();
 }
 
+#define MAX_REFERENCES_SHOW_CONSTRAINTS 5
 
 TableDIA::TableDIA(char* pName)
 :Table(pName)
@@ -41,15 +42,16 @@ void TableDIA::drawConstraint(FILE* file, Constraint& constr, Table& src, Table&
 		constr.getPosition(obj_pos, obj_bb, orth_orient, orth_points);
 
 		Point srcPoint = src.getPosition();
-		srcPoint.y += 1.6+linenr*0.6;
+		srcPoint.y += 1.6+linenr*0.8;
 		Point destPoint = referenced.getPosition();
 		destPoint.y += 0.6f;
 
+        float distance = 0.5 + 1.0/(rand() % 10);
 		points[0][0] = srcPoint.x;
 		points[0][1] = srcPoint.y;
-		points[1][0] = srcPoint.x-1;
+		points[1][0] = srcPoint.x-distance;
 		points[1][1] = srcPoint.y;
-		points[2][0] = srcPoint.x-1;
+		points[2][0] = srcPoint.x-distance;
 		points[2][1] = destPoint.y;
 		points[3][0] = destPoint.x;
 		points[3][1] = destPoint.y;
@@ -71,7 +73,18 @@ void TableDIA::drawConstraint(FILE* file, Constraint& constr, Table& src, Table&
 		}
 		fprintf(file, "</dia:attribute>\n");
 		fprintf(file, "<dia:attribute name=\"orth_points\">\n");
+//for debugging: orth_points.clear();
 		if (orth_points.empty()) {
+			if (destPoint.x > srcPoint.x) {
+				points[0][0] += src.getWidth();
+        		points[1][0] = points[0][0] + distance;
+        		points[2][0] = points[0][0] + distance;
+				srcConnection++;
+			}
+            if (points[2][0] > destPoint.x + referenced.getWidth()) {
+				points[3][0] += referenced.getWidth();
+				destConnection++;
+			}
 			fprintf(file, "<dia:point val=\"%.2f,%.2f\" /> \n", points[0][0], points[0][1]);
 			fprintf(file, "<dia:point val=\"%.2f,%.2f\" /> \n", points[1][0], points[1][1]);
 			fprintf(file, "<dia:point val=\"%.2f,%.2f\" /> \n", points[2][0], points[2][1]);
@@ -97,14 +110,16 @@ void TableDIA::drawConstraint(FILE* file, Constraint& constr, Table& src, Table&
 			for (it = vpoints.begin(); it != vpoints.end(); it++) {
 				if (it == vpoints.begin()) {
 					if (atof((it+1)->substr(0, it->find(",")).c_str()) > srcPoint.x) {
-						points[0][0] += src.getWidth();
+        				points[0][0] += src.getWidth();
+                		points[1][0] = points[0][0] + distance;
+                		points[2][0] = points[0][0] + distance;
 						srcConnection++;
 					}
 					fprintf(file, "<dia:point val=\"%.2f,%.2f\" /> \n", points[0][0], points[0][1]);
 				} else if (it == vpoints.begin()+1) {
 					fprintf(file, "<dia:point val=\"%s,%.2f\" /> \n", it->substr(0, it->find(",")).c_str(), points[0][1]);
 				} else if (it == vpoints.end()-2) {
-					if (atof(it->substr(0, it->find(",")).c_str()) > destPoint.x) {
+					if (atof(it->substr(0, it->find(",")).c_str()) > destPoint.x + referenced.getWidth()) {
 						points[3][0] += referenced.getWidth();
 						destConnection++;
 					}
@@ -199,10 +214,10 @@ void TableDIA::drawConstraint(FILE* file, Constraint& constr, Table& src, Table&
 	}
 }
 
-void TableDIA::prepareDisplay(DataBase &db, string& module, bool repeatedRun, const string& strLocTableList)
+void TableDIA::prepareDisplay(DataBase &db, string& module, bool repeatedRun, const string& strLocTableList, const string& strColorTableIgnoreReferencedTables)
 {
 	Table::prepareDisplay(db, module);
-	outDia(0, "", db, repeatedRun, strLocTableList);
+	outDia(0, "", db, repeatedRun, strLocTableList, strColorTableIgnoreReferencedTables);
 }
 
 bool TableDIA::outDiaConstraints(FILE* file, DataBase& db, const string& strLocTableList)
@@ -212,6 +227,14 @@ bool TableDIA::outDiaConstraints(FILE* file, DataBase& db, const string& strLocT
 	|| db.inTableList( *this, strLocTableList)) {
 		for ( it = constraints.begin(); it != constraints.end(); it++) {
 			if ( it->getType() == eForeignKey) {
+                 
+                // check if the other table is linked more than MAX times (eg. partner, ledger)
+                Table& referencedTable = db.getTable(it->getRemoteTableName());
+                if (referencedTable.getCountReferences(db, strLocTableList) > MAX_REFERENCES_SHOW_CONSTRAINTS)
+                {
+                   continue;
+                }
+                
 				bool alreadyLinked = false;
 				for ( it2 = constraints.begin(); it2 < it; it2++) {
 					if (it2->getType() == eForeignKey
@@ -228,7 +251,7 @@ bool TableDIA::outDiaConstraints(FILE* file, DataBase& db, const string& strLocT
 	return true;
 }
 
-void TableDIA::outDia(FILE* file, string module, DataBase& db, bool repeatedRun, const string& strLocTableList, bool justDisplayName)
+void TableDIA::outDia(FILE* file, string module, DataBase& db, bool repeatedRun, const string& strLocTableList, const string& strColorTableIgnoreReferencedTables, bool justDisplayName)
 {
 	float width=22, height=10;
 	float x = column*width;
@@ -284,7 +307,8 @@ void TableDIA::outDia(FILE* file, string module, DataBase& db, bool repeatedRun,
 		vector<Constraint>::iterator it;
 		for ( it = constraints.begin(); it != constraints.end(); it++) {
 			if ( it->getType() == eForeignKey
-			&&   !db.isDisplayedOnCurrentDiagram(it->getRemoteTableName())) {
+			&&   !db.isDisplayedOnCurrentDiagram(it->getRemoteTableName())
+        	&&   strColorTableIgnoreReferencedTables.find( string( "[") + it->getRemoteTableName() + "]") == string::npos) {
 				colour = true;
 			}
 		}

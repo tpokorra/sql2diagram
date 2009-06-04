@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/table.h,v $
- * revision:            $Revision: 1.4 $
- * last changes:        $Date: 2009/04/24 12:11:52 $
+ * revision:            $Revision: 1.5 $
+ * last changes:        $Date: 2009/06/04 14:54:32 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -33,7 +33,7 @@ class PointerTable
 public:
 	PointerTable(){ }
 	PointerTable(string table);
-	string getTableName();
+	string getTableName() const;
 private:
 	string sTable;
 
@@ -51,8 +51,8 @@ public:
 	void setRemoteColumns(string ParentTable, string RemoteTable, List& columns);
 	eType getType() const;
 	string getName() const;
-	string getRemoteTableName();
-	string getParentTableName();
+	string getRemoteTableName() const;
+	string getParentTableName() const;
 	int isInLocalAttr(const string& attr); // -1 = false
 	PointerAttribute& getRemoteAttributes(int pos);
 	string getRemoteAttributesString() const;
@@ -96,6 +96,7 @@ public:
 	bool operator<(const Table& tab) const;
 	Table& operator=(const Table& tab);
 	int getImportance() const;
+    int getCountReferences(DataBase& db, const string& strLocTableList) const;
 	void addLink(Constraint& foreignKey);
 	bool setAttributeComment(const string& attr, const string& comment);
 	bool setAttributeCheck(const string& attr, const string& check);

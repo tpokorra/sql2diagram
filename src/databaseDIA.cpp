@@ -1,15 +1,15 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/databaseDIA.cpp,v $
- * revision:            $Revision: 1.4 $
- * last changes:        $Date: 2009/03/31 20:20:13 $
+ * revision:            $Revision: 1.5 $
+ * last changes:        $Date: 2009/06/04 14:54:32 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
 #include "dia.h"
 
-void DataBaseDIA::prepareDisplay(string module, string tableList, bool repeatedRun)
+void DataBaseDIA::prepareDisplay(string module, string tableList, const string& strColorTableIgnoreReferencedTables, bool repeatedRun)
 {
 	vector<Table>::iterator it;
 	m_module = module;
@@ -27,7 +27,7 @@ void DataBaseDIA::prepareDisplay(string module, string tableList, bool repeatedR
 	Table::resetColumn(tables.size());
 	for (it = tables.begin(); it != tables.end(); it++) {
 		Table& tab = *it;
-		((TableDIA*)&tab)->prepareDisplay(*this, m_module, repeatedRun, tableList);
+		((TableDIA*)&tab)->prepareDisplay(*this, m_module, repeatedRun, tableList, strColorTableIgnoreReferencedTables);
 	}
 
 	// merge Positions of associations
@@ -90,7 +90,7 @@ void DataBaseDIA::outDiaPngCrop(FILE* file, string diagramname)
 	}
 }
 
-void DataBaseDIA::outDia(FILE* file, bool repeatedRun, const string& strLocTableList)
+void DataBaseDIA::outDia(FILE* file, bool repeatedRun, const string& strLocTableList, const string& strColorTableIgnoreReferencedTables)
 {
 	vector<Table>::iterator it;
 	Table::resetColumn(-1);
@@ -111,7 +111,7 @@ void DataBaseDIA::outDia(FILE* file, bool repeatedRun, const string& strLocTable
 			it++) {
 		if (it->isVisible() && repeatedRun) {
 			Table& tab = *it;
-			((TableDIA*)&tab)->outDia(file, m_module, *this, repeatedRun, strLocTableList);
+			((TableDIA*)&tab)->outDia(file, m_module, *this, repeatedRun, strLocTableList, strColorTableIgnoreReferencedTables);
 			it->SetDisplayedAlready(true, m_module);
 			getAllTable(it->getName()).SetDisplayedAlready(true, m_module);
 		}
@@ -142,7 +142,7 @@ void DataBaseDIA::outDia(FILE* file, bool repeatedRun, const string& strLocTable
 		if ( !it->isVisible()
 		||   !repeatedRun) {
 			Table& tab = *it;
-			((TableDIA*)&tab)->outDia(file, m_module, *this, repeatedRun, strLocTableList, true);
+			((TableDIA*)&tab)->outDia(file, m_module, *this, repeatedRun, strLocTableList, strColorTableIgnoreReferencedTables, true);
 		}
 	}
 

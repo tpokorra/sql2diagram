@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/attribute.cpp,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2005/11/20 13:17:11 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2009/06/04 14:54:32 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -40,7 +40,7 @@ PointerTable::PointerTable(string table)
 	sTable = table;
 }
 
-string PointerTable::getTableName()
+string PointerTable::getTableName() const
 {
 	return sTable;
 }
@@ -159,12 +159,12 @@ string Constraint::getLocalAttributesString() const
 	return s;
 }
 
-string Constraint::getRemoteTableName()
+string Constraint::getRemoteTableName() const
 {
 	return remoteTable.getTableName();
 }
 
-string Constraint::getParentTableName()
+string Constraint::getParentTableName() const
 {
 	return parentTable.getTableName();
 }

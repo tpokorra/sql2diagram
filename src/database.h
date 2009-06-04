@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/database.h,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2009/04/24 12:11:52 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2009/06/04 14:54:32 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  *
  *
@@ -47,6 +47,7 @@ public:
 	Table& getFromId(string id);
 	string getModule() const;
 	bool inTableList(const Table& tab, string strTableList) const;
+	bool inTableList(const string& tab, string strTableList) const;
 	Table& getAllTable(string name);
 
 	// For export to a project file:

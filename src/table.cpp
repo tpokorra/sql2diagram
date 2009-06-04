@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/table.cpp,v $
- * revision:            $Revision: 1.6 $
- * last changes:        $Date: 2009/04/24 12:11:52 $
+ * revision:            $Revision: 1.7 $
+ * last changes:        $Date: 2009/06/04 14:54:32 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -249,6 +249,19 @@ bool Table::operator<(const Table& tab) const
 int Table::getImportance() const
 {
 	return referenced.size()*2+foreign;
+}
+
+int Table::getCountReferences(DataBase& db, const string& strLocTableList) const
+{
+    int count = 0;
+    for ( vector<Constraint>::const_iterator c = referenced.begin(); c != referenced.end(); c++)
+    {
+        if (db.inTableList(c->getParentTableName() , strLocTableList))
+        {
+           count++;
+        }
+    }
+	return count;
 }
 
 void Table::addLink(Constraint& foreignKey)

@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/sql2dia.cpp,v $
- * revision:            $Revision: 1.6 $
- * last changes:        $Date: 2009/04/24 12:11:52 $
+ * revision:            $Revision: 1.7 $
+ * last changes:        $Date: 2009/06/04 14:54:32 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -19,8 +19,9 @@
 #include <string>
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
-
 #include "getopt.h"
+#define __GETOPT_H__
+#include <unistd.h>
 
 #include "mixed.h"
 #include "parser_cmn.h"
@@ -40,25 +41,25 @@ void outHtml(const string& prefix, const string& outfilename)
 	fclose(htmlFile);
 }
 
-void process(string name, string prefix, FILE* Convertfile, string listTables="")
+void process(string strPathDia, string name, string prefix, FILE* Convertfile, string listTables="", string strColorTableIgnoreReferencedTables="")
 {
 	FILE* diaFile;
 	bool positionsRead = false;
 
 	printf("Processing: %s\n", name.c_str());
-	printf("\tbackup: %s\n", (name+".dia").c_str());
-	backup((name+".dia").c_str());
-	printf("\tbackup done: %s\n", (name+".dia").c_str());
+	printf("\tbackup: %s\n", (strPathDia + "/" + name+".dia").c_str());
+	backup((strPathDia + "/" + name+".dia").c_str());
+	printf("\tbackup done: %s\n", (strPathDia + "/" + name+".dia").c_str());
 	db.resetSizePosition();
 	ParserDIA dia(db);
-	if ( dia.parse(name+".dia")) {
+	if ( dia.parse(strPathDia + "/" + name+".dia")) {
 		printf( "\tread existing positions: OK\n");
 		positionsRead = true;
 	}
 	DataBaseDIA* dbdia = (DataBaseDIA*)&db;
-	dbdia->prepareDisplay(prefix, listTables, positionsRead);
-	diaFile = fopen((name+".dia").c_str(), "wt");
-	dbdia->outDia(diaFile, positionsRead, listTables);
+	dbdia->prepareDisplay(prefix, listTables, strColorTableIgnoreReferencedTables, positionsRead);
+	diaFile = fopen((strPathDia + "/" + name+".dia").c_str(), "wt");
+	dbdia->outDia(diaFile, positionsRead, listTables, strColorTableIgnoreReferencedTables);
 	printf("\tdia file written: OK\n");
 	fclose(diaFile);
 	((DataBaseHTML*)&db)->outHtmlMap(name, prefix);
@@ -81,6 +82,7 @@ void Usage( char *argv0, int exit_val) {
 		<< endl
 		<< "Options:" << endl
 		<< "\t[-f|--sqlfile]  - which sql file to use" << endl
+		<< "\t[-o|--diaoutputpath]  - where to read/write the dia file" << endl
 		<< "\t[-v|--verbose]  - make it verbose" << endl
 		<< "\t[-h|-?|--help]  - show this usage message" << endl
 		;
@@ -118,7 +120,9 @@ void BackwardCompat( int argc, char* argv[]) {
 	FILE* Convertfile;
 	Convertfile = fopen(("img/"+prefix+"_tile.bat").c_str(), "wt");
 
-	process( prefix, prefix, Convertfile);
+	char szDiaOutputPath[200];
+    getcwd(szDiaOutputPath, 200);
+	process(szDiaOutputPath, prefix, prefix, Convertfile);
 
 	fclose( Convertfile);
 	((DataBaseHTML*)&db)->writeMenus();
@@ -214,7 +218,7 @@ void CheckProjectFile( char* szProject, xmlDocPtr* doc) {
 	}
 }
 
-void RunProject( char* szProject, char* szDBSqlfile, int argc, char* argv[]) {
+void RunProject( char* szProject, char* szDBSqlfile, char* strPathDiaOutput, int argc, char* argv[]) {
 	// Open the project file and check the structure
 	xmlDocPtr doc;
 	CheckProjectFile( szProject, &doc);
@@ -234,6 +238,12 @@ void RunProject( char* szProject, char* szDBSqlfile, int argc, char* argv[]) {
 	db.prepareLinks();
 	((DataBaseHTML*)&db)->prepareDisplay( "", false);
 	xmlNodePtr cur = xmlDocGetRootElement(doc);
+	// on the diagram, tables that don't have all links displayed on that diagram get a special color marking
+	// but sometimes, one table is referenced by each table; this table can be excluded (eg. s_user); use format [s_user],[s_other]
+	string strColorTableIgnoreReferencedTables;
+    if (xmlGetProp( cur, (xmlChar*)"ColorIgnoreReferencedTables")) {
+       strColorTableIgnoreReferencedTables = (char*)xmlGetProp( cur, (xmlChar*)"ColorIgnoreReferencedTables");
+    }
 	cur = cur->xmlChildrenNode;
 	FILE* Convertfile;
 	while ( cur != NULL) {
@@ -256,16 +266,16 @@ void RunProject( char* szProject, char* szDBSqlfile, int argc, char* argv[]) {
 				}
 				tables = tables->next;
 			}
-			process( strGroup, "", Convertfile, strTableList);
-      	fclose( Convertfile);
+			process( strPathDiaOutput, strGroup, "", Convertfile, strTableList, strColorTableIgnoreReferencedTables);
+      	    fclose( Convertfile);
 			//xmlFree( szName);
 		}
 		cur = cur->next;
 	}
-	// Now also dump those table in a module that are not displayed yet...
-	Convertfile = fopen( NONDISPLAYED"_tile.bat", "wt");
-	process( NONDISPLAYED, NONDISPLAYED, Convertfile, "");
-	fclose( Convertfile);
+//	// Now also dump those table in a module that are not displayed yet...
+//	Convertfile = fopen( NONDISPLAYED"_tile.bat", "wt");
+//	process( NONDISPLAYED, NONDISPLAYED, Convertfile, "");
+//	fclose( Convertfile);
 
 	// Free the lot
 	xmlFreeDoc( doc);
@@ -278,6 +288,8 @@ int main(int argc, char* argv[])
 	bool bDoDumpGroups = false;
 	char* szProjectFile = NULL;
 	char* szSqlFile = NULL;
+	char szDiaOutputPath[200];
+    getcwd(szDiaOutputPath, 200);
 
 	/* The options that can be given */
 	static struct option long_options[] = {
@@ -287,6 +299,7 @@ int main(int argc, char* argv[])
 		{"project",       required_argument, 0, 'p'},
 		/* Options */
 		{"sqlfile",       required_argument, 0, 'f'},
+		{"diaoutputpath", required_argument, 0, 'o'},
 		{"verbose",       no_argument,       0, 'v'},
 		{"help",          no_argument,       0, 'h'},
 		{0, 0, 0, 0}
@@ -295,7 +308,7 @@ int main(int argc, char* argv[])
 	int option_index = 0;
 	while ( 1) {
 		char c;
-		if ( ( c = getopt_long( argc, argv, "h?vp:df:g",
+		if ( ( c = getopt_long( argc, argv, "h?vp:df:o:g",
 		                        long_options, &option_index)) == -1) {
 			break;
 		}
@@ -310,6 +323,12 @@ int main(int argc, char* argv[])
        			}
 				szProjectFile = optarg;
 				bDoProject = true;
+				break;
+			case 'o':
+       			if ( NULL == optarg) {
+       				Usage( argv[ 0], 1);
+       			}
+				strcpy(szDiaOutputPath, optarg);
 				break;
 			case 'f':
        			if ( NULL == optarg) {
@@ -347,7 +366,7 @@ int main(int argc, char* argv[])
             if (szSqlFile == NULL) {
                 Usage( argv[0], 1);
             }
-			RunProject( szProjectFile, szSqlFile, argc, argv);
+			RunProject( szProjectFile, szSqlFile, szDiaOutputPath, argc, argv);
 		}
 	}
 
