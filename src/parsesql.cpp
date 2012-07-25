@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/parsesql.cpp,v $
- * revision:            $Revision: 1.5 $
- * last changes:        $Date: 2007/08/14 22:18:45 $
+ * revision:            $Revision: 1.6 $
+ * last changes:        $Date: 2012/07/25 13:35:42 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
@@ -177,6 +177,8 @@ void ParserSQL::readColumn(Table& tab)
 					type = type + " " + token;
 				}
 			}
+		} else {
+			current = goBackToken(current, token);
 		}
 
 	}
