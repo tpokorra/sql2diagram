@@ -1,21 +1,23 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/mixed.cpp,v $
- * revision:            $Revision: 1.7 $
- * last changes:        $Date: 2009/06/04 14:54:32 $
+ * revision:            $Revision: 1.8 $
+ * last changes:        $Date: 2013/06/17 18:51:56 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
  ********************************************************************** */
 #include "mixed.h"
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 #include <sys/types.h>
 #include <dirent.h>
 #include <errno.h>
 
 // basename should be part of string.h, but it is not in my msys environment???
 const char* basename (const char* fullPath) {
-    char* baseName;
+    const char* baseName;
     // careful: do we need backslash as well?
     baseName = strrchr(fullPath,(int)'/');
     if (baseName++) {

@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/attribute.h,v $
- * revision:            $Revision: 1.2 $
- * last changes:        $Date: 2005/02/17 18:30:27 $
+ * revision:            $Revision: 1.3 $
+ * last changes:        $Date: 2013/06/17 18:51:56 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *

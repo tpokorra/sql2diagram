@@ -1,8 +1,8 @@
 /* ***********************************************************************
  *
  * filename:            $Source: /cvsroot/sql2diagram/sql2diagram/src/html.h,v $
- * revision:            $Revision: 1.3 $
- * last changes:        $Date: 2009/04/24 12:11:52 $
+ * revision:            $Revision: 1.4 $
+ * last changes:        $Date: 2013/06/17 18:51:56 $
  * Author:              Timotheus Pokorra (timotheus at pokorra.de)
  * Feel free to use the code in this file in your own projects...
  *
