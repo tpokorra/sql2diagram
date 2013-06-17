@@ -46,7 +46,7 @@ clean:
 	\rm -f $(OBJS)
 	\rm -f sql2dia
 
-all:    sql2dia allmodules
+all:    sql2dia
 
 # After the line "# DO NOT DELETE" gccmakedep will add all lines to make sure
 # dependencies are handled correctly.
