@@ -62,7 +62,7 @@ void TableHTML::printDiagramLinks(ofstream& file) {
 	if yes, print a link to the diagram here
 	*/
 
-	char needle[255] = "\"";
+	char needle[255] = "\"?";
 	strcat (needle, name.c_str());
 	strcat (needle, "\"");
 	DIR *dp;
