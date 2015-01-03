@@ -243,7 +243,7 @@ void DataBase::getCornersOfDiagram(float& left, float& top, float& right, float&
 		vector<string>::iterator pointsit;
         string s = at->orth_points;
         while (s.length()>0) {
-              unsigned int posSemicolon = s.find(";");
+              string::size_type posSemicolon = s.find(";");
               if (posSemicolon != string::npos) {
                    vpoints.push_back(s.substr(0, posSemicolon));
                    s = s.substr(posSemicolon+1);
@@ -257,7 +257,7 @@ void DataBase::getCornersOfDiagram(float& left, float& top, float& right, float&
 			vector<string> vcoord;
             string s = *pointsit;
             while (s.length()>0) {
-                  unsigned int posSemicolon = s.find(";");
+                  string::size_type posSemicolon = s.find(";");
                   if (posSemicolon != string::npos) {
                        vcoord.push_back(s.substr(0, posSemicolon));
                        s = s.substr(posSemicolon+1);
