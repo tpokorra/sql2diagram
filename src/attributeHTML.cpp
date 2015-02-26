@@ -53,7 +53,7 @@ int AttributeHTML::outHtml(ofstream* pdbDoc, TableHTML& table) {
 	*pdbDoc << "<tr class=\"field\"><td width=\"35%\">" << USED_LINE_END;
 	*pdbDoc << "<a name=\""<< sName << "\">" << USED_LINE_END;
 	*pdbDoc
-		<< "<b>" << sName << "</b>" << USED_LINE_END
+		<< "<b><a href='/index.html?table=" << table.getName() << "&group=" << table.getGroup() << "#" << sName<< "' target='_top'>" << sName << "</b></a>" << USED_LINE_END
 		<< "<div style=\"margin-left: 20px;\">" << USED_LINE_END
 		<< sType << "";
 

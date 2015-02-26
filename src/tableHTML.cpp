@@ -120,7 +120,7 @@ int TableHTML::outHtml()
 			<< "<DIV CLASS=\"tab\" ID=\"tab_" << name << "\">" << USED_LINE_END
 			<< "<table class=\"name\">" << USED_LINE_END
 			<< "<tr><td>" << USED_LINE_END
-			<< "Table " << name << USED_LINE_END
+			<< "Table <a href='/index.html?table=" << name << "&group=" << group << "' target='_top'>" << name << "</a>" << USED_LINE_END
 			<< "</td></tr>" << USED_LINE_END
 			<< "</table>" << USED_LINE_END;
 		printDiagramLinks(dbTableDoc);
