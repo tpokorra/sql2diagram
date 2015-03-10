@@ -1,4 +1,4 @@
-/* config.h.in.  Generated from configure.in by autoheader.  */
+/* config.h.in.  Generated from configure.ac by autoheader.  */
 /* Define if the C compiler supports BOOL */
 #undef HAVE_BOOL
 
@@ -58,6 +58,9 @@
 /* Define to the one symbol short name of this package. */
 #undef PACKAGE_TARNAME
 
+/* Define to the home page for this package. */
+#undef PACKAGE_URL
+
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
 
@@ -66,6 +69,3 @@
 
 /* Version number of package */
 #undef VERSION
-
-/* Defines the executable of xmllint */
-#undef XMLLINT
