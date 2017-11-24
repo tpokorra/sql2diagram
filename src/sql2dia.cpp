@@ -19,8 +19,7 @@
 #include <string>
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
-#include "getopt.h"
-#define __GETOPT_H__
+#include <getopt.h>
 #include <unistd.h>
 
 #include "mixed.h"
