@@ -42,13 +42,14 @@ char* Parser::trim(char* s)
 
 char* Parser::trimQuotes(char*s)
 {
-	if (s[0] == s[strlen(s)-1]) {
-		if ((s[0] == '\'')
+	int len=strlen(s);
+	while (len>1 && (s[0] == s[len-1]) &&
+		((s[0] == '\'')
 		    || (s[0] == '"')
-		    || (s[0] == '`')) {
-			s[strlen(s)-1] = '\0';
-			strcpy(s, s+1);
-        	}
+		    || (s[0] == '`'))) {
+		s[len-1] = '\0';
+		s++;
+		len-=2;
 	}
 	return s;	
 }
